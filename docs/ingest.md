@@ -180,4 +180,6 @@ df.to_parquet(filename, index=True)
 ```
 Indexes for Parquet are different. We want these.
 
-Once you have these files, upload them to the [OneDrive](https://gtvault-my.sharepoint.com/personal/yan74_gatech_edu/_layouts/15/onedrive.aspx?e=5%3A3fa2b70cc6bf45b8a2c2d5088b912932&fromShare=true&at=9&cid=6ef121a1%2D97ff%2D47d1%2D9433%2Ddf30bbde2f55&id=%2Fpersonal%2Fyan74%5Fgatech%5Fedu%2FDocuments%2FCounty%20Tax%20Assessment%20Data%2FDatasets%20cleaned%20and%20merged&FolderCTID=0x012000C4C8C88DF99687429B5EC8C301637C31&view=0) in a output folder for your county.
+Once you have these files, upload them to the [OneDrive](https://gtvault-my.sharepoint.com/personal/yan74_gatech_edu/_layouts/15/onedrive.aspx?e=5%3A3fa2b70cc6bf45b8a2c2d5088b912932&fromShare=true&at=9&cid=6ef121a1%2D97ff%2D47d1%2D9433%2Ddf30bbde2f55&id=%2Fpersonal%2Fyan74%5Fgatech%5Fedu%2FDocuments%2FCounty%20Tax%20Assessment%20Data%2FDatasets%20cleaned%20and%20merged&FolderCTID=0x012000C4C8C88DF99687429B5EC8C301637C31&view=0) in an output folder for your county.
+
+And, of course, commit and push your code to Github on your branch.
