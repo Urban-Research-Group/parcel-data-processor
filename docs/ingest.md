@@ -95,6 +95,18 @@ pd.concat([df1, df2, df3,...], ignore_index=True)
 ```
 You may need to ignore index, as shown above. See Pandas documentation for more details.
 
+**Example Using Loops Rather than Manual Processing for Each File**
+```python
+dataframes = [] # create a list of the dataframes
+
+for file in os.scandir(path):
+# loop through every file in a given folder, or you can manually
+# list all file names rather than using the os library
+    dataframes.append(pd.read_csv(file))
+
+appended = pd.concat(dataframes)    
+```
+
 ## 2. Clean and Standardize Data
 See this [spreadsheet](https://gtvault-my.sharepoint.com/:x:/g/personal/yan74_gatech_edu/EdZML-yafpFGhiyYvTXRgX8Birr030P1b4cXjW4SxDaL2A?e=j5gu94) for information regarding data standardization for each variable.
 
@@ -161,6 +173,14 @@ df.info()
 **Quickly Find Outliers**
 ```python
 df.describe()
+```
+
+**Example Using Loops Rather than Manual Processing for Each File**
+```python
+dataframes = [] # a list of the dataframes
+
+for df in dataframes:
+    df = df[df['sales_price'].astype('float32')
 ```
 
 ## 3. Export Data
