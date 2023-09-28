@@ -130,6 +130,7 @@ Given a column named 'salesprice', we want to:
 3. REPLACE NULL (CALLED 'NONE' IN PYTHON). If there are empty values for your variable, replace them with something that indicates they are incorrect without invalidating the desired datatype. For instance, if sales price has empty values, replace those with -1.
 4. CLEAN INCONSISTENCIES. Find and delete values that are incorrect. Or, if there is a pattern to these inconsistencies, fix them. For instance, zip codes that begin with 0 might have 0 excluded. These zip codes do not appear valid as they are 4 digits instead of 5, but manually checking some of them reveals that the address they refer to simply has a 0 as the first zip code digit.
 5. FINISH CAST TO DESIRED DATATYPE.
+6. MAKE AN ADDITIONAL COLUMN CALLED 'county' WITH YOUR COUNTY'S NAME IN THE FOLLOWING FORMAT: Cherokee, Cobb, DeKalb, Fulton, Gwinnett, Paulding. This will make county-by-count analysis easier when using the database.
 
 ### Psuedo-Code Example and Code Suggestions
 **Renaming**
