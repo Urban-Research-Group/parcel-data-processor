@@ -1,4 +1,6 @@
-/data/
+/data/fulton/parcels/
+/data/paulding/parcels/
+/data/gwinnet/parcels/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
