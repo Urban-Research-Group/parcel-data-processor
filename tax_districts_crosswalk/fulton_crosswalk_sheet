@@ -1,61 +1,60 @@
-dist_code,dist_name,tax_rate
-05,City of Atlanta
-05A,City of Atlanta - Downtown CID
-05B,City of Atlanta - Buckhead CID
-05C,City of Atlanta - Midtown CID
-05D,City of Atlanta - Downtown CID/Midtown CID
-05E,City of Atlanta - Downtown CID/Midtown CID/Eastside TAD
-05F,City of Atlanta - Downtown CID/Eastside TAD
-05G,City of Atlanta - Beltline TAD/Midtown CID
-05H,City of Atlanta - Airport West CID
-05I,City of Atlanta - Airport West CID/Princeton Lakes TAD
-05J,City of Atlanta - Little Five Points CID
-05K,City of Atlanta - Westside CID
-05L,City of Atlanta - Westside CID/Beltline TAD
-05P,City of Atlanta - Stadium TAD
-05Q,City of Atlanta - Campbellton TAD
-OSR,City of Atlanta - Metropolitan TAD
-05S,City of Atlanta - Hollowell TAD
-05T,City of Atlanta - Beltline TAD
-05U,City of Atlanta - Princeton Lakes TAD
-05V,City of Atlanta - Perry Bolton TAD
-05W,City of Atlanta - Eastside TAD
-05X,City of Atlanta - Atlantic Station TAD
-05Y,City of Atlanta - Downtown CID/Westside TAD
-05Z,City of Atlanta - Westside TAD
-10,City of Alpharetta
-10A,City of Alpharetta - North Fulton CID
-15,City of College Park
-15H,City of College Park - Airport West CID
-15Z,City of College Park - College Park TAD
-20,City of East Point
-20H1,City of East Point - Airport West CID
-20I,City of East Point- East Point TAD #2/ Airport West CID
-20J,City of East Point - East Point TAD/Airport West CID
-20Y,City of East Point - East Point TAD #2
-20Z,City of East Point - East Point TAD
-25,City of Fairburn
-25C,City of Fairburn - South Fulton CID
-30,City of Hapeville
-30A,City of Hapeville - Airport West CID
-30B,City of Hapeville - Hapeville TAD/Airport West CID
-30Z,City of Hapeville - Hapeville TAD
-35,City of Mountain Park
-40,City of Palmetto
-40C,City of Palmetto - South Fulton CID
-45,City of Roswell
-45A,City of Roswell - North Fulton CID
-50,City of Union City
-50C,City of Union City - South Fulton CID
-50Z,City of South Fulton
-55,City of South Fulton - South Fulton CID
-55C,City of South Fulton - Fulton Industrial Boulevard CID
-55D,City of South Fulton - Airport West CID
-55H,City of Milton
-56,City of Milton - North Fulton CID
-56A,City of Johns Creek
-57,City of Sandy Springs
-59,City of Sandy Springs - Fulton Perimeter CID
-59B,City of Chattahoochee Hills
-65,Fulton Industrial District
-70,Fulton Industrial District - Fulton Industrial Boulevard CID
+dist_code,dist_name,tax_rate_2022
+05,City of Atlanta,8.520,
+05A,City of Atlanta - Downtown CID,5.000,
+05B,City of Atlanta - Buckhead CID,3.000,
+05C,City of Atlanta - Midtown CID,5.000,
+05D,City of Atlanta - Downtown CID/Midtown CID,
+05E,City of Atlanta - Downtown CID/Midtown CID/Eastside TAD,
+05F,City of Atlanta - Downtown CID/Eastside TAD,
+05G,City of Atlanta - Beltline TAD/Midtown CID,
+05H,City of Atlanta - Airport West CID,5.000
+05I,City of Atlanta - Airport West CID/Princeton Lakes TAD,
+05J,City of Atlanta - Little Five Points CID,3.500
+05K,City of Atlanta - Westside CID,5.000
+05L,City of Atlanta - Westside CID/Beltline TAD,
+05P,City of Atlanta - Stadium TAD,
+05Q,City of Atlanta - Campbellton TAD,
+OSR,City of Atlanta - Metropolitan TAD,
+05S,City of Atlanta - Hollowell TAD,
+05T,City of Atlanta - Beltline TAD,
+05U,City of Atlanta - Princeton Lakes TAD,
+05V,City of Atlanta - Perry Bolton TAD,
+05W,City of Atlanta - Eastside TAD,
+05X,City of Atlanta - Atlantic Station TAD,
+05Y,City of Atlanta - Downtown CID/Westside TAD,
+05Z,City of Atlanta - Westside TAD,
+10,City of Alpharetta,
+10A,City of Alpharetta - North Fulton CID,
+15,City of College Park,
+15H,City of College Park - Airport West CID,
+15Z,City of College Park - College Park TAD,
+20,City of East Point,13.000
+20H1,City of East Point - Airport West CID,
+20I,City of East Point- East Point TAD #2/ Airport West CID,
+20J,City of East Point - East Point TAD/Airport West CID,
+20Y,City of East Point - East Point TAD #2,
+20Z,City of East Point - East Point TAD,
+25,City of Fairburn,8.100
+25C,City of Fairburn - South Fulton CID,3.000
+30,City of Hapeville,15.729
+30A,City of Hapeville - Airport West CID,
+30B,City of Hapeville - Hapeville TAD/Airport West CID,
+30Z,City of Hapeville - Hapeville TAD,
+35,City of Mountain Park,7.080
+40,City of Palmetto,8.500
+40C,City of Palmetto - South Fulton CID,
+45,City of Roswell,4.363
+45A,City of Roswell - North Fulton CID,3.000
+50,City of Union City,11.380
+50C,City of Union City - South Fulton CID,
+50Z,City of South Fulton,12.899
+55,City of South Fulton - South Fulton CID,
+55C,City of South Fulton - Fulton Industrial Boulevard CID,
+55D,City of South Fulton - Airport West CID,
+56,City of Milton - North Fulton CID,4.469
+56A,City of Johns Creek,3.986
+57,City of Sandy Springs,4.731
+59,City of Sandy Springs - Fulton Perimeter CID,4.000
+59B,City of Chattahoochee Hills,9.000
+65,Fulton Industrial District,9.550
+70,Fulton Industrial District - Fulton Industrial Boulevard CID,4.000
