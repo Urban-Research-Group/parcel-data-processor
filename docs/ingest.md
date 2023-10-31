@@ -95,6 +95,18 @@ pd.concat([df1, df2, df3,...], ignore_index=True)
 ```
 You may need to ignore index, as shown above. See Pandas documentation for more details.
 
+**Example Using Loops Rather than Manual Processing for Each File**
+```python
+dataframes = [] # create a list of the dataframes
+
+for file in os.scandir(path):
+# loop through every file in a given folder, or you can manually
+# list all file names rather than using the os library
+    dataframes.append(pd.read_csv(file))
+
+appended = pd.concat(dataframes)    
+```
+
 ## 2. Clean and Standardize Data
 See this [spreadsheet](https://gtvault-my.sharepoint.com/:x:/g/personal/yan74_gatech_edu/EdZML-yafpFGhiyYvTXRgX8Birr030P1b4cXjW4SxDaL2A?e=j5gu94) for information regarding data standardization for each variable.
 
@@ -118,6 +130,7 @@ Given a column named 'salesprice', we want to:
 3. REPLACE NULL (CALLED 'NONE' IN PYTHON). If there are empty values for your variable, replace them with something that indicates they are incorrect without invalidating the desired datatype. For instance, if sales price has empty values, replace those with -1.
 4. CLEAN INCONSISTENCIES. Find and delete values that are incorrect. Or, if there is a pattern to these inconsistencies, fix them. For instance, zip codes that begin with 0 might have 0 excluded. These zip codes do not appear valid as they are 4 digits instead of 5, but manually checking some of them reveals that the address they refer to simply has a 0 as the first zip code digit.
 5. FINISH CAST TO DESIRED DATATYPE.
+6. MAKE AN ADDITIONAL COLUMN CALLED 'county' WITH YOUR COUNTY'S NAME IN THE FOLLOWING FORMAT: Cherokee, Cobb, DeKalb, Fulton, Gwinnett, Paulding. This will make county-by-count analysis easier when using the database.
 
 ### Psuedo-Code Example and Code Suggestions
 **Renaming**
@@ -163,6 +176,14 @@ df.info()
 df.describe()
 ```
 
+**Example Using Loops Rather than Manual Processing for Each File**
+```python
+dataframes = [] # a list of the dataframes
+
+for df in dataframes:
+    df = df[df['sales_price'].astype('float32')
+```
+
 ## 3. Export Data
 Yay! You're almost there.
 
@@ -180,4 +201,6 @@ df.to_parquet(filename, index=True)
 ```
 Indexes for Parquet are different. We want these.
 
-Once you have these files, upload them to the [OneDrive](https://gtvault-my.sharepoint.com/personal/yan74_gatech_edu/_layouts/15/onedrive.aspx?e=5%3A3fa2b70cc6bf45b8a2c2d5088b912932&fromShare=true&at=9&cid=6ef121a1%2D97ff%2D47d1%2D9433%2Ddf30bbde2f55&id=%2Fpersonal%2Fyan74%5Fgatech%5Fedu%2FDocuments%2FCounty%20Tax%20Assessment%20Data%2FDatasets%20cleaned%20and%20merged&FolderCTID=0x012000C4C8C88DF99687429B5EC8C301637C31&view=0) in a output folder for your county.
+Once you have these files, upload them to the [OneDrive](https://gtvault-my.sharepoint.com/personal/yan74_gatech_edu/_layouts/15/onedrive.aspx?e=5%3A3fa2b70cc6bf45b8a2c2d5088b912932&fromShare=true&at=9&cid=6ef121a1%2D97ff%2D47d1%2D9433%2Ddf30bbde2f55&id=%2Fpersonal%2Fyan74%5Fgatech%5Fedu%2FDocuments%2FCounty%20Tax%20Assessment%20Data%2FDatasets%20cleaned%20and%20merged&FolderCTID=0x012000C4C8C88DF99687429B5EC8C301637C31&view=0) in an output folder for your county.
+
+And, of course, commit and push your code to Github on your branch.
