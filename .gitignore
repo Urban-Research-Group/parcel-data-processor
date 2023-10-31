@@ -1,5 +1,10 @@
-/data/
-/output/
+!/data/gwinnett/parcels/.gitkeep
+!/data/fulton/parcels/.gitkeep
+!/data/gwinnett/parcels/.gitkeep
+/data/fulton/parcels/*
+/data/paulding/parcels/*
+/data/gwinnett/parcels/*
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
