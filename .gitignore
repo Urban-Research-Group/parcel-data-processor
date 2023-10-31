@@ -4,6 +4,7 @@
 /data/fulton/parcels/*
 /data/paulding/parcels/*
 /data/gwinnett/parcels/*
+/output
 
 
 # Byte-compiled / optimized / DLL files
