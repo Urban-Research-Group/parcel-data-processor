@@ -4,6 +4,10 @@
 /data/fulton/parcels/*
 /data/paulding/parcels/*
 /data/gwinnett/parcels/*
+/data/cobb/parcels/*
+/data/denver_costar/*
+/data/cherokee/
+/output
 
 
 # Byte-compiled / optimized / DLL files
