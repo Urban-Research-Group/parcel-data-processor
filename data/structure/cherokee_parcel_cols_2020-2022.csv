@@ -1,6 +1,0 @@
-old_name,new_name,data_type,source_file
-HOUSE_NO,site_addrno,string,d_real.txt
-STREET_NAM,site_addrstr,string,d_real.txt
-HOUSE_NO,site_addrno,string,d_real.txt
-UNIT,site_unitno,string,d_real.txt
-FIRSTNAME,owner_name,string,D_TAXMASTER.txt
