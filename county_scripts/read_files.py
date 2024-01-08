@@ -88,3 +88,6 @@ def create_dfs_from_files(files, foramtting_file):
 
 # get files for county
 # get merge and append lists
+
+# read in files from list
+# remove uneeded vars
