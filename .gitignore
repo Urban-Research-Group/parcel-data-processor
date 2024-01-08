@@ -1,12 +1,5 @@
-!/data/gwinnett/parcels/.gitkeep
-!/data/fulton/parcels/.gitkeep
-!/data/gwinnett/parcels/.gitkeep
-/data/fulton/parcels/*
-/data/paulding/parcels/*
-/data/gwinnett/parcels/*
-/data/cobb/parcels/*
-/data/denver_costar/*
-/data/cherokee/
+data/*
+!data/mapping_files
 /output
 
 
