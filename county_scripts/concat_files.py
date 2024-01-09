@@ -13,9 +13,14 @@
 import re
 import pandas as pd
 
+
 def _make_group_list(groups, keys):
     group_list = list(zip(*groups))
-    return {keys[i]: list(match for match in group if match) for i, group in enumerate(group_list)}
+    return {
+        keys[i]: list(match for match in group if match)
+        for i, group in enumerate(group_list)
+    }
+
 
 def _group_files(files_str, pattern, keys):
     """
@@ -24,11 +29,23 @@ def _group_files(files_str, pattern, keys):
     groups = re.findall(pattern, files_str, re.IGNORECASE)
     return _make_group_list(groups, keys)
 
+
 def _generate_pattern(keys):
     """
     Returns a regex pattern for the keys
     """
-    return '|'.join(f"(?:^|,)([^,]*?{re.escape(key)}[^,]*)" for key in keys)
+    return "|".join(f"(?:^|,)([^,]*?{re.escape(key)}[^,]*)" for key in keys)
+
+
+def group_files(files, keys):
+    groups = dict.fromkeys(keys, [])
+    for file in files:
+        for key in keys:
+            if file.contains(key):
+                groups[key].append(file)
+
+    return groups
+
 
 def join_files(files, append_keys, merge_keys):
     """
@@ -36,9 +53,13 @@ def join_files(files, append_keys, merge_keys):
     """
     append_pattern = _generate_pattern(append_keys)
     merge_pattern = _generate_pattern(merge_keys)
-    files_str = ','.join(files)
-    
-    append_list = _group_files(files_str, append_pattern, append_keys) if append_pattern else []
-    merge_list = _group_files(files_str, merge_pattern, merge_keys) if merge_pattern else []
-        
+    files_str = ",".join(files)
+
+    append_list = (
+        _group_files(files_str, append_pattern, append_keys) if append_pattern else []
+    )
+    merge_list = (
+        _group_files(files_str, merge_pattern, merge_keys) if merge_pattern else []
+    )
+
     return append_list, merge_list
