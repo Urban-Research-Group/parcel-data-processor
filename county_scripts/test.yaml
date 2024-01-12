@@ -1,0 +1,15 @@
+county-name: test
+county-path: ../data/test
+var-map-path: fulton_map.csv
+operations:
+  append1:
+    type: append
+    files:
+      CMR: config
+      Test:
+output:
+  path: test-output
+  formats:
+    - parquet
+    - csv
+
