@@ -37,11 +37,12 @@ def _generate_pattern(keys):
     return "|".join(f"(?:^|,)([^,]*?{re.escape(key)}[^,]*)" for key in keys)
 
 
-def group_files(files, keys):
+def group_files(file_paths, keys):
+    # TODO IGNORE CASE
     groups = dict.fromkeys(keys, [])
     for file in files:
         for key in keys:
-            if file.contains(key):
+            if key in file:
                 groups[key].append(file)
 
     return groups
