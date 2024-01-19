@@ -1,12 +1,13 @@
-county-name: test
-county-path: ../data/test
-var-map-path: fulton_map.csv
+county-name: fulton
+county-path: ../data/fulton
+var-map-path: ../input/var_maps/fulton_map.csv
 operations:
   append1:
     type: append
     files:
-      CMR: config
-      Test:
+      DIGEST:
+      NF:
+      SF:
 output:
   path: test-output
   formats:

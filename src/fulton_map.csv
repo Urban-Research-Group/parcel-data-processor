@@ -1,3 +1,0 @@
-old_name,new_name,data_type,source_file
-Taxyr,tax_year,int,all
-Parid,parcel_id,string,all

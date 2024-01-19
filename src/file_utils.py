@@ -1,7 +1,10 @@
 import os
 import pandas as pd
 import numpy as np
+import operations
 from logger import configure_logger, timing
+
+logger = configure_logger()
 
 
 def _read_format_file(path):
@@ -25,6 +28,14 @@ def _get_fwf_paramters(format_file_path):
 
 
 def read_var_map(var_map_path: str) -> dict[str, str]:
+    """_summary_
+
+    Args:
+        var_map_path (str): _description_
+
+    Returns:
+        dict[str, str]: _description_
+    """
     var_map = pd.read_csv(var_map_path)
     # we want a dict with (old, source): {new var name: val, type: val, source: val}
     var_dict = {
@@ -33,6 +44,7 @@ def read_var_map(var_map_path: str) -> dict[str, str]:
             "data_type": row["data_type"],
         }
         for _, row in var_map.iterrows()
+        if row["derived"] == "false"
     }
     return var_dict
 
@@ -53,9 +65,16 @@ def get_all_files_in_dir(directory: str) -> list[str]:
     ]
 
 
-def select_files(file_paths, key):
-    """
-    Returns a list of files matching the pattern
+def select_files(file_paths: list[str], key: str) -> list[str]:
+    """Returns a list of files matching the pattern (currently substring),
+    formerly depreciated method used Regex
+
+    Args:
+        file_paths (list[str]): list of file paths to search
+        key (str): pattern to match (currently substring)
+
+    Returns:
+        list[str]: list of file paths matching the pattern
     """
     return [file_path for file_path in file_paths if key in file_path]
 
@@ -75,6 +94,7 @@ def create_df_from_file(file_path: str, format_file=None) -> pd.DataFrame:
     Returns:
         pd.DataFrame: dataframe of file
     """
+    # TODO add and validate file types
     file_type = file_path.split(".")[-1].lower()
 
     match file_type:
@@ -94,7 +114,16 @@ def create_df_from_file(file_path: str, format_file=None) -> pd.DataFrame:
     return df
 
 
-def get_desired_cols(file_name: str, var_map: dict):
+def get_desired_cols(file_name: str, var_map: dict) -> list[str]:
+    """Returns a list of all original column names that are desired
+
+    Args:
+        file_name (str): _description_
+        var_map (dict): _description_
+
+    Returns:
+        list[str]: _description_
+    """
     return [
         key[0]
         for key in var_map.keys()
@@ -102,7 +131,18 @@ def get_desired_cols(file_name: str, var_map: dict):
     ]
 
 
-def get_col_params(column: str, source: str, var_map: dict):
+def get_col_params(column: str, source: str, var_map: dict) -> dict:
+    """_summary_
+
+    Args:
+        column (str): _description_
+        source (str): _description_
+        var_map (dict): _description_
+
+    Returns:
+        dict: _description_
+    """
+    # TODO: might want to convert data type strings to actual types here
     params = None
 
     for key in var_map.keys():
@@ -110,50 +150,38 @@ def get_col_params(column: str, source: str, var_map: dict):
             params = var_map[key]
 
     return params
-    # TODO: might need to convert data type strings
-    # match params["data_type"]:
-    #    case "str":
-    #        pd.
 
 
-def create_dfs_from_files(file_paths: list[str], format_file: str, var_map: dict):
+def create_dfs_from_files(
+    file_paths: list[str], format_file: str, var_map: dict
+) -> list[pd.DataFrame]:
+    """Reads in a file as a DataFrame and performs data cleaning operations for
+    each file in file_paths
+
+    Args:
+        file_paths (list[str]): list of files to read
+        format_file (str): pattern to find format files for each data file, if needed
+        var_map (dict): dict of old and new variable names and data types
+
+    Raises:
+        ValueError: if file type is not supported for read
+
+    Returns:
+        list[pd.DataFrame]: list of dataframes created from reading each file in file_paths
     """
-    Returns a list of dataframes created from the files
-    """
+    # TODO: add checkpoints (pickle output)
     dfs = []
+
     for file_path in file_paths:
-        logger = configure_logger()
         file_name = file_path.split("\\")[-1]
+
         df = create_df_from_file(file_path, format_file)
         logger.info(f"Shape of {file_name} when read: {df.shape}")
 
-        df["source"] = file_name
-        # need to exclude derived or none columns- only matching source
-        print(file_name)
-        df = df[get_desired_cols(file_name, var_map)]
-        print(df)
-        # fill nulls with empty before cast due to problems
-        for column in df.columns:
-            col_params = get_col_params(column, file_name, var_map)
-            # LOG HOW MANY FILLED
+        df = operations.clean_df(df, file_name, var_map)
+        df = operations.create_derived_cols(df, file_name)
 
-            if col_params["data_type"] in ["str", "string"]:
-                df[column] = df[column].fillna("")
-            elif col_params["data_type"] == "int":
-                df[column] = df[column].fillna(0)
-                df[column] = df[column].replace("", 0)
-            elif col_params["data_type"] == "float":
-                df[column] = df[column].fillna(0.0)
-                df[column] = df[column].replace("", 0.0)
-            else:
-                raise ValueError(f"Data type {col_params['data_type']} not supported")
-
-            df[column] = df[column].astype(col_params["data_type"])
-        df.rename(columns={key[0]: var_map[key]["new_name"] for key in var_map.keys()})
         logger.info(f"Shape of {file_name} after processing: {df.shape}")
         dfs.append(df)
-        # TODO: add try catch logic
-        # TODO: add more file types
-        # TODO: add checkpoints (pickle output)
 
     return dfs

@@ -1,0 +1,5 @@
+old_name,new_name,data_type,source_file,derived
+Taxyr,tax_year,int,all,false
+Parid,parcel_id,string,all,false
+Class,site_class_parcel,string,all,false
+Own1,owner_name_1,string,all,false

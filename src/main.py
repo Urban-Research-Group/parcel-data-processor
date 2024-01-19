@@ -110,7 +110,7 @@ def process_operations(data_info: data_info) -> pd.DataFrame:
             load_data(data_info, file_pat, format_file)
             if file_pat not in operations
             else data_per_op[file_pat]
-            for file_pat, format_file in files
+            for file_pat, format_file in files.items()
         ]
 
         data_per_op[name] = process_operation(operation, data)
@@ -170,7 +170,7 @@ if __name__ == "__main__":
     parser.add_argument("config_path", type=str, help="Path to the configuration file")
     parser.add_argument("exec_name", type=str, help="Name given to current execution")
     args = parser.parse_args()
-    logger = configure_logger(execution_name=args.exec_name)
+    logger = configure_logger(execution_name=args.exec_name)  # TODO move to top?
     main(args.config_path)
 
 # TODO
@@ -180,6 +180,7 @@ if __name__ == "__main__":
 # complete other YAML files, ppt
 # clean up repo + docs
 # confirm data quality
+# create a status bar in cmd based on number of dfs read
 
 # DOCS
 # To run: python main.py <config_path> <execution_name>

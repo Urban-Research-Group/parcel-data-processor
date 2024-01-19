@@ -11,7 +11,7 @@ def configure_logger(execution_name: str = None):
         _execution_name = execution_name
 
     logging.basicConfig(
-        filename=f"{_execution_name}.log",
+        filename=f"../logs/{_execution_name}.log",
         filemode="w",
         format="%(name)s - %(levelname)s - %(message)s",
         level=logging.DEBUG,
