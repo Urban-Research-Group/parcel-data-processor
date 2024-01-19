@@ -1,7 +1,6 @@
 data/*
 /output
-ga-tax-assessment/*
-
+ga-tax-assessment
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
