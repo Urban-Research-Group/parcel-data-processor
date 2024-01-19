@@ -1,6 +1,6 @@
 data/*
-!data/mapping_files
 /output
+ga-tax-assessment/
 
 
 # Byte-compiled / optimized / DLL files
