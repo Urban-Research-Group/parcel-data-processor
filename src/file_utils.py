@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 import numpy as np
-import operations
-from logger import configure_logger, timing
+from src import operations
+from src.logger import configure_logger, timing
 
 logger = configure_logger()
 
@@ -36,6 +36,7 @@ def read_var_map(var_map_path: str) -> dict[str, str]:
     Returns:
         dict[str, str]: _description_
     """
+    # TODO: derived variables?
     var_map = pd.read_csv(var_map_path)
     # we want a dict with (old, source): {new var name: val, type: val, source: val}
     var_dict = {
@@ -153,7 +154,7 @@ def get_col_params(column: str, source: str, var_map: dict) -> dict:
 
 
 def create_dfs_from_files(
-    file_paths: list[str], format_file: str, var_map: dict
+    file_paths: list[str], format_file: str = None, var_map: dict = None
 ) -> list[pd.DataFrame]:
     """Reads in a file as a DataFrame and performs data cleaning operations for
     each file in file_paths

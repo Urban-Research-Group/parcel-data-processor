@@ -78,13 +78,13 @@ def process_operation(operation, data) -> pd.DataFrame:
         pd.DataFrame: result of executing the operation on the given data
     """
     match operation["type"]:
-        case "append":
-            return operations.append(data)
-        case "merge":
-            if "key" not in operation or "merge-type" not in operation:
-                raise ValueError("Key or merge type not specified for merge operation")
+        case "append" | "concat":
+            return operations.concat(data)
+        case "merge" | "join":
+            if "key" not in operation or "join-type" not in operation:
+                raise ValueError("Key or merge type not specified for join operation")
 
-            return operations.merge(data, operation["key"], operation["merge-type"])
+            return operations.merge(data, operation["key"], operation["join-type"])
         case _:
             print("Operation not supported")
 
