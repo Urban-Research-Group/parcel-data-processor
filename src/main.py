@@ -174,13 +174,16 @@ if __name__ == "__main__":
     main(args.config_path)
 
 # TODO
-# mapping processer
+# fix logging
+# mapping processer finish
 # code imp
 # test Fulton completely
 # complete other YAML files, ppt
 # clean up repo + docs
 # confirm data quality
 # create a status bar in cmd based on number of dfs read
+# further code improvements (more sensible modules)
+# need live logging to st.out
 
 # DOCS
 # To run: python main.py <config_path> <execution_name>
