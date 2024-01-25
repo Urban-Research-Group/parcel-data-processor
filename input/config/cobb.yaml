@@ -1,0 +1,19 @@
+county-name: cobb
+county-path: ../data/cobb
+var-map-path: ../input/var_maps/cobb_map.csv
+operations:
+  merge1:
+    type: merge
+    files:
+      ASMT:
+      LAND:
+  append1:
+    type: append
+    files:
+      merge1:
+output:
+  path: cobb-output
+  formats:
+    - parquet
+    - csv
+
