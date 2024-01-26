@@ -1,60 +1,139 @@
 from functools import reduce
 import pandas as pd
-import file_utils
-from logger import configure_logger, timing
+from src import file_utils
+from src.logger import configure_logger
 
 logger = configure_logger()
 
 
-def append(data):
+def concat(data: list[pd.DataFrame]) -> pd.DataFrame:
+    """Concats a list of dataframes together
+
+    Args:
+        data (list[pd.DataFrame]): dfs to concat
+
+    Returns:
+        pd.DataFrame: resulting concatenated df
+    """
     return pd.concat(data).reset_index(drop=True)
 
 
-def merge(data, key, merge_type):
+@staticmethod
+def guard_join(join_type: str) -> None:
+    ACCEPTED_TYPES = ["inner", "outer", "left"]
+
+    if join_type.lower() not in ACCEPTED_TYPES:
+        error_msg = "Not a valid join type"
+        logger.log(error_msg)
+        raise ValueError("Not a valid join type")
+
+
+def join(data: list[pd.DataFrame], key: str, join_type: str) -> pd.DataFrame:
+    """Joins a list of dataframes together on a join key
+
+    Args:
+        data (list[pd.DataFrame]): dfs to join
+        key (str): key, or colum name, to join on
+        join_type (str): specify a inner, outer, or left join
+
+    Raises:
+        ValueError: when join type is invalid
+
+    Returns:
+        pd.DataFrame: resulting joined df
+    """
     return reduce(
-        lambda left, right: pd.merge(left, right, on=key, how=merge_type), data
+        lambda left, right: pd.merge(left, right, on=key, how=join_type), data
     )
 
 
-def clean_and_cast_column(df, column, data_type):
-    init_len = len(df)
-    df = df.drop_duplicates()
+def clean_and_cast_col(column: pd.Series, data_type: str) -> pd.Series:
+    """Fills nulls and re-casts a given DataFrame column
 
-    num_nulls = df[column].isnull().sum()
-    num_dup = init_len - len(df)
+    Args:
+        column (pd.Series): column to clean
+        data_type (str): data type to cast column to
+
+    Raises:
+        ValueError: when specified data type is not supported
+
+    Returns:
+        pd.Series: resulting cleaned column
+    """
+    init_len = len(column)
+
+    num_nulls = column.isnull().sum()
+    num_dup = init_len - len(column)
     logger.info(
-        f"Cleaning col: {column}; dropped {num_dup} duplicates, filling {num_nulls} nulls"
+        "Cleaning col: %s; dropped %d duplicates, filling %d nulls",
+        column,
+        num_dup,
+        num_nulls,
     )
 
     match data_type:
         case "str" | "string":
-            df[column] = df[column].fillna("")
+            column = column.fillna("")
         case "int":
-            df[column] = df[column].fillna(0)
-            df[column] = df[column].replace("", 0)
+            column = column.fillna(0)
+            column = column.replace("", 0)
         case "float":
-            df[column] = df[column].fillna(0.0)
-            df[column] = df[column].replace("", 0.0)
+            column = column.fillna(0.0)
+            column = column.replace("", 0.0)
         case _:
             raise ValueError(f"Data type {data_type} not supported")
 
-    df[column] = df[column].astype(data_type)
-    return df
+    column = column.astype(data_type)
+    return column
 
 
-def clean_df(df, file_name, var_map):
-    df = df[file_utils.get_desired_cols(file_name, var_map)]
+def clean_df(
+    df: pd.DataFrame, file_name: str, var_map: pd.DataFrame = None
+) -> pd.DataFrame:
+    var_map = var_map[var_map["source"].isin([file_name, "all"])].copy()
+
+    df = df[list(col for col in var_map["old_name"].to_list())]
+    df = df.drop_duplicates()
 
     for column in df.columns:
-        col_params = file_utils.get_col_params(column, file_name, var_map)
-        df = clean_and_cast_column(df, column, col_params["data_type"])
+        col_params = var_map[var_map["old_name"].str.lower() == column.lower()]
+        df = clean_and_cast_col(df[column], col_params["data_type"])
 
-    df = df.rename(columns={key[0]: var_map[key]["new_name"] for key in var_map.keys()})
+    old_to_new = dict(zip(var_map["old_name"].to_list(), var_map["new_name"].to_list()))
+    df = df.rename(columns=old_to_new)
 
     return df
 
 
-def create_derived_cols(df, file_name):
+def create_derived_cols(df: pd.DataFrame, file_name: str) -> pd.DataFrame:
     df["source"] = file_name
     return df
-    # ADDRESS, ETC.
+    # ADDRESS, ETC., NEED VARIABLE MAPPING STUFF HERE
+
+
+def derive_vars(df: pd.DataFrame, var_map: pd.DataFrame) -> pd.DataFrame:
+    """_summary_
+
+    Args:
+        df (pd.DataFrame): _description_
+        var_map (pd.DataFrame): _description_
+
+    Raises:
+        ValueError: _description_
+
+    Returns:
+        pd.DataFrame: _description_
+    """
+    for _, row in var_map.iterrows():
+        columns_to_concat = row["derived"].split(";")
+
+        missing_cols = [col for col in columns_to_concat if col not in df.columns]
+
+        if not missing_cols:
+            df[row["new_name"]] = df[columns_to_concat].astype(str).agg("".join, axis=1)
+        else:
+            error_msg = f"Missing columns in DataFrame for '{row['new_name']}': {', '.join(missing_cols)}"
+            logger.error(error_msg)
+            raise ValueError(error_msg)
+
+    return df
