@@ -1,6 +1,5 @@
 from functools import reduce
 import pandas as pd
-from src import file_utils
 from src.logger import configure_logger
 
 logger = configure_logger()
