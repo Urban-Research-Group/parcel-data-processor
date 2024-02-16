@@ -1,7 +1,7 @@
 import argparse
-from src import config
+import src.config as config
 from src.processor import DataProcessor
-from src import file_io
+import src.file_io as file_io
 from src.logger import configure_logger, timing
 
 
