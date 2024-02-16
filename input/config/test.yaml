@@ -1,16 +1,18 @@
-county-name: fulton
-county-path: ../data/fulton
-var-map-path: ../input/var_maps/fulton_map.csv
+county-name: test_county
+county-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_files_dir
+var-map-path: ../input/var_maps/test_map.csv
 operations:
-  append1:
-    type: append
+  m1:
+    type: merge
     files:
       DIGEST:
-      NF:
-      SF:
+  a1:
+    type: append
+    files:
+      m1
+      CMR
 output:
   path: test-output
   formats:
-    - parquet
     - csv
 
