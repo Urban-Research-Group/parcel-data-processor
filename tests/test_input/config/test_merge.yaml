@@ -1,6 +1,6 @@
 county-name: test_merge
 county-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_data
-var-map-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_data\test_map.csv
+var-map-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_input\var_maps\test_map.csv
 derive-vars: False
 operations:
   m1:
@@ -11,7 +11,7 @@ operations:
     join-type: outer
     files:
       RES_A:
-      RES_OWNER: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_data\RES_OWNER_fdf.txt
+      RES_OWNER: _fdf.
 output:
   path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_output\
   formats:

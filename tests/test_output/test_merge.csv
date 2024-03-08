@@ -1,0 +1,4 @@
+parcel_id,tax_year,addr,appr_val,owner_name
+1,2020,1 MAIN,100000.0,owner1
+2,2020,2 MAIN,25000.0,owner02
+1,2021,1 MAIN,150000.0,owner3

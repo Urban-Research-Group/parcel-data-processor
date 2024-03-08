@@ -34,18 +34,19 @@ class DataProcessor:
         data = None
 
         if file_pattern not in self.operations:
-            selected_files = file_utils.select_files(self.county_files, file_pattern)
-
+            selected_files = file_utils.select_files(
+                self.county_files, file_pattern, format_file
+            )
             data = file_utils.create_dfs_from_files(
                 selected_files, format_file, self.var_map_derived
             )
         else:
             data = [self.data_per_op[file_pattern]]
 
-        return pd.concat(data, axis=0)
+        return data
 
     @staticmethod
-    def guard_join(operation) -> None:
+    def _guard_join(operation) -> None:
         if "key" not in operation or "join-type" not in operation:
             error_msg = "Key or merge type not specified for join operation"
             logger.error(error_msg)
@@ -72,7 +73,7 @@ class DataProcessor:
             case "append" | "concat":
                 return operations.concat([*data])
             case "merge" | "join":
-                DataProcessor.guard_join(operation)
+                DataProcessor._guard_join(operation)
                 return operations.join(data, operation["key"], operation["join-type"])
             case _:
                 print("Operation not supported")
@@ -90,11 +91,12 @@ class DataProcessor:
         for name, operation in self.operations.items():
             files = operation["files"]
 
+            # TODO: look into this
             data = [
-                self.load_data(file_pat, format_file)
+                df
                 for file_pat, format_file in files.items()
+                for df in self.load_data(file_pat, format_file)
             ]
-
             self.data_per_op[name] = DataProcessor.process_operation(operation, data)
             self.current_op = name
 
