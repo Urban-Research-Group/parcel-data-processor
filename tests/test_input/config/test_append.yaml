@@ -1,0 +1,14 @@
+county-name: test_append
+county-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_data
+var-map-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_data\test_map.csv
+derive-vars: False
+operations:
+  a1:
+    type: append
+    files:
+      CMR:
+output:
+  path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_output\
+  formats:
+    - csv
+

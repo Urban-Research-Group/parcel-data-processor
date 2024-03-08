@@ -9,10 +9,12 @@ logger = configure_logger()
 
 class DataProcessor:
     def __init__(self, data_info: DataInfo):
+        # TODO: should just keep DataInfo object
         self.data_info = data_info
         self.county_files = data_info.county_files
         self.var_map_non_derived = data_info.var_map_non_derived
         self.var_map_derived = data_info.var_map_derived
+        self.derive_vars = data_info.derive_vars
         self.operations = data_info.operations
         self.data_per_op = {name: [] for name in self.operations}
         self.current_op = None
@@ -35,12 +37,12 @@ class DataProcessor:
             selected_files = file_utils.select_files(self.county_files, file_pattern)
 
             data = file_utils.create_dfs_from_files(
-                selected_files, format_file, self.var_map_non_derived
+                selected_files, format_file, self.var_map_derived
             )
         else:
-            data = self.data_per_op[file_pattern]
+            data = [self.data_per_op[file_pattern]]
 
-        return data
+        return pd.concat(data, axis=0)
 
     @staticmethod
     def guard_join(operation) -> None:
@@ -51,7 +53,7 @@ class DataProcessor:
 
     @timing
     @staticmethod
-    def process_operation(operation, data, var_map_derived) -> pd.DataFrame:
+    def process_operation(operation, data) -> pd.DataFrame:
         """Executes a single data operation as specified by the data info params
 
         Args:
@@ -68,12 +70,10 @@ class DataProcessor:
 
         match operation_type:
             case "append" | "concat":
-                return operations.concat(data)
+                return operations.concat([*data])
             case "merge" | "join":
                 DataProcessor.guard_join(operation)
                 return operations.join(data, operation["key"], operation["join-type"])
-            case "derive_vars":  # TODO do we just want this as a param
-                return operations.derive_vars(data, var_map_derived)
             case _:
                 print("Operation not supported")
 
@@ -95,10 +95,15 @@ class DataProcessor:
                 for file_pat, format_file in files.items()
             ]
 
-            self.data_per_op[name] = DataProcessor.process_operation(
-                operation, data, self.var_map_derived
-            )
+            self.data_per_op[name] = DataProcessor.process_operation(operation, data)
             self.current_op = name
+
+        # Create derived vars here
+        if self.derive_vars:
+            self.data_per_op["derived"] = operations.create_derived_cols(
+                self.data_per_op[self.current_op], self.var_map_derived
+            )
+            self.current_op = "derived"
 
         result = self.data_per_op[self.current_op]
         logger.info("Shape of Result: %s", result.shape)

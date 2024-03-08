@@ -62,9 +62,7 @@ def create_dfs_from_files(
 
         df = file_io.File(file_path, format_file).read()
         logger.info("Shape of %s when read: %s", file_name, df.shape)
-
         df = operations.clean_df(df, file_name, var_map)
-        df = operations.create_derived_cols(df, file_name)
 
         logger.info("Shape of %s after processing: %s", file_name, df.shape)
         dfs.append(df)
