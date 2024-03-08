@@ -69,11 +69,11 @@ def clean_and_cast_col(column: pd.Series, data_type: str) -> pd.Series:
         num_dup,
         num_nulls,
     )
-
     match data_type:
         case "str" | "string":
             column = column.fillna("")
-        case "int":
+        case "int" | "integer":
+            data_type = "int"
             column = column.fillna(0)
             column = column.replace("", 0)
         case "float":
@@ -89,14 +89,14 @@ def clean_and_cast_col(column: pd.Series, data_type: str) -> pd.Series:
 def clean_df(
     df: pd.DataFrame, file_name: str, var_map: pd.DataFrame = None
 ) -> pd.DataFrame:
-    var_map = var_map[var_map["source"].isin([file_name, "all"])].copy()
-
+    file_name = file_name.split(".")[0]
+    var_map = var_map[var_map["source_file"].isin([file_name, "all"])].copy()
     df = df[list(col for col in var_map["old_name"].to_list())]
     df = df.drop_duplicates()
 
     for column in df.columns:
         col_params = var_map[var_map["old_name"].str.lower() == column.lower()]
-        df = clean_and_cast_col(df[column], col_params["data_type"])
+        df[column] = clean_and_cast_col(df[column], col_params["data_type"].item())
 
     old_to_new = dict(zip(var_map["old_name"].to_list(), var_map["new_name"].to_list()))
     df = df.rename(columns=old_to_new)
@@ -104,13 +104,9 @@ def clean_df(
     return df
 
 
-def create_derived_cols(df: pd.DataFrame, file_name: str) -> pd.DataFrame:
-    df["source"] = file_name
-    return df
-    # ADDRESS, ETC., NEED VARIABLE MAPPING STUFF HERE
-
-
-def derive_vars(df: pd.DataFrame, var_map: pd.DataFrame) -> pd.DataFrame:
+def create_derived_cols(
+    df: pd.DataFrame, var_map_derived: pd.DataFrame
+) -> pd.DataFrame:
     """_summary_
 
     Args:
@@ -123,7 +119,7 @@ def derive_vars(df: pd.DataFrame, var_map: pd.DataFrame) -> pd.DataFrame:
     Returns:
         pd.DataFrame: _description_
     """
-    for _, row in var_map.iterrows():
+    for _, row in var_map_derived.iterrows():
         columns_to_concat = row["derived"].split(";")
 
         missing_cols = [col for col in columns_to_concat if col not in df.columns]

@@ -17,6 +17,7 @@ class DataInfo:
     county_files: list = None
     var_map_non_derived: pd.DataFrame = None
     var_map_derived: pd.DataFrame = None
+    derive_vars: bool = False
 
 
 def create_data_info(config_path: str) -> DataInfo:
@@ -36,9 +37,12 @@ def create_data_info(config_path: str) -> DataInfo:
     county_files = file_utils.get_all_files_in_dir(county_path)
     var_map = file_io.read_var_map(var_map_path)
 
-    derived_mask = var_map["derived"].str.lower().eq("false")
+    derived_mask = var_map["derived"].apply(lambda x: str(x).lower() == "false")
     var_map_non_derived = var_map[~derived_mask]
     var_map_derived = var_map[derived_mask]
+
+    derive_vars = config["derive-vars"]
+    derive_vars = True if str(derive_vars).lower() == "true" else False
 
     return DataInfo(
         county_name=config["county-name"],
@@ -49,4 +53,5 @@ def create_data_info(config_path: str) -> DataInfo:
         county_files=county_files,
         var_map_non_derived=var_map_non_derived,
         var_map_derived=var_map_derived,
+        derive_vars=derive_vars,
     )

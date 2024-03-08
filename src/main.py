@@ -11,7 +11,10 @@ def _main(config_path):
     processed_data = DataProcessor(data_info).run()
 
     file_io.WriteOutput(
-        processed_data, data_info["output_path"], data_info["output_formats"]
+        processed_data,
+        data_info.county_name,
+        data_info.output["path"],
+        data_info.output["formats"],
     ).write_output()
 
 
