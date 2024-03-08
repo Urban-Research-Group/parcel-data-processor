@@ -1,6 +1,6 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-# Georgia Tax Assessment
+# Parcel Data Processor (GA Tax Assessment Project)
 ![img](/docs/county_assessment_pipeline.png "Complete Data Pipeline")
 ## Tax assessment data process and analysis for counties in GA, specifically those around metro Atlanta. Affiliated with the Urban Research Group at Georgia Tech.
 
