@@ -9,7 +9,14 @@ logger = configure_logger()
 class File:
     def __init__(self, file_path: str, format_file=None):
         self.file_path = file_path
-        self.format_file = format_file
+        self.format_pattern = format_file
+
+        construct_format_path = None
+        if format_file:
+            construct_format_path = file_path.split(".")
+            construct_format_path.insert(1, format_file)
+            construct_format_path = "".join(construct_format_path)
+        self.format_file = construct_format_path
 
     @staticmethod
     def _read_format_file(path):
@@ -34,6 +41,8 @@ class File:
     def read(self):
         """Reads a file based on its extension and returns a dataframe"""
         file_type = self.file_path.split(".")[-1].lower()
+        if self.format_pattern and self.format_pattern in self.file_path:
+            return
 
         match file_type:
             case "csv":
@@ -98,13 +107,15 @@ class WriteOutput:
 
     def write_csv(self):
         try:
-            self.data.to_csv(self.output_path + f"{self.county_name}.csv")
+            self.data.to_csv(self.output_path + f"{self.county_name}.csv", index=False)
         except Exception as e:
             self.log("CSV", e)
 
     def write_parquet(self):
         try:
-            self.data.to_parquet(self.output_path + f"{self.county_name}.parquet")
+            self.data.to_parquet(
+                self.output_path + f"{self.county_name}.parquet", index=False
+            )
         except Exception as e:
             self.log("Parquet", e)
 

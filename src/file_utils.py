@@ -23,7 +23,7 @@ def get_all_files_in_dir(directory: str) -> list[str]:
     ]
 
 
-def select_files(file_paths: list[str], key: str) -> list[str]:
+def select_files(file_paths: list[str], key: str, format_pat: str) -> list[str]:
     """Returns a list of files matching the pattern (currently substring),
     formerly depreciated method used Regex
 
@@ -34,7 +34,11 @@ def select_files(file_paths: list[str], key: str) -> list[str]:
     Returns:
         list[str]: list of file paths matching the pattern
     """
-    return [file_path for file_path in file_paths if key in file_path]
+    return [
+        file_path
+        for file_path in file_paths
+        if (key in file_path and (format_pat is None or format_pat not in file_path))
+    ]
 
 
 def create_dfs_from_files(
@@ -59,11 +63,9 @@ def create_dfs_from_files(
 
     for file_path in file_paths:
         file_name = file_path.split("\\")[-1]
-
         df = file_io.File(file_path, format_file).read()
         logger.info("Shape of %s when read: %s", file_name, df.shape)
         df = operations.clean_df(df, file_name, var_map)
-
         logger.info("Shape of %s after processing: %s", file_name, df.shape)
         dfs.append(df)
 

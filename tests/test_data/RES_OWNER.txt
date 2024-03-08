@@ -1,4 +1,3 @@
-PARID,TAXYR,owner
  12020  owner1
  22020 owner02
  12021  owner3

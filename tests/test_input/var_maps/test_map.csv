@@ -1,5 +1,7 @@
 old_name,new_name,data_type,source_file,derived
 PARID,parcel_id,string,all,false
 TAXYR,tax_year,integer,all,false
-owner,owner_name,string,DIGEST,false
-address,owner_address,string,DIGEST_ADDR,false
+owner,owner_name,string,CMR,false
+appr_val,appr_val,float,CMR,false
+class,class,string,CMR,false
+address,addr,string,RES_ADDR,false
