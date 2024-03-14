@@ -1,7 +1,6 @@
-county-name: test_merge_append
-county-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_data
+name: test_merge_append
+root-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_data
 var-map-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_input\var_maps\test_map.csv
-derive-vars: False
 operations:
   m1:
     type: merge

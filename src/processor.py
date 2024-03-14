@@ -29,10 +29,10 @@ class DataProcessor:
 
         if file_pattern not in self.data_info.operations:
             selected_files = file_utils.select_files(
-                self.data_info.county_files, file_pattern, format_file
+                self.data_info.files, file_pattern, format_file
             )
             data = file_utils.create_dfs_from_files(
-                selected_files, format_file, self.data_info.var_map_derived
+                selected_files, format_file, self.data_info.var_map_non_derived
             )
         else:
             data = [self.data_per_op[file_pattern]]
@@ -94,20 +94,20 @@ class DataProcessor:
                 for df in self.load_data(file_pat, format_file)
             ]
 
-            if name in "test":
+            print(self.data_info.retain)
+            if name in self.data_info.retain:
                 self.data_per_op[name] = DataProcessor.process_operation(
                     operation, data
                 )
+                self.data_info.retain.remove(name)
             self.current_op = name
 
-        # Create derived vars here
-        if self.data_info.derive_vars:
-            self.data_per_op["derived"] = operations.create_derived_cols(
-                self.data_per_op[self.current_op], self.data_info.var_map_derived
-            )
-            self.current_op = "derived"
+        if not self.data_info.var_map_derived.empty:
+            NotImplemented
 
         result = self.data_per_op[self.current_op]
+        print(result)
+        print(self.data_per_op)
         logger.info("Shape of Result: %s", result.shape)
 
         return result

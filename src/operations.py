@@ -17,7 +17,6 @@ def concat(data: list[pd.DataFrame]) -> pd.DataFrame:
     return pd.concat(data).reset_index(drop=True)
 
 
-@staticmethod
 def guard_join(join_type: str) -> None:
     ACCEPTED_TYPES = ["inner", "outer", "left"]
 
@@ -41,7 +40,6 @@ def join(data: list[pd.DataFrame], key: str, join_type: str) -> pd.DataFrame:
     Returns:
         pd.DataFrame: resulting joined df
     """
-    print(data)
     return reduce(
         lambda left, right: pd.merge(left, right, on=key, how=join_type), data
     )
@@ -143,3 +141,25 @@ def create_derived_cols(
             raise ValueError(error_msg)
 
     return df
+
+
+def concat_columns(
+    df: pd.DataFrame, columns: list[str], sep: str = " "
+) -> pd.DataFrame:
+    """Concats a list of dataframes together
+
+    Args:
+        data (list[pd.DataFrame]): dfs to concat
+
+    Returns:
+        pd.DataFrame: resulting concatenated df
+    """
+
+    columns_in_df = df.columns.tolist()
+    diff = set(columns).difference(columns_in_df)
+    if diff:
+        error_msg = f"Columns {diff} not in DataFrame"
+        logger.error(error_msg)
+        raise ValueError(error_msg)
+
+    return df[columns].agg(sep.join, axis=1)

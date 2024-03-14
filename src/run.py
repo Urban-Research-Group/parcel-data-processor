@@ -18,13 +18,13 @@ def run(config_path: str, exec_name: str) -> int:
     Returns:
         int: _description_
     """
-    configure_logger(execution_name=exec_name)
+    # configure_logger(execution_name=exec_name)
     data_info = config.create_data_info(config_path)
     processed_data = DataProcessor(data_info).run()
 
     file_io.WriteOutput(
         processed_data,
-        data_info.county_name,
+        data_info.name,
         data_info.output["path"],
         data_info.output["formats"],
     ).write_output()
