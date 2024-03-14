@@ -9,14 +9,8 @@ logger = configure_logger()
 
 class DataProcessor:
     def __init__(self, data_info: DataInfo):
-        # TODO: should just keep DataInfo object
         self.data_info = data_info
-        self.county_files = data_info.county_files
-        self.var_map_non_derived = data_info.var_map_non_derived
-        self.var_map_derived = data_info.var_map_derived
-        self.derive_vars = data_info.derive_vars
-        self.operations = data_info.operations
-        self.data_per_op = {name: [] for name in self.operations}
+        self.data_per_op = {name: [] for name in self.data_info.operations.keys()}
         self.current_op = None
 
     @timing
@@ -33,12 +27,12 @@ class DataProcessor:
         """
         data = None
 
-        if file_pattern not in self.operations:
+        if file_pattern not in self.data_info.operations:
             selected_files = file_utils.select_files(
-                self.county_files, file_pattern, format_file
+                self.data_info.county_files, file_pattern, format_file
             )
             data = file_utils.create_dfs_from_files(
-                selected_files, format_file, self.var_map_derived
+                selected_files, format_file, self.data_info.var_map_derived
             )
         else:
             data = [self.data_per_op[file_pattern]]
@@ -88,7 +82,9 @@ class DataProcessor:
         Returns:
             pd.DataFrame: end result of executing the operations
         """
-        for name, operation in self.operations.items():
+        operations = self.data_info.operations.items()
+
+        for name, operation in operations:
             files = operation["files"]
 
             # TODO: look into this
@@ -97,13 +93,17 @@ class DataProcessor:
                 for file_pat, format_file in files.items()
                 for df in self.load_data(file_pat, format_file)
             ]
-            self.data_per_op[name] = DataProcessor.process_operation(operation, data)
+
+            if name in "test":
+                self.data_per_op[name] = DataProcessor.process_operation(
+                    operation, data
+                )
             self.current_op = name
 
         # Create derived vars here
-        if self.derive_vars:
+        if self.data_info.derive_vars:
             self.data_per_op["derived"] = operations.create_derived_cols(
-                self.data_per_op[self.current_op], self.var_map_derived
+                self.data_per_op[self.current_op], self.data_info.var_map_derived
             )
             self.current_op = "derived"
 
