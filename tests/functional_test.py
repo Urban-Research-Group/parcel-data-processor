@@ -11,7 +11,7 @@ TRUTH_DIR = os.path.join(CURR_DIR, "test_truth")
 
 def test_append():
     config = os.path.join(TEST_INPUT_DIR, "config", "test_append.yaml")
-    run._main(config, exec_name="test_append")
+    run(config, exec_name="test_append")
 
     output_file = os.path.join(TEST_OUTPUT_DIR, "test_append.csv")
     truth_file = os.path.join(TRUTH_DIR, "truth_append.csv")
@@ -24,7 +24,7 @@ def test_append():
 
 def test_merge():
     config = os.path.join(TEST_INPUT_DIR, "config", "test_merge.yaml")
-    run._main(config, exec_name="test_merge")
+    run(config, exec_name="test_merge")
 
     output_file = os.path.join(TEST_OUTPUT_DIR, "test_merge.csv")
     truth_file = os.path.join(TRUTH_DIR, "truth_merge.csv")
@@ -33,7 +33,7 @@ def test_merge():
 
 def test_append_merge():
     config = os.path.join(TEST_INPUT_DIR, "config", "test_append_merge.yaml")
-    run._main(config, exec_name="test_append_merge")
+    run(config, exec_name="test_append_merge")
 
     output_file = os.path.join(TEST_OUTPUT_DIR, "test_append_merge.csv")
     truth_file = os.path.join(TRUTH_DIR, "truth_append_merge.csv")
@@ -43,7 +43,7 @@ def test_append_merge():
 def test_merge_append():
     config = os.path.join(TEST_INPUT_DIR, "config", "test_merge_append.yaml")
     print(config)
-    run._main(config, exec_name="test_merge_append")
+    run(config, exec_name="test_merge_append")
 
     output_file = os.path.join(TEST_OUTPUT_DIR, "test_merge_append.csv")
     truth_file = os.path.join(TRUTH_DIR, "truth_merge_append.csv")
