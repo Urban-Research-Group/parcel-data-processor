@@ -1,23 +1,22 @@
+"""Defines and reads configuaration instruction set for the application"""
+
 from dataclasses import dataclass
 import pandas as pd
-from src import file_io
-from src import file_utils
+import file_io
+import file_utils
 
 
-# TODO: check YAML formatting
 @dataclass
 class DataInfo:
-    """Retains data parameters for processing instructions"""
+    """Retains data parameters with processing instructions"""
 
-    county_name: str
-    county_path: str
-    var_map_path: str
+    name: str
+    root_path: str
     operations: dict
     output: dict
     county_files: list = None
     var_map_non_derived: pd.DataFrame = None
     var_map_derived: pd.DataFrame = None
-    derive_vars: bool = False
 
 
 def create_data_info(config_path: str) -> DataInfo:
@@ -31,27 +30,30 @@ def create_data_info(config_path: str) -> DataInfo:
         data_info: dataclass containing config parameters
     """
     config = file_io.read_config(config_path)
-    county_path = config["county-path"]
+
+    root_path = config["root-path"]
     var_map_path = config["var-map-path"]
 
-    county_files = file_utils.get_all_files_in_dir(county_path)
+    files = file_utils.get_all_files_in_dir(root_path)
     var_map = file_io.read_var_map(var_map_path)
 
-    derived_mask = var_map["derived"].apply(lambda x: str(x).lower() == "false")
+    derived_mask = var_map["source_file"].apply(lambda x: str(x).contains(";"))
     var_map_non_derived = var_map[~derived_mask]
     var_map_derived = var_map[derived_mask]
 
-    derive_vars = config["derive-vars"]
-    derive_vars = True if str(derive_vars).lower() == "true" else False
+    operations = config["operations"]
+    op_names = set(operations.keys())
+    file_patterns = set(operation["files"].keys() for operation in operations)
+    retain = op_names.intersection(file_patterns)
 
+    print(retain)
     return DataInfo(
-        county_name=config["county-name"],
-        county_path=county_path,
-        var_map_path=var_map_path,
+        name=config["name"],
+        root_path=root_path,
         operations=config["operations"],
+        retain=retain,
         output=config["output"],
-        county_files=county_files,
+        files=files,
         var_map_non_derived=var_map_non_derived,
         var_map_derived=var_map_derived,
-        derive_vars=derive_vars,
     )

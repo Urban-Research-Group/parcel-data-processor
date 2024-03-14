@@ -1,7 +1,9 @@
+"""File I/O utilities"""
+
 import yaml
 import numpy as np
 import pandas as pd
-from src.logger import configure_logger, timing
+from logger import configure_logger, timing
 
 logger = configure_logger()
 
