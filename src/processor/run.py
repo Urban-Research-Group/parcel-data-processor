@@ -1,7 +1,7 @@
 import config
 import file_io
 from processor import DataProcessor
-from logger import configure_logger, timing
+from logger import setup_logger, timing
 
 
 STATUS_CODE_SUCCESS = 0
@@ -18,7 +18,7 @@ def run(config_path: str, exec_name: str) -> int:
     Returns:
         int: _description_
     """
-    # configure_logger(execution_name=exec_name)
+    setup_logger(execution_name=exec_name)
     data_info = config.create_data_info(config_path)
     processed_data = DataProcessor(data_info).run()
 

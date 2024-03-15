@@ -1,8 +1,8 @@
 import pandas as pd
-from src import operations as ops
-from src import file_utils
-from src.config import DataInfo
-from src.logger import configure_logger, timing
+import operations as ops
+import file_utils
+from config import DataInfo
+from logger import configure_logger, timing
 
 logger = configure_logger()
 
