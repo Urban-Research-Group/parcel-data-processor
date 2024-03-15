@@ -1,17 +1,19 @@
 from time import time
 import logging
 from functools import wraps
+import os
 
-_execution_name = None
+
+def configure_logger():
+    return logging.getLogger(__name__)
 
 
-def configure_logger(execution_name: str = None):
-    if execution_name:
-        global _execution_name
-        _execution_name = execution_name
+def setup_logger(execution_name: str = None):
+    logs_dir = os.path.join(os.path.dirname(__file__), "..", "logs")
+    os.makedirs(logs_dir, exist_ok=True)
 
     logging.basicConfig(
-        filename=f"../logs/{_execution_name}.log",
+        filename=os.path.join(logs_dir, f"{execution_name}.log"),
         filemode="w",
         format="%(name)s - %(levelname)s - %(message)s",
         level=logging.DEBUG,

@@ -1,7 +1,7 @@
 import os
 import pandas as pd
-from src import file_io
-from src.logger import configure_logger
+import file_io
+from logger import configure_logger
 
 logger = configure_logger()
 
