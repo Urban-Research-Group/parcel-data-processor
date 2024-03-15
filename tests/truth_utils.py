@@ -53,36 +53,66 @@ def clean_and_cast_col(column: pd.Series, data_type: str) -> pd.Series:
     return column
 
 
-def read_file(directory, file, var_map, format_file=None):
+def read_file(path: str, var_map: pd.DataFrame, format_pat: str = None) -> pd.DataFrame:
     """Reads file, returns DF"""
-    if format_file and format_file in file:
+    if format_pat and format_pat in path:
         return
 
-    if file.endswith(".csv"):
-        df = pd.read_csv(os.path.join(directory, file))
-    elif file.endswith(".txt"):
-        construct_format = file.split(".")
-        construct_format.insert(1, format_file)
+    if path.endswith(".csv"):
+        df = pd.read_csv(path)
+    elif path.endswith(".txt"):
+        construct_format = path.split(".")
+        construct_format.insert(1, format_pat)
         construct_format = "".join(construct_format)
-        widths, column_headers = _get_fwf_paramters(
-            os.path.join(directory, construct_format)
-        )
+        widths, column_headers = _get_fwf_paramters(construct_format)
         df = pd.read_fwf(
-            os.path.join(directory, file),
+            path,
             widths=widths,
             header=None,
             encoding="latin-1",
         )
         df.columns = column_headers
     else:
-        raise ValueError(f"File {file} is not a CSV or TXT file.")
+        raise ValueError(f"File {path} is not a CSV or TXT file.")
 
-    # Clean and rename df
-    for col in df.columns:
-        df[col] = clean_and_cast_col(
-            df[col], var_map[var_map["old_name"] == col]["data_type"].item()
-        )
-    names = zip(var_map["old_name"].tolist(), var_map["new_name"].tolist())
-    df = df.rename(columns=dict(names))
+    rename_dict = dict(zip(var_map["old_name"].tolist(), var_map["new_name"].tolist()))
+    df = df.rename(columns=rename_dict)
+    return df
+
+
+def clean_df(df: pd.DataFrame, var_map: pd.DataFrame = None) -> pd.DataFrame:
+    """_summary_
+
+    Args:
+        df (pd.DataFrame): _description_
+        var_map (pd.DataFrame, optional): _description_. Defaults to None.
+
+    Returns:
+        pd.DataFrame: _description_
+    """
+    new_names = set(var_map["new_name"].tolist())
+    new_names = list(new_names.intersection(df.columns))
+
+    df = df[new_names]
+    for column in df.columns:
+        col_params = var_map[var_map["new_name"].str.lower() == column.lower()]
+        df[column] = clean_and_cast_col(df[column], col_params["data_type"].item())
+
+    df = df.drop_duplicates()
+    return df
+
+
+def create_derived_vars(
+    df: pd.DataFrame, var_map_derived: pd.DataFrame, sep: str = " "
+) -> pd.DataFrame:
+    """Creates derived columns from a given DataFrame"""
+    for _, row in var_map_derived.iterrows():
+        columns_to_concat = row["old_name"].split(";")
+
+        if set(columns_to_concat).difference(df.columns):
+            continue
+
+        df[columns_to_concat] = df[columns_to_concat].astype(str).fillna("")
+        df[row["new_name"]] = df[columns_to_concat].agg(sep.join, axis=1)
 
     return df

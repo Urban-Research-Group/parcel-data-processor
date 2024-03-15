@@ -1,7 +1,6 @@
 import os
 import pandas as pd
 from src import file_io
-from src import operations
 from src.logger import configure_logger
 
 logger = configure_logger()
@@ -58,15 +57,16 @@ def create_dfs_from_files(
     Returns:
         list[pd.DataFrame]: list of dataframes created from reading each file in file_paths
     """
-    # TODO: add checkpoints (pickle output)
     dfs = []
 
     for file_path in file_paths:
         file_name = file_path.split("\\")[-1]
         df = file_io.File(file_path, format_file).read()
         logger.info("Shape of %s when read: %s", file_name, df.shape)
-        df = operations.clean_df(df, file_name, var_map)
-        logger.info("Shape of %s after processing: %s", file_name, df.shape)
+        rename_dict = dict(
+            zip(var_map["old_name"].tolist(), var_map["new_name"].tolist())
+        )
+        df = df.rename(columns=rename_dict)
         dfs.append(df)
 
     return dfs

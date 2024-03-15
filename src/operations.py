@@ -85,26 +85,20 @@ def clean_and_cast_col(column: pd.Series, data_type: str) -> pd.Series:
     return column
 
 
-def clean_df(
-    df: pd.DataFrame, file_name: str, var_map: pd.DataFrame = None
-) -> pd.DataFrame:
+def clean_df(df: pd.DataFrame, var_map: pd.DataFrame = None) -> pd.DataFrame:
     """_summary_
 
     Args:
         df (pd.DataFrame): _description_
-        file_name (str): _description_
         var_map (pd.DataFrame, optional): _description_. Defaults to None.
 
     Returns:
         pd.DataFrame: _description_
     """
-    file_name = file_name.split(".")[0]
-    # Rename all columns which are specified
-    var_map = var_map[var_map["old_name"].isin(df.columns)].copy()
-    names = zip(var_map["old_name"].tolist(), var_map["new_name"].tolist())
-    df = df.rename(columns=dict(names))
-    # Drop any columns not in new_name column; we don't need these
-    df = df[var_map["new_name"].tolist()]
+    new_names = set(var_map["new_name"].tolist())
+    new_names = list(new_names.intersection(df.columns))
+
+    df = df[new_names]
     for column in df.columns:
         col_params = var_map[var_map["new_name"].str.lower() == column.lower()]
         df[column] = clean_and_cast_col(df[column], col_params["data_type"].item())
@@ -114,7 +108,7 @@ def clean_df(
 
 
 def create_derived_cols(
-    df: pd.DataFrame, var_map_derived: pd.DataFrame
+    df: pd.DataFrame, var_map_derived: pd.DataFrame, sep: str = " "
 ) -> pd.DataFrame:
     """_summary_
 
@@ -129,37 +123,13 @@ def create_derived_cols(
         pd.DataFrame: _description_
     """
     for _, row in var_map_derived.iterrows():
-        columns_to_concat = row["derived"].split(";")
+        columns_to_concat = row["old_name"].split(";")
 
-        missing_cols = [col for col in columns_to_concat if col not in df.columns]
+        if set(columns_to_concat).difference(df.columns):
+            logger.warning(f"Columns {columns_to_concat} not in DataFrame")
+            continue
 
-        if not missing_cols:
-            df[row["new_name"]] = df[columns_to_concat].astype(str).agg("".join, axis=1)
-        else:
-            error_msg = f"Missing columns in DataFrame for '{row['new_name']}': {', '.join(missing_cols)}"
-            logger.error(error_msg)
-            raise ValueError(error_msg)
+        df[columns_to_concat] = df[columns_to_concat].astype(str).fillna("")
+        df[row["new_name"]] = df[columns_to_concat].agg(sep.join, axis=1)
 
     return df
-
-
-def concat_columns(
-    df: pd.DataFrame, columns: list[str], sep: str = " "
-) -> pd.DataFrame:
-    """Concats a list of dataframes together
-
-    Args:
-        data (list[pd.DataFrame]): dfs to concat
-
-    Returns:
-        pd.DataFrame: resulting concatenated df
-    """
-
-    columns_in_df = df.columns.tolist()
-    diff = set(columns).difference(columns_in_df)
-    if diff:
-        error_msg = f"Columns {diff} not in DataFrame"
-        logger.error(error_msg)
-        raise ValueError(error_msg)
-
-    return df[columns].agg(sep.join, axis=1)

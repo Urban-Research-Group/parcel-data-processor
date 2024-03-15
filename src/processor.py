@@ -1,5 +1,5 @@
 import pandas as pd
-from src import operations
+from src import operations as ops
 from src import file_utils
 from src.config import DataInfo
 from src.logger import configure_logger, timing
@@ -65,10 +65,10 @@ class DataProcessor:
 
         match operation_type:
             case "append" | "concat":
-                return operations.concat([*data])
+                return ops.concat([*data])
             case "merge" | "join":
                 DataProcessor._guard_join(operation)
-                return operations.join(data, operation["key"], operation["join-type"])
+                return ops.join(data, operation["key"], operation["join-type"])
             case _:
                 print("Operation not supported")
 
@@ -87,27 +87,30 @@ class DataProcessor:
         for name, operation in operations:
             files = operation["files"]
 
-            # TODO: look into this
             data = [
                 df
                 for file_pat, format_file in files.items()
                 for df in self.load_data(file_pat, format_file)
             ]
 
-            print(self.data_info.retain)
-            if name in self.data_info.retain:
-                self.data_per_op[name] = DataProcessor.process_operation(
-                    operation, data
-                )
+            self.data_per_op[name] = DataProcessor.process_operation(operation, data)
+            self.data_per_op[name] = ops.clean_df(
+                df=self.data_per_op[name], var_map=self.data_info.var_map_non_derived
+            )
+
+            # Reduce memory usage
+            if name not in self.data_info.retain:
+                del self.data_per_op[name]
+            else:
                 self.data_info.retain.remove(name)
             self.current_op = name
 
-        if not self.data_info.var_map_derived.empty:
-            NotImplemented
-
         result = self.data_per_op[self.current_op]
-        print(result)
-        print(self.data_per_op)
+        result = ops.clean_df(df=result, var_map=self.data_info.var_map_non_derived)
+
+        if not self.data_info.var_map_derived.empty:
+            ops.create_derived_cols(result, self.data_info.var_map_derived, sep=" ")
+
         logger.info("Shape of Result: %s", result.shape)
 
         return result
