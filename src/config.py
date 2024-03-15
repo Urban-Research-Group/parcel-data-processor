@@ -22,7 +22,7 @@ class DataInfo:
 
 
 def separate_var_map(var_map: pd.DataFrame) -> tuple:
-    derived_mask = var_map["source_file"].apply(lambda x: ";" in str(x))
+    derived_mask = var_map["old_name"].apply(lambda x: ";" in str(x))
     var_map_non_derived = var_map[~derived_mask]
     var_map_derived = var_map[derived_mask]
 
