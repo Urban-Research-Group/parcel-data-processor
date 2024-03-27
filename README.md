@@ -22,7 +22,7 @@ pip install <requirement>
 
 ### How to Run
 ```bash
-python main.py <config_path> <execution_name>
+python src/processor <config_path> <execution_name>
 ```
 <config_path>: path to YAML file with execution instructions \
 <execution_name>: name given to identify the current execution
