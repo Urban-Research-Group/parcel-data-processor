@@ -1,4 +1,4 @@
-appr_val,owner_name,addr_str,parcel_id,tax_year,addr_num,addr
-100000.0,owner1,MAIN,1,2020,1,1 MAIN
-25000.0,owner02,MAIN,2,2020,2,2 MAIN
-150000.0,owner3,MAIN,1,2021,1,1 MAIN
+addr_str,parcel_id,tax_year,appr_val,owner_name,addr_num,addr
+MAIN,1,2020,100000.0,owner1,1,1 MAIN
+MAIN,2,2020,25000.0,owner02,2,2 MAIN
+MAIN,1,2021,150000.0,owner3,1,1 MAIN

@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from src.run import run
+from src.processor.run import run
 from pandas.testing import assert_frame_equal
 
 CURR_DIR = os.path.dirname(__file__)
