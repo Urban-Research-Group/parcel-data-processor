@@ -1,5 +1,36 @@
-old_name,new_name,data_type,source_file,derived
-Taxyr,tax_year,int,all,false
-Parid,parcel_id,string,all,false
-Class,site_class_parcel,string,all,false
-Own1,owner_name_1,string,all,false
+old_name,new_name,data_type,source_file
+Taxyr,tax_year,int,all
+Parid,parcel_id,string,all
+Cityname,site_city,string,all
+Situs Adrno,site_addrno,string,all
+Situs Adrdir,site_addrdir,string,all
+Situs Adrstr,site_addrstr,string,all
+Situs Adrsuf,site_addrsuf,string,all
+Situs Adrsuf2,site_addrsuf2,string,all
+Class,site_class_parcel,string,all
+Luc,site_luc_parcel,string,all
+Taxdist,tax_district,string,all
+Own1,owner_name_1,string,all
+Own2,owner_name_2,string,all
+Zip1,owner_zip,string,all
+Owner Adrno,owner_addrno,string,all
+Owner Adradd,owner_addradd,string,all
+Owner Adrdir,owner_addrdir,string,all
+Owner Adrstr,owner_addrstr,string,all
+Owner Adrsuf,owner_addrsuf,string,all
+Owner Adrsuf2,owner_addrsuf2,string,all
+Cityname_duplicated_0,owner_city,string,all
+Statecode,owner_state,string,all
+Country,owner_country,string,all
+Unitno,owner_unitno,string,all
+Reascd,reas_code,string,all
+Revcode,rev_code,string,all
+Aprtot,appr_total,float,all
+Aprland,appr_land,float,all
+Aprbldg,appr_build,float,all
+D Yrblt,year_built,int,all
+D Effyr,year_eff,int,all
+D Yrremod,year_remodel,int,all
+D Grade,grade,string,all
+Livunit,num_units,int,all
+Sfla,building_area,Float32,all

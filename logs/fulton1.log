@@ -1,0 +1,956 @@
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F31E20EAE0>,), {}] took: 26.4850 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th  2017.xlsx when read: (87400, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F31FF9C650>,), {}] took: 77.6445 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2010-2011.xlsx when read: (174306, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F320326180>,), {}] took: 78.1435 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2012-2013.xlsx when read: (174256, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F320241100>,), {}] took: 39.5570 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2014.xlsx when read: (87167, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3201E9250>,), {}] took: 41.7512 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2018.xlsx when read: (87679, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F320243500>,), {}] took: 40.5271 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2019.xlsx when read: (88096, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F320260410>,), {}] took: 41.0665 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2020.xlsx when read: (88418, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F34FA73590>,), {}] took: 40.4979 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2021.xlsx when read: (88534, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F31E1D7590>,), {}] took: 41.1187 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14TH 2022.xlsx when read: (89145, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3395824B0>,), {}] took: 40.0368 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 17th  2018.xlsx when read: (79611, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F35000B860>,), {}] took: 39.5914 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 17th  2019.xlsx when read: (80414, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F31E24FE00>,), {}] took: 73.6744 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 17th 2010-2011.xlsx when read: (152883, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3390D42F0>,), {}] took: 74.4683 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 17th 2012-2013.xlsx when read: (154481, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3390D56A0>,), {}] took: 37.5863 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 17th 2014.xlsx when read: (77685, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3372C9190>,), {}] took: 37.8488 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 17th 2015.xlsx when read: (77972, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F337588140>,), {}] took: 38.1971 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 17th 2016.xlsx when read: (78360, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F38E709C70>,), {}] took: 38.3645 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 17th 2017.xlsx when read: (79036, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F388EA7D40>,), {}] took: 39.7922 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 17th 2020.xlsx when read: (81084, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F32255F800>,), {}] took: 39.3725 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 17th 2021.xlsx when read: (81043, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F328F26DB0>,), {}] took: 40.7362 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 17th 2022.xlsx when read: (81504, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3B9DF8D40>,), {}] took: 66.6127 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST ATL  2015.xlsx when read: (136983, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F328F27860>,), {}] took: 64.5916 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST ATL  2016.xlsx when read: (153101, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3BF8238F0>,), {}] took: 72.9070 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST ATL  2017.xlsx when read: (154044, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3944EC950>,), {}] took: 73.7130 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST ATL  2019.xlsx when read: (155302, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3DC36D610>,), {}] took: 140.4200 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST ATL 2011-2012.xlsx when read: (304562, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3DE2F4B90>,), {}] took: 141.9566 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST ATL 2013-2014.xlsx when read: (305178, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3F2577BF0>,), {}] took: 75.7821 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST ATL 2018.xlsx when read: (154648, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3BF82D0A0>,), {}] took: 74.7684 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST ATL 2020.xlsx when read: (156211, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F339582CC0>,), {}] took: 74.8771 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST ATL 2021.xlsx when read: (156771, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3B9DF96A0>,), {}] took: 75.2355 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST ATL 2022.xlsx when read: (157713, 122)
+root - DEBUG - func:'load_data' args:[(<processor.DataProcessor object at 0x000001F31D919910>, 'STANDARDS DIGEST', None), {}] took: 1788.9418 sec
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3944E33B0>,), {}] took: 83.0113 sec
+logger - INFO - Shape of NF 2010-2011.xlsx when read: (174139, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F336CBDD60>,), {}] took: 83.8496 sec
+logger - INFO - Shape of NF 2012-2013.xlsx when read: (174704, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3A0E80E30>,), {}] took: 41.9212 sec
+logger - INFO - Shape of NF 2014.xlsx when read: (87777, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3D23339E0>,), {}] took: 42.0274 sec
+logger - INFO - Shape of NF 2015.xlsx when read: (88806, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3944BD670>,), {}] took: 42.9624 sec
+logger - INFO - Shape of NF 2016.xlsx when read: (90066, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F33731ED50>,), {}] took: 43.6108 sec
+logger - INFO - Shape of NF 2017.xlsx when read: (91261, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F320235790>,), {}] took: 46.2632 sec
+logger - INFO - Shape of NF 2018.xlsx when read: (92297, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F45AD7DA00>,), {}] took: 44.9167 sec
+logger - INFO - Shape of NF 2019.xlsx when read: (92986, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F48E2C3BC0>,), {}] took: 45.1455 sec
+logger - INFO - Shape of NF 2020.xlsx when read: (93571, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F42BE8FD10>,), {}] took: 56.3741 sec
+logger - INFO - Shape of NF 2021.xlsx when read: (94383, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F31FC461E0>,), {}] took: 45.4943 sec
+logger - INFO - Shape of NF 2022.xlsx when read: (94925, 122)
+root - DEBUG - func:'load_data' args:[(<processor.DataProcessor object at 0x000001F31D919910>, 'NF', None), {}] took: 576.1107 sec
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3FD6D2480>,), {}] took: 59.9653 sec
+logger - INFO - Shape of SF 2010-2011.xlsx when read: (136107, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F4A8560350>,), {}] took: 57.7244 sec
+logger - INFO - Shape of SF 2012-2013.xlsx when read: (136036, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F466C2D3A0>,), {}] took: 16.4773 sec
+logger - INFO - Shape of SF 2014.xlsx when read: (68234, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F466C3A510>,), {}] took: 16.5697 sec
+logger - INFO - Shape of SF 2015.xlsx when read: (68429, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3FD6EB2C0>,), {}] took: 16.6657 sec
+logger - INFO - Shape of SF 2016.xlsx when read: (68524, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F4A1BC5040>,), {}] took: 17.1274 sec
+logger - INFO - Shape of SF 2017.xlsx when read: (69287, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F481997800>,), {}] took: 17.7361 sec
+logger - INFO - Shape of SF 2018.xlsx when read: (69611, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F4B5F7E960>,), {}] took: 17.4566 sec
+logger - INFO - Shape of SF 2019.xlsx when read: (70097, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F42BD09970>,), {}] took: 17.6672 sec
+logger - INFO - Shape of SF 2020.xlsx when read: (70755, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3372C8C80>,), {}] took: 17.9082 sec
+logger - INFO - Shape of SF 2021.xlsx when read: (71416, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F4B6DC0F80>,), {}] took: 18.5543 sec
+logger - INFO - Shape of SF 2022.xlsx when read: (72393, 124)
+root - DEBUG - func:'load_data' args:[(<processor.DataProcessor object at 0x000001F31D919910>, 'SF', None), {}] took: 274.1202 sec
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F4A1BC4590>,), {}] took: 22.2540 sec
+logger - INFO - Shape of Constance_Mackey_DIGEST 14th 2015 02162023.xlsx when read: (87177, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F4B73B3B30>,), {}] took: 22.6101 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th  2017.xlsx when read: (87400, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F35B0FE3F0>,), {}] took: 46.7150 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2010-2011.xlsx when read: (174306, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F4A1BBD2B0>,), {}] took: 81.5890 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2012-2013.xlsx when read: (174256, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F3B9E06180>,), {}] took: 42.1054 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2014.xlsx when read: (87167, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F487A9F5F0>,), {}] took: 24.1863 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2018.xlsx when read: (87679, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F4F4C6C110>,), {}] took: 23.5375 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2019.xlsx when read: (88096, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F51756BE90>,), {}] took: 23.7794 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2020.xlsx when read: (88418, 122)
+root - DEBUG - func:'read' args:[(<file_io.File object at 0x000001F5164F6750>,), {}] took: 23.1622 sec
+logger - INFO - Shape of Constance_Mackey_STANDARDS DIGEST 14th 2021.xlsx when read: (88534, 122)
+root - DEBUG - func:'load_data' args:[(<processor.DataProcessor object at 0x000001F31D919910>, 'DIGEST 14th', None), {}] took: 310.2676 sec
+root - DEBUG - func:'process_operation' args:[({'type': 'append', 'files': {'STANDARDS DIGEST': None, 'NF': None, 'SF': None, 'DIGEST 14th': None}}, [       tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2017.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2017.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2        2017.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.2030            NaN    Y
+3        2017.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4        2017.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+87395    2017.0        14 025400010474  14741       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.4692            NaN    Y
+87396    2017.0        14 025400010482  14741       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.4692            NaN    Y
+87397    2017.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.4692            NaN    Y
+87398    2017.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+87399       NaN  Count Distinct: 86629    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[87400 rows x 122 columns],         tax_year              parcel_id  Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2011.0        14 0001  LL0019  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2010.0        14 0001  LL0019  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2010.0        14 0001  LL0027  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+3         2011.0        14 0001  LL0027  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2011.0        14 0001  LL0068  1446       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN      1.045            NaN    Y
+...          ...                    ...   ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+174301    2010.0        14 0255  LL0236  1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174302    2011.0        14 0255  LL0236  1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174303    2011.0        14 0255  LL0244  1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174304    2010.0        14 0255  LL0244  1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174305       NaN  Count Distinct: 86518   NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[174306 rows x 122 columns],         tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2013.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2012.0        14 0001  LL0019   1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2012.0        14 0001  LL0027   1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+3         2013.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2013.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.1749            NaN    Y
+...          ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+174251    2013.0        14 0255  LL0236   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174252    2012.0        14 0255  LL0236   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174253    2013.0        14 0255  LL0244   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174254    2012.0        14 0255  LL0244   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174255       NaN  Count Distinct: 86574    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[174256 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2014.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2014.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2        2014.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.2030            NaN    Y
+3        2014.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4        2014.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+87162    2014.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.3624            NaN    Y
+87163    2014.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+87164    2014.0        14 0255  LL0236   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+87165    2014.0        14 0255  LL0244   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+87166       NaN  Count Distinct: 86410    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[87167 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2018.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2018.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2        2018.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.5807            NaN    Y
+3        2018.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4        2018.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+87674    2018.0        14 025400010474  14741       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.9607            NaN    Y
+87675    2018.0        14 025400010482  14741       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.9607            NaN    Y
+87676    2018.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.9607            NaN    Y
+87677    2018.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+87678       NaN  Count Distinct: 86793    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[87679 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2019.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2019.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2        2019.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.5946            NaN    Y
+3        2019.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4        2019.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+88091    2019.0        14 025400010474  14741       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1434            NaN    Y
+88092    2019.0        14 025400010482  14741       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1434            NaN    Y
+88093    2019.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1434            NaN    Y
+88094    2019.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+88095       NaN  Count Distinct: 87080    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[88096 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2020.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2020.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2        2020.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     1.0336            NaN    Y
+3        2020.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4        2020.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+88413    2020.0        14 025400010474  14741       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1640            NaN    Y
+88414    2020.0        14 025400010482  14741       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1640            NaN    Y
+88415    2020.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1640            NaN    Y
+88416    2020.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+88417       NaN  Count Distinct: 87373    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[88418 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2021.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1        2021.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+2        2021.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN     UN      1.046            NaN    Y
+3        2021.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+4        2021.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+88529    2021.0        14 025400010474  14741       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN     AV      1.178            NaN    Y
+88530    2021.0        14 025400010482  14741       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN     AV      1.178            NaN    Y
+88531    2021.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN     AV      1.178            NaN    Y
+88532    2021.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+88533       NaN  Count Distinct: 87778    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[88534 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2022.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1        2022.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+2        2022.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN     UN     1.0774            NaN    Y
+3        2022.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+4        2022.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+89140    2022.0        14 025400010474  14741       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN     AV     1.2133            NaN    Y
+89141    2022.0        14 025400010482  14741       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN     AV     1.2133            NaN    Y
+89142    2022.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN     AV     1.2133            NaN    Y
+89143    2022.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+89144       NaN  Count Distinct: 88433    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[89145 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2018.0        17 000100010010  14343        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     AV     3.3074            NaN    Y
+1        2018.0        17 000100010028  14343        877.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     VG     3.3074            NaN    Y
+2        2018.0        17 000100010036  14343        883.0          NaN    AMSTERDAM          AVE            NE  ...    D-      0.70    NaN   NaN     FR     3.3074            NaN    Y
+3        2018.0        17 000100010036  14343        883.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     3.3074            NaN    Y
+4        2018.0        17 000100010051  14343        891.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     3.3074            NaN    Y
+...         ...                    ...    ...          ...          ...          ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+79606    2018.0        17 026800010869   7795        969.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     AV     0.7365            NaN    Y
+79607    2018.0        17 026800010877   7795        967.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     GD     0.7365            NaN    Y
+79608    2018.0        17 026800010919   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+79609    2018.0        17 026800010943   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+79610       NaN  Count Distinct: 78262    NaN          NaN          NaN          NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[79611 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2019.0        17 000100010010  14343        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     AV     3.0351            NaN    Y
+1        2019.0        17 000100010028  14343        877.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     VG     3.0351            NaN    Y
+2        2019.0        17 000100010036  14343        883.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     FR     3.0351            NaN    Y
+3        2019.0        17 000100010036  14343        883.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     3.0351            NaN    Y
+4        2019.0        17 000100010051  14343        891.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     3.0351            NaN    Y
+...         ...                    ...    ...          ...          ...          ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+80409    2019.0        17 026800010869   7795        969.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     AV     0.7542            NaN    Y
+80410    2019.0        17 026800010877   7795        967.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     GD     0.7542            NaN    Y
+80411    2019.0        17 026800010919   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+80412    2019.0        17 026800010943   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+80413       NaN  Count Distinct: 78902    NaN          NaN          NaN          NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[80414 rows x 122 columns],         tax_year              parcel_id   Nbhd  site_addrno site_addrdir site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2010.0        17 000100010010  14343        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08     AD  10.0     EX        2.1            NaN    Y
+1         2011.0        17 000100010010  14343        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08     AD  10.0     EX        2.1            NaN    Y
+2         2010.0        17 000100010028  14343        877.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     VG        2.1            NaN    Y
+3         2011.0        17 000100010028  14343        877.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     VG        2.1            NaN    Y
+4         2010.0        17 000100010036  14343        883.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX        2.1            NaN    Y
+...          ...                    ...    ...          ...          ...          ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+152878    2010.0        17 026800010919   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+152879    2011.0        17 026800010919   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+152880    2010.0        17 026800010943   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+152881    2011.0        17 026800010943   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+152882       NaN  Count Distinct: 75995    NaN          NaN          NaN          NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[152883 rows x 122 columns],         tax_year              parcel_id     Nbhd  site_addrno site_addrdir site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2012.0        17 000100010010  14343.0        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08     AD  10.0     EX        2.1            NaN    Y
+1         2013.0        17 000100010010  14343.0        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08     AD  10.0     EX        2.1            NaN    Y
+2         2012.0        17 000100010028  14343.0        877.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     VG        2.1            NaN    Y
+3         2013.0        17 000100010028  14343.0        877.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     VG        2.1            NaN    Y
+4         2012.0        17 000100010036  14343.0        883.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX        2.1            NaN    Y
+...          ...                    ...      ...          ...          ...          ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+154476    2012.0        17 026800010919   7795.0          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+154477    2013.0        17 026800010919   7795.0          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+154478    2012.0        17 026800010943   7795.0          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+154479    2013.0        17 026800010943   7795.0          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+154480       NaN  Count Distinct: 76375      NaN          NaN          NaN          NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[154481 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2014.0        17 000100010010  14343        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08     AD  10.0    EX     2.1420            NaN    Y
+1        2014.0        17 000100010028  14343        877.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN    VG     2.1420            NaN    Y
+2        2014.0        17 000100010036  14343        883.0          NaN    AMSTERDAM          AVE            NE  ...    D-      0.70    NaN   NaN    FR     2.1420            NaN    Y
+3        2014.0        17 000100010036  14343        883.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN    EX     2.1420            NaN    Y
+4        2014.0        17 000100010051  14343        891.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN    EX     2.1420            NaN    Y
+...         ...                    ...    ...          ...          ...          ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+77680    2014.0        17 026800010869   7795        969.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN    AV     0.7082            NaN    Y
+77681    2014.0        17 026800010877   7795        967.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN    GD     0.7082            NaN    Y
+77682    2014.0        17 026800010919   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+77683    2014.0        17 026800010943   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+77684       NaN  Count Distinct: 76594    NaN          NaN          NaN          NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[77685 rows x 122 columns],        tax_year              parcel_id     Nbhd  site_addrno site_addrdir site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2015.0        17 000100010010  14343.0        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08     AD  10.0     EX     2.6910            NaN    Y
+1        2015.0        17 000100010028  14343.0        877.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     VG     2.6910            NaN    Y
+2        2015.0        17 000100010036  14343.0        883.0          NaN    AMSTERDAM          AVE            NE  ...    D-      0.70    NaN   NaN     FR     2.6910            NaN    Y
+3        2015.0        17 000100010036  14343.0        883.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     2.6910            NaN    Y
+4        2015.0        17 000100010051  14343.0        891.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     2.6910            NaN    Y
+...         ...                    ...      ...          ...          ...          ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+77967    2015.0        17 026800010869   7795.0        969.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     AV     0.7082            NaN    Y
+77968    2015.0        17 026800010877   7795.0        967.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     GD     0.7082            NaN    Y
+77969    2015.0        17 026800010919   7795.0          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+77970    2015.0        17 026800010943   7795.0          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+77971       NaN  Count Distinct: 76858      NaN          NaN          NaN          NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[77972 rows x 122 columns],        tax_year              parcel_id     Nbhd  site_addrno site_addrdir site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2016.0        17 000100010010  14343.0        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     AV     2.6910            NaN    Y
+1        2016.0        17 000100010028  14343.0        877.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     VG     2.6910            NaN    Y
+2        2016.0        17 000100010036  14343.0        883.0          NaN    AMSTERDAM          AVE            NE  ...    D-      0.70    NaN   NaN     FR     2.6910            NaN    Y
+3        2016.0        17 000100010036  14343.0        883.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     2.6910            NaN    Y
+4        2016.0        17 000100010051  14343.0        891.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     2.6910            NaN    Y
+...         ...                    ...      ...          ...          ...          ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+78355    2016.0        17 026800010869   7795.0        969.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     AV     0.7082            NaN    Y
+78356    2016.0        17 026800010877   7795.0        967.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     GD     0.7082            NaN    Y
+78357    2016.0        17 026800010919   7795.0          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+78358    2016.0        17 026800010943   7795.0          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+78359       NaN  Count Distinct: 77143      NaN          NaN          NaN          NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[78360 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2017.0        17 000100010010  14343        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     AV     2.6910            NaN    Y
+1        2017.0        17 000100010028  14343        877.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     VG     2.6910            NaN    Y
+2        2017.0        17 000100010036  14343        883.0          NaN    AMSTERDAM          AVE            NE  ...    D-      0.70    NaN   NaN     FR     2.6910            NaN    Y
+3        2017.0        17 000100010036  14343        883.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     2.6910            NaN    Y
+4        2017.0        17 000100010051  14343        891.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     2.6910            NaN    Y
+...         ...                    ...    ...          ...          ...          ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+79031    2017.0        17 026800010869   7795        969.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     AV     0.7082            NaN    Y
+79032    2017.0        17 026800010877   7795        967.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     GD     0.7082            NaN    Y
+79033    2017.0        17 026800010919   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+79034    2017.0        17 026800010943   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+79035       NaN  Count Distinct: 77743    NaN          NaN          NaN          NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[79036 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2020.0        17 000100010010  14343        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     VG     3.1573            NaN    Y
+1        2020.0        17 000100010028  14343        877.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     VG     3.1573            NaN    Y
+2        2020.0        17 000100010036  14343        883.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     3.1573            NaN    Y
+3        2020.0        17 000100010036  14343        883.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     FR     3.1573            NaN    Y
+4        2020.0        17 000100010051  14343        891.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     3.1573            NaN    Y
+...         ...                    ...    ...          ...          ...          ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+81079    2020.0        17 026800010869   7795        969.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     AV     0.7678            NaN    Y
+81080    2020.0        17 026800010877   7795        967.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     GD     0.7678            NaN    Y
+81081    2020.0        17 026800010919   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+81082    2020.0        17 026800010943   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+81083       NaN  Count Distinct: 79500    NaN          NaN          NaN          NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[81084 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2021.0        17 000100010010  17041        873.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     VG     1.0000            NaN    Y
+1        2021.0        17 000100010028  17041        877.0          NaN    AMSTERDAM          AVE            NE  ...    B-      1.17    NaN   NaN     VG     3.2924            NaN    Y
+2        2021.0        17 000100010036  17041        883.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     3.2924            NaN    Y
+3        2021.0        17 000100010036  17041        883.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN     FR     3.2924            NaN    Y
+4        2021.0        17 000100010051  17041        891.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN     EX     3.2924            NaN    Y
+...         ...                    ...    ...          ...          ...          ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+81038    2021.0        17 026800010869   7795        969.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     AV     0.7770            NaN    Y
+81039    2021.0        17 026800010877   7795        967.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN     GD     0.7770            NaN    Y
+81040    2021.0        17 026800010919   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+81041    2021.0        17 026800010943   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+81042       NaN  Count Distinct: 79682    NaN          NaN          NaN          NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[81043 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2022.0        17 000100010010  17041        873.0          NaN    AMSTERDAM          AVE            NE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2022.0        17 000100010028  17041        877.0          NaN    AMSTERDAM          AVE            NE  ...    B-      1.17    NaN   NaN    VG     2.8799            NaN    Y
+2        2022.0        17 000100010036  17041        883.0          NaN    AMSTERDAM          AVE            NE  ...     C      1.00    NaN   NaN    FR     2.8799            NaN    Y
+3        2022.0        17 000100010036  17041        883.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN    VG     2.8799            NaN    Y
+4        2022.0        17 000100010051  17041        891.0          NaN    AMSTERDAM          AVE            NE  ...    C+      1.08    NaN   NaN    GD     2.8799            NaN    Y
+...         ...                    ...    ...          ...          ...          ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+81499    2022.0        17 026800010869   7795        969.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN    AV     0.8003            NaN    Y
+81500    2022.0        17 026800010877   7795        967.0          NaN       BOLTON           RD            NW  ...    C-      0.92    NaN   NaN    GD     0.8003            NaN    Y
+81501    2022.0        17 026800010919   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+81502    2022.0        17 026800010943   7795          0.0          NaN       BOLTON           RD            NW  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+81503       NaN  Count Distinct: 80166    NaN          NaN          NaN          NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[81504 rows x 122 columns],         tax_year               parcel_id   Nbhd  site_addrno site_addrdir   site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2015.0         14 0001  LL0019  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2015.0         14 0001  LL0027  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2015.0         14 0001  LL0068  14463       3670.0          NaN   FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN      0.203            NaN    Y
+3         2015.0         14 0001  LL0100  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2015.0         14 0001  LL0118  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...          ...                     ...    ...          ...          ...            ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+136978    2015.0               M07094382   MHFR        501.0          NaN        CONNELL          AVE            SW  ...   NaN      0.80    NaN   NaN   NaN      1.000            NaN    Y
+136979    2015.0               M07094409   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...   NaN      1.00    NaN   NaN   NaN      1.000            NaN    Y
+136980    2015.0               M07104244   MHAV        501.0          NaN        CONNELL          AVE            SW  ...     D      0.80    NaN   NaN   NaN      1.000            NaN    Y
+136981    2015.0               M07104252   MHAV        501.0          NaN        CONNELL          AVE            SW  ...     D      0.80    NaN   NaN   NaN      1.000            NaN    Y
+136982       NaN  Count Distinct: 135472    NaN          NaN          NaN            NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[136983 rows x 122 columns],         tax_year               parcel_id   Nbhd  site_addrno site_addrdir   site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2016.0         14 0001  LL0019  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2016.0         14 0001  LL0027  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2016.0         14 0001  LL0068  14463       3670.0          NaN   FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN      0.203            NaN    Y
+3         2016.0         14 0001  LL0100  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2016.0         14 0001  LL0118  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...          ...                     ...    ...          ...          ...            ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+153096    2016.0               M07094382   MHFR        501.0          NaN        CONNELL          AVE            SW  ...   NaN      0.80    NaN   NaN   NaN      1.000            NaN    Y
+153097    2016.0               M07094409   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...   NaN      1.00    NaN   NaN   NaN      1.000            NaN    Y
+153098    2016.0               M07104244   MHAV        501.0          NaN        CONNELL          AVE            SW  ...     D      0.80    NaN   NaN   NaN      1.000            NaN    Y
+153099    2016.0               M07104252   MHAV        501.0          NaN        CONNELL          AVE            SW  ...     D      0.80    NaN   NaN   NaN      1.000            NaN    Y
+153100       NaN  Count Distinct: 151504    NaN          NaN          NaN            NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[153101 rows x 122 columns],         tax_year               parcel_id   Nbhd  site_addrno site_addrdir   site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2017.0         14 0001  LL0019  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2017.0         14 0001  LL0027  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2017.0         14 0001  LL0068  14463       3670.0          NaN   FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN      0.203            NaN    Y
+3         2017.0         14 0001  LL0100  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2017.0         14 0001  LL0118  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...          ...                     ...    ...          ...          ...            ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+154039    2017.0               M07104244   MHAV        501.0          NaN        CONNELL          AVE            SW  ...     D      0.80    NaN   NaN   NaN      1.000            NaN    Y
+154040    2017.0               M07104252   MHAV        501.0          NaN        CONNELL          AVE            SW  ...     D      0.80    NaN   NaN   NaN      1.000            NaN    Y
+154041    2017.0               M07114447   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     C      1.00    NaN   NaN   NaN      1.000            NaN    Y
+154042    2017.0               M07114643   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...   NaN      1.00    NaN   NaN   NaN      1.000            NaN    Y
+154043       NaN  Count Distinct: 152359    NaN          NaN          NaN            NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[154044 rows x 122 columns],         tax_year               parcel_id   Nbhd  site_addrno site_addrdir   site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2019.0         14 0001  LL0019  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2019.0         14 0001  LL0027  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2019.0         14 0001  LL0068  14463       3670.0          NaN   FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.5946            NaN    Y
+3         2019.0         14 0001  LL0100  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2019.0         14 0001  LL0118  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...          ...                     ...    ...          ...          ...            ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+155297    2019.0               M07130020   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     C      1.00    NaN   NaN    AV     1.0000            NaN    Y
+155298    2019.0               M07130024   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     C      1.00    NaN   NaN    AV     1.0000            NaN    Y
+155299    2019.0               M07130028   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     C      1.00    NaN   NaN    AV     1.0000            NaN    Y
+155300    2019.0               M07134164   MHFR       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     C      1.00    NaN   NaN    AV     1.0000            NaN    Y
+155301       NaN  Count Distinct: 153166    NaN          NaN          NaN            NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[155302 rows x 122 columns],         tax_year               parcel_id  Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2011.0         14 0001  LL0019  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2012.0         14 0001  LL0019  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2011.0         14 0001  LL0027  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+3         2012.0         14 0001  LL0027  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2011.0         14 0001  LL0068  1446       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     1.0450            NaN    Y
+...          ...                     ...   ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+304557    2012.0               M07088444  MHFR       2520.0          NaN     JONESBORO           RD            SE  ...   NaN      0.80    NaN   NaN   NaN     1.0000            NaN    Y
+304558    2012.0               M07088446  MHFR       2520.0          NaN     JONESBORO           RD            SE  ...   NaN      0.80    NaN   NaN   NaN     1.0000            NaN    Y
+304559    2012.0               M07088448  MHFR       2520.0          NaN     JONESBORO           RD            SE  ...   NaN      0.80    NaN   NaN   NaN     1.0000            NaN    Y
+304560    2011.0              SP07091617  1469       2151.0          NaN       BEECHER           RD            SW  ...     C      1.00    NaN   NaN    AV     0.4972            NaN    Y
+304561       NaN  Count Distinct: 151161   NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[304562 rows x 122 columns],         tax_year               parcel_id   Nbhd  site_addrno site_addrdir   site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2013.0         14 0001  LL0019  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2014.0         14 0001  LL0019  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2013.0         14 0001  LL0027  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+3         2014.0         14 0001  LL0027  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2013.0         14 0001  LL0068  14463       3670.0          NaN   FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.1749            NaN    Y
+...          ...                     ...    ...          ...          ...            ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+305173    2013.0               M07094382   MHFR        501.0          NaN        CONNELL          AVE            SW  ...   NaN      0.80    NaN   NaN   NaN     1.0000            NaN    Y
+305174    2014.0               M07094382   MHFR        501.0          NaN        CONNELL          AVE            SW  ...   NaN      0.80    NaN   NaN   NaN     1.0000            NaN    Y
+305175    2013.0               M07094409   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...   NaN      1.00    NaN   NaN   NaN     1.0000            NaN    Y
+305176    2014.0               M07094409   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...   NaN      1.00    NaN   NaN   NaN     1.0000            NaN    Y
+305177       NaN  Count Distinct: 151426    NaN          NaN          NaN            NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[305178 rows x 122 columns],         tax_year               parcel_id   Nbhd  site_addrno site_addrdir   site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2018.0         14 0001  LL0019  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2018.0         14 0001  LL0027  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2018.0         14 0001  LL0068  14463       3670.0          NaN   FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.5807            NaN    Y
+3         2018.0         14 0001  LL0100  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2018.0         14 0001  LL0118  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...          ...                     ...    ...          ...          ...            ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+154643    2018.0               M07114643   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     B      1.25    NaN   NaN    GD     1.0000            NaN    Y
+154644    2018.0               M07120474   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     B      1.25    NaN   NaN    GD     1.0000            NaN    Y
+154645    2018.0               M07120480   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     B      1.25    NaN   NaN   NaN     1.0000            NaN    Y
+154646    2018.0               M07120489   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     C      1.00    NaN   NaN    FR     1.0000            NaN    Y
+154647       NaN  Count Distinct: 152792    NaN          NaN          NaN            NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[154648 rows x 122 columns],         tax_year               parcel_id   Nbhd  site_addrno site_addrdir   site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2020.0         14 0001  LL0019  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2020.0         14 0001  LL0027  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2020.0         14 0001  LL0068  14463       3670.0          NaN   FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     1.0336            NaN    Y
+3         2020.0         14 0001  LL0100  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2020.0         14 0001  LL0118  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...          ...                     ...    ...          ...          ...            ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+156206    2020.0               M07130020   MHAV       1505.0          NaN  CHATTAHOOCHEE           RD           NaN  ...     C      1.00    NaN   NaN    AV     1.0000            NaN    Y
+156207    2020.0               M07130024   MHAV       1505.0          NaN  CHATTAHOOCHEE           RD           NaN  ...     C      1.00    NaN   NaN    AV     1.0000            NaN    Y
+156208    2020.0               M07130028   MHAV       1505.0          NaN  CHATTAHOOCHEE           RD           NaN  ...     C      1.00    NaN   NaN    AV     1.0000            NaN    Y
+156209    2020.0               M07134164   MHFR       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     C      1.00    NaN   NaN    AV     1.0000            NaN    Y
+156210       NaN  Count Distinct: 153979    NaN          NaN          NaN            NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[156211 rows x 122 columns],         tax_year               parcel_id   Nbhd  site_addrno site_addrdir   site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2021.0                 7134618   C906       2968.0          NaN   METROPOLITAN         PKWY            SW  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2021.0         14 0001  LL0019  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2021.0         14 0001  LL0027  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+3         2021.0         14 0001  LL0068  14463       3670.0          NaN   FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN      1.046            NaN    Y
+4         2021.0         14 0001  LL0100  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...          ...                     ...    ...          ...          ...            ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+156766    2021.0               M07134164   MHFR       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     C      1.00    NaN   NaN    AV      1.000            NaN    Y
+156767    2021.0               M07138969   MHFR       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     B      1.25    NaN   NaN    AV      1.000            NaN    Y
+156768    2021.0               M07138971   MHVG       1505.0          NaN  CHATTAHOOCHEE          AVE           NaN  ...     A      1.35    NaN   NaN    EX      1.000            NaN    Y
+156769    2021.0               M07141703   MHGD        175.0          NaN       LAKEWOOD          WAY            SW  ...     C      1.00    NaN   NaN    AV      1.000            NaN    Y
+156770       NaN  Count Distinct: 155002    NaN          NaN          NaN            NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[156771 rows x 122 columns],         tax_year               parcel_id   Nbhd  site_addrno site_addrdir   site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2022.0                 7134618   C906       2968.0          NaN   METROPOLITAN         PKWY            SW  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2022.0         14 0001  LL0019  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2022.0         14 0001  LL0027  14463          0.0          NaN   FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+3         2022.0         14 0001  LL0068  14463       3670.0          NaN   FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     1.0774            NaN    Y
+4         2022.0         14 0001  LL0100  14463          0.0          NaN         CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...          ...                     ...    ...          ...          ...            ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+157708    2022.0               M07147996   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE            NW  ...     C      1.00    NaN   NaN    GD     1.0000            NaN    Y
+157709    2022.0               M07147998   MHAV       1505.0          NaN  CHATTAHOOCHEE           RD           NaN  ...     C      1.00    NaN   NaN    AV     1.0000            NaN    Y
+157710    2022.0               M07148000   MHAV       1505.0          NaN  CHATTAHOOCHEE          AVE            NW  ...     C      1.00    NaN   NaN    AV     1.0000            NaN    Y
+157711    2022.0              SP07151941   5971       3435.0          NaN      KINGSBORO           RD            NE  ...     A      1.55     MF  20.0    VG     1.8955            NaN    Y
+157712       NaN  Count Distinct: 156005    NaN          NaN          NaN            NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[157713 rows x 122 columns],        tax_year              parcel_id  Nbhd  site_addrno site_addrdir       site_addrstr site_addrsuf  ... D Grdfact Cddesc Cdpct D Cdu Adjfact 2  D Pctcomplete  Cur
+0          2011        06 0310  LL0417   604          0.0          NaN  OLD LAWRENCEVILLE           RD  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+1          2010        06 0310  LL0417   604          0.0          NaN  OLD LAWRENCEVILLE           RD  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+2          2011        06 0310  LL0425   604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+3          2010        06 0310  LL0425   604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+4          2010        06 0310  LL0433   604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+...         ...                    ...   ...          ...          ...                ...          ...  ...       ...    ...   ...   ...       ...            ...  ...
+174134     2011        22 545011890488  2427      12420.0          NaN             MORRIS           RD  ...      1.00    NaN   NaN    AV    1.1195            NaN    Y
+174135     2010        22 545011890488  2427      12420.0          NaN             MORRIS           RD  ...      1.00    NaN   NaN    AV    1.3500            NaN    Y
+174136     2010        22 546012610081  2427        960.0          NaN        NORTH POINT           DR  ...      0.78    NaN   NaN    FR    1.3500            NaN    Y
+174137     2011        22 546012610081  2427        960.0          NaN        NORTH POINT           DR  ...      0.78    NaN   NaN    FR    1.1195            NaN    Y
+174138      NaN  Count Distinct: 87013   NaN          NaN          NaN                NaN          NaN  ...       NaN    NaN   NaN   NaN       NaN            NaN  NaN
+
+[174139 rows x 122 columns],        tax_year              parcel_id  Nbhd  site_addrno site_addrdir       site_addrstr site_addrsuf  ... D Grdfact Cddesc Cdpct D Cdu Adjfact 2  D Pctcomplete  Cur
+0          2012        06 0310  LL0417   604          0.0          NaN  OLD LAWRENCEVILLE           RD  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+1          2013        06 0310  LL0417   604          0.0          NaN  OLD LAWRENCEVILLE           RD  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+2          2012        06 0310  LL0425   604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+3          2013        06 0310  LL0425   604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+4          2013        06 0310  LL0433   604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+...         ...                    ...   ...          ...          ...                ...          ...  ...       ...    ...   ...   ...       ...            ...  ...
+174699     2013        22 545011890488  2427      12420.0          NaN             MORRIS           RD  ...      1.00    NaN   NaN    AV      1.15            NaN    Y
+174700     2012        22 545011890488  2427      12420.0          NaN             MORRIS           RD  ...      1.00    NaN   NaN    AV      1.15            NaN    Y
+174701     2012        22 546012610081  2427        960.0          NaN        NORTH POINT           DR  ...      0.78    NaN   NaN    FR      1.15            NaN    Y
+174702     2013        22 546012610081  2427        960.0          NaN        NORTH POINT           DR  ...      0.78    NaN   NaN    FR      1.15            NaN    Y
+174703      NaN  Count Distinct: 87328   NaN          NaN          NaN                NaN          NaN  ...       NaN    NaN   NaN   NaN       NaN            NaN  NaN
+
+[174704 rows x 122 columns],       tax_year              parcel_id  Nbhd  site_addrno site_addrdir       site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu Adjfact 2  D Pctcomplete  Cur
+0         2014        06 0310  LL0417   604          0.0          NaN  OLD LAWRENCEVILLE           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+1         2014        06 0310  LL0425   604          0.0          NaN      DUNWOODY CLUB           DR           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+2         2014        06 0310  LL0433   604          0.0          NaN      DUNWOODY CLUB           DR           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+3         2014        06 0310  LL0474  2116       3908.0          NaN           DAHLWINY           CT           NaN  ...    X-      1.85    NaN   NaN     EX      1.00            NaN    Y
+4         2014        06 0310  LL0482  2116       3912.0          NaN           DAHLWINY           CT           NaN  ...    X-      1.85    NaN   NaN     EX      1.00            NaN    Y
+...        ...                    ...   ...          ...          ...                ...          ...           ...  ...   ...       ...    ...   ...    ...       ...            ...  ...
+87772     2014        22 545011890314  2427      12430.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+87773     2014        22 545011890322  2427      12410.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+87774     2014        22 545011890488  2427      12420.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+87775     2014        22 546012610081  2427        960.0          NaN        NORTH POINT           DR           NaN  ...     D      0.78    NaN   NaN     FR      1.15            NaN    Y
+87776      NaN  Count Distinct: 87541   NaN          NaN          NaN                NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN  NaN
+
+[87777 rows x 122 columns],       tax_year              parcel_id  Nbhd  site_addrno site_addrdir       site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu Adjfact 2  D Pctcomplete  Cur
+0         2015        06 0310  LL0417   604          0.0          NaN  OLD LAWRENCEVILLE           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+1         2015        06 0310  LL0425   604          0.0          NaN      DUNWOODY CLUB           DR           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+2         2015        06 0310  LL0433   604          0.0          NaN      DUNWOODY CLUB           DR           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+3         2015        06 0310  LL0474  2116       3908.0          NaN           DAHLWINY           CT           NaN  ...    X-      1.85    NaN   NaN     EX      1.00            NaN    Y
+4         2015        06 0310  LL0482  2116       3912.0          NaN           DAHLWINY           CT           NaN  ...    X-      1.85    NaN   NaN     EX      1.00            NaN    Y
+...        ...                    ...   ...          ...          ...                ...          ...           ...  ...   ...       ...    ...   ...    ...       ...            ...  ...
+88801     2015        22 545011890314  2427      12430.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+88802     2015        22 545011890322  2427      12410.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+88803     2015        22 545011890488  2427      12420.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+88804     2015        22 546012610081  2427        960.0          NaN        NORTH POINT           DR           NaN  ...     D      0.78    NaN   NaN     FR      1.15            NaN    Y
+88805      NaN  Count Distinct: 88564   NaN          NaN          NaN                NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN  NaN
+
+[88806 rows x 122 columns],       tax_year              parcel_id  Nbhd  site_addrno site_addrdir       site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu Adjfact 2  D Pctcomplete  Cur
+0         2016        06 0310  LL0417   604          0.0          NaN  OLD LAWRENCEVILLE           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+1         2016        06 0310  LL0425   604          0.0          NaN      DUNWOODY CLUB           DR           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+2         2016        06 0310  LL0433   604          0.0          NaN      DUNWOODY CLUB           DR           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+3         2016        06 0310  LL0474  2116       3908.0          NaN           DAHLWINY           CT           NaN  ...    X-      1.85    NaN   NaN     EX      1.00            NaN    Y
+4         2016        06 0310  LL0482  2116       3912.0          NaN           DAHLWINY           CT           NaN  ...    X-      1.85    NaN   NaN     EX      1.00            NaN    Y
+...        ...                    ...   ...          ...          ...                ...          ...           ...  ...   ...       ...    ...   ...    ...       ...            ...  ...
+90061     2016        22 545011890314  2427      12430.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+90062     2016        22 545011890322  2427      12410.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+90063     2016        22 545011890488  2427      12420.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+90064     2016        22 546012610081  2427        960.0          NaN        NORTH POINT           DR           NaN  ...     D      0.78    NaN   NaN     FR      1.15            NaN    Y
+90065      NaN  Count Distinct: 89797   NaN          NaN          NaN                NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN  NaN
+
+[90066 rows x 122 columns],       tax_year              parcel_id  Nbhd  site_addrno site_addrdir       site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu Adjfact 2  D Pctcomplete  Cur
+0         2017        06 0310  LL0417   604          0.0          NaN  OLD LAWRENCEVILLE           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+1         2017        06 0310  LL0425   604          0.0          NaN      DUNWOODY CLUB           DR           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+2         2017        06 0310  LL0433   604          0.0          NaN      DUNWOODY CLUB           DR           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN    Y
+3         2017        06 0310  LL0474  2116       3908.0          NaN           DAHLWINY           CT           NaN  ...    X-      1.85    NaN   NaN     EX      1.00            NaN    Y
+4         2017        06 0310  LL0482  2116       3912.0          NaN           DAHLWINY           CT           NaN  ...    X-      1.85    NaN   NaN     EX      1.00            NaN    Y
+...        ...                    ...   ...          ...          ...                ...          ...           ...  ...   ...       ...    ...   ...    ...       ...            ...  ...
+91256     2017        22 545011890314  2427      12430.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+91257     2017        22 545011890322  2427      12410.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+91258     2017        22 545011890488  2427      12420.0          NaN             MORRIS           RD           NaN  ...     C      1.00    NaN   NaN     AV      1.15            NaN    Y
+91259     2017        22 546012610081  2427        960.0          NaN        NORTH POINT           DR           NaN  ...     D      0.78    NaN   NaN     FR      1.15            NaN    Y
+91260      NaN  Count Distinct: 90970   NaN          NaN          NaN                NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN       NaN            NaN  NaN
+
+[91261 rows x 122 columns],       tax_year              parcel_id   Nbhd  site_addrno site_addrdir       site_addrstr site_addrsuf  ... D Grdfact Cddesc Cdpct D Cdu Adjfact 2  D Pctcomplete  Cur
+0         2018        06 0310  LL0417    604          0.0          NaN  OLD LAWRENCEVILLE           RD  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+1         2018        06 0310  LL0425    604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+2         2018        06 0310  LL0433    604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+3         2018        06 0310  LL0474   2116       3908.0          NaN           DAHLWINY           CT  ...      1.85    NaN   NaN    EX    1.0659            NaN    Y
+4         2018        06 0310  LL0482   2116       3912.0          NaN           DAHLWINY           CT  ...      1.85    NaN   NaN    EX    1.0659            NaN    Y
+...        ...                    ...    ...          ...          ...                ...          ...  ...       ...    ...   ...   ...       ...            ...  ...
+92292     2018        22 545011890983  21851        103.0          NaN          CARAVELLE           LN  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+92293     2018        22 545011890991  21851        101.0          NaN          CARAVELLE           LN  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+92294     2018        22 545011891007  21851          0.0          NaN         NORTHPOINT         PKWY  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+92295     2018        22 546012610081   2427        960.0          NaN        NORTH POINT           DR  ...      0.78    NaN   NaN    FR    1.9067            NaN    Y
+92296      NaN  Count Distinct: 92001    NaN          NaN          NaN                NaN          NaN  ...       NaN    NaN   NaN   NaN       NaN            NaN  NaN
+
+[92297 rows x 122 columns],       tax_year              parcel_id   Nbhd  site_addrno site_addrdir       site_addrstr site_addrsuf  ... D Grdfact Cddesc Cdpct D Cdu Adjfact 2  D Pctcomplete  Cur
+0         2019        06 0310  LL0417    604          0.0          NaN  OLD LAWRENCEVILLE           RD  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+1         2019        06 0310  LL0425    604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+2         2019        06 0310  LL0433    604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+3         2019        06 0310  LL0474   2116       3908.0          NaN           DAHLWINY           CT  ...      1.85    NaN   NaN    EX    1.0915            NaN    Y
+4         2019        06 0310  LL0482   2116       3912.0          NaN           DAHLWINY           CT  ...      1.85    NaN   NaN    EX    1.0915            NaN    Y
+...        ...                    ...    ...          ...          ...                ...          ...  ...       ...    ...   ...   ...       ...            ...  ...
+92981     2019        22 545011890983  21851        103.0          NaN          CARAVELLE           LN  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+92982     2019        22 545011890991  21851        101.0          NaN          CARAVELLE           LN  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+92983     2019        22 545011891007  21851          0.0          NaN         NORTHPOINT         PKWY  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+92984     2019        22 546012610081   9911        960.0          NaN        NORTH POINT           DR  ...      0.78    NaN   NaN    FR    1.7850            NaN    Y
+92985      NaN  Count Distinct: 92642    NaN          NaN          NaN                NaN          NaN  ...       NaN    NaN   NaN   NaN       NaN            NaN  NaN
+
+[92986 rows x 122 columns],       tax_year              parcel_id   Nbhd  site_addrno site_addrdir       site_addrstr site_addrsuf  ... D Grdfact Cddesc Cdpct D Cdu Adjfact 2  D Pctcomplete  Cur
+0         2020        06 0310  LL0417    604          0.0          NaN  OLD LAWRENCEVILLE           RD  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+1         2020        06 0310  LL0425    604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+2         2020        06 0310  LL0433    604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+3         2020        06 0310  LL0474   2116       3908.0          NaN           DAHLWINY           CT  ...      1.85    NaN   NaN    EX    1.1111            NaN    Y
+4         2020        06 0310  LL0482   2116       3912.0          NaN           DAHLWINY           CT  ...      1.85    NaN   NaN    EX    1.1111            NaN    Y
+...        ...                    ...    ...          ...          ...                ...          ...  ...       ...    ...   ...   ...       ...            ...  ...
+93566     2020        22 545011892237  21851        946.0          NaN          CATAMARAN           CT  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+93567     2020        22 545012601967  21851        979.0          NaN          CATAMARAN           CT  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+93568     2020        22 545012601975  21851        981.0          NaN          CATAMARAN           CT  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+93569     2020        22 546012610081   9911        960.0          NaN        NORTH POINT           DR  ...      0.78    NaN   NaN    FR    1.8171            NaN    Y
+93570      NaN  Count Distinct: 93225    NaN          NaN          NaN                NaN          NaN  ...       NaN    NaN   NaN   NaN       NaN            NaN  NaN
+
+[93571 rows x 122 columns],       tax_year              parcel_id   Nbhd  site_addrno site_addrdir       site_addrstr site_addrsuf  ... D Grdfact Cddesc Cdpct D Cdu Adjfact 2  D Pctcomplete  Cur
+0         2021        06 0310  LL0417    604          0.0          NaN  OLD LAWRENCEVILLE           RD  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+1         2021        06 0310  LL0425    604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+2         2021        06 0310  LL0433    604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+3         2021        06 0310  LL0474   2116       3908.0          NaN           DAHLWINY           CT  ...      1.85    NaN   NaN    EX    1.1244            NaN    Y
+4         2021        06 0310  LL0482   2116       3912.0          NaN           DAHLWINY           CT  ...      1.85    NaN   NaN    EX    1.1244            NaN    Y
+...        ...                    ...    ...          ...          ...                ...          ...  ...       ...    ...   ...   ...       ...            ...  ...
+94378     2021        22 545011892237  21851        946.0          NaN          CATAMARAN           CT  ...      1.55    NaN   NaN    EX    1.6259           20.0    Y
+94379     2021        22 545012601967  21851        979.0          NaN          CATAMARAN           CT  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+94380     2021        22 545012601975  21851        981.0          NaN          CATAMARAN           CT  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+94381     2021        22 546012610081   9911        960.0          NaN        NORTH POINT           DR  ...      0.78    NaN   NaN    FR    1.9373            NaN    Y
+94382      NaN  Count Distinct: 94063    NaN          NaN          NaN                NaN          NaN  ...       NaN    NaN   NaN   NaN       NaN            NaN  NaN
+
+[94383 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir       site_addrstr site_addrsuf  ... D Grdfact Cddesc Cdpct D Cdu Adjfact 2  D Pctcomplete  Cur
+0        2022.0        06 0310  LL0417    604          0.0          NaN  OLD LAWRENCEVILLE           RD  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+1        2022.0        06 0310  LL0425    604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+2        2022.0        06 0310  LL0433    604          0.0          NaN      DUNWOODY CLUB           DR  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+3        2022.0        06 0310  LL0474   2116       3908.0          NaN           DAHLWINY           CT  ...      1.85    NaN   NaN    EX    1.1581            NaN    Y
+4        2022.0        06 0310  LL0482   2116       3912.0          NaN           DAHLWINY           CT  ...      1.85    NaN   NaN    EX    1.1581            NaN    Y
+...         ...                    ...    ...          ...          ...                ...          ...  ...       ...    ...   ...   ...       ...            ...  ...
+94920    2022.0        22 545011892567  21851        763.0          NaN            TOPSAIL           LN  ...      1.55    NaN   NaN    EX    1.6747            NaN    Y
+94921    2022.0        22 545011892575  21851        761.0          NaN            TOPSAIL           LN  ...      1.55    NaN   NaN    EX    1.6747            NaN    Y
+94922    2022.0        22 545012601967  21851        979.0          NaN          CATAMARAN           CT  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+94923    2022.0        22 545012601975  21851        981.0          NaN          CATAMARAN           CT  ...       NaN    NaN   NaN   NaN       NaN            NaN    Y
+94924       NaN  Count Distinct: 94607    NaN          NaN          NaN                NaN          NaN  ...       NaN    NaN   NaN   NaN       NaN            NaN  NaN
+
+[94925 rows x 122 columns],         tax_year              parcel_id  Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2010.0        07 010000150494   800          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1         2011.0        07 010000150494   800          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+2         2010.0        07 010000150502   800       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C       1.0    NaN   NaN     AV       1.05            NaN    Y
+3         2011.0        07 010000150502   800       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C       1.0    NaN   NaN     AV       1.00            NaN    Y
+4         2010.0        07 010000150940  8002          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+...          ...                    ...   ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+136102    2010.0        14F0162  LL0745  4684          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+136103    2011.0        14F0162  LL0745  4684          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+136104    2010.0        14F0162  LL0752  4684          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+136105    2011.0        14F0162  LL0752  4684          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+136106       NaN  Count Distinct: 67871   NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[136107 rows x 122 columns],         tax_year              parcel_id    Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2012.0        07 010000150494   800.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1         2013.0        07 010000150494   800.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+2         2012.0        07 010000150502   800.0       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C       1.0    NaN   NaN     AV        1.0            NaN    Y
+3         2013.0        07 010000150502   800.0       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C       1.0    NaN   NaN     AV        1.0            NaN    Y
+4         2012.0        07 010000150940  8002.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+...          ...                    ...     ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+136031    2012.0        14F0162  LL0745  4684.0          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+136032    2013.0        14F0162  LL0745  4684.0          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+136033    2012.0        14F0162  LL0752  4684.0          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+136034    2013.0        14F0162  LL0752  4684.0          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+136035       NaN  Count Distinct: 67872     NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[136036 rows x 122 columns],        tax_year              parcel_id    Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2014.0        07 010000150494   800.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1        2014.0        07 010000150502   800.0       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.0000            NaN    Y
+2        2014.0        07 010000150940  8002.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+3        2014.0        07 010000160386  8002.0       4940.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     0.8000            NaN    Y
+4        2014.0        07 010000160584  8002.0       4950.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     0.8000            NaN    Y
+...         ...                    ...     ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+68229    2014.0        14F0162  LL0729  4684.0       7415.0          NaN       THOREAU          CIR           NaN  ...    A-      1.45    NaN   NaN     VG     0.5175            NaN    Y
+68230    2014.0        14F0162  LL0737  4684.0       7405.0          NaN       THOREAU          CIR           NaN  ...     A      1.55    NaN   NaN     VG     0.5175            NaN    Y
+68231    2014.0        14F0162  LL0745  4684.0          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+68232    2014.0        14F0162  LL0752  4684.0          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+68233       NaN  Count Distinct: 67962     NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[68234 rows x 122 columns],        tax_year              parcel_id    Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2015.0        07 010000150494   800.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1        2015.0        07 010000150502   800.0       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.0000            NaN    Y
+2        2015.0        07 010000150940  8002.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+3        2015.0        07 010000160386  8002.0       4940.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     0.8000            NaN    Y
+4        2015.0        07 010000160584  8002.0       4950.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     0.8000            NaN    Y
+...         ...                    ...     ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+68424    2015.0        14F0162  LL0729  4684.0       7415.0          NaN       THOREAU          CIR           NaN  ...    A-      1.45    NaN   NaN     VG     0.6585            NaN    Y
+68425    2015.0        14F0162  LL0737  4684.0       7405.0          NaN       THOREAU          CIR           NaN  ...     A      1.55    NaN   NaN     VG     0.6585            NaN    Y
+68426    2015.0        14F0162  LL0745  4684.0          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+68427    2015.0        14F0162  LL0752  4684.0          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+68428       NaN  Count Distinct: 68160     NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[68429 rows x 122 columns],        tax_year              parcel_id    Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2016.0        07 010000150494   800.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1        2016.0        07 010000150502   800.0       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.0000            NaN    Y
+2        2016.0        07 010000150940  8002.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+3        2016.0        07 010000160386  8002.0       4940.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     0.8000            NaN    Y
+4        2016.0        07 010000160584  8002.0       4950.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     0.8000            NaN    Y
+...         ...                    ...     ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+68519    2016.0        14F0162  LL0729  4684.0       7415.0          NaN       THOREAU          CIR           NaN  ...    A-      1.45    NaN   NaN     VG     0.6585            NaN    Y
+68520    2016.0        14F0162  LL0737  4684.0       7405.0          NaN       THOREAU          CIR           NaN  ...     A      1.55    NaN   NaN     VG     0.6585            NaN    Y
+68521    2016.0        14F0162  LL0745  4684.0          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+68522    2016.0        14F0162  LL0752  4684.0          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+68523       NaN  Count Distinct: 68257     NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[68524 rows x 122 columns],        tax_year              parcel_id    Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2017.0        07 010000150494   800.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1        2017.0        07 010000150502   800.0       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.0000            NaN    Y
+2        2017.0        07 010000150940  8002.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+3        2017.0        07 010000160386  8002.0       4940.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     0.8000            NaN    Y
+4        2017.0        07 010000160584  8002.0       4950.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     0.8000            NaN    Y
+...         ...                    ...     ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+69282    2017.0        14F0162  LL0729  4684.0       7415.0          NaN       THOREAU          CIR           NaN  ...    A-      1.45    NaN   NaN     VG     0.6585            NaN    Y
+69283    2017.0        14F0162  LL0737  4684.0       7405.0          NaN       THOREAU          CIR           NaN  ...     A      1.55    NaN   NaN     VG     0.6585            NaN    Y
+69284    2017.0        14F0162  LL0745  4684.0          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+69285    2017.0        14F0162  LL0752  4684.0          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+69286       NaN  Count Distinct: 69007     NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[69287 rows x 122 columns],        tax_year              parcel_id    Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2018.0        07 010000150494   800.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1        2018.0        07 010000150502   800.0       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.0400            NaN    Y
+2        2018.0        07 010000150940  8002.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+3        2018.0        07 010000160386  8002.0       4940.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.4869            NaN    Y
+4        2018.0        07 010000160584  8002.0       4950.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.4869            NaN    Y
+...         ...                    ...     ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+69606    2018.0        14F0162  LL0729  4684.0       7415.0          NaN       THOREAU          CIR           NaN  ...    A-      1.45    NaN   NaN     VG     0.9720            NaN    Y
+69607    2018.0        14F0162  LL0737  4684.0       7405.0          NaN       THOREAU          CIR           NaN  ...     A      1.55    NaN   NaN     VG     0.9720            NaN    Y
+69608    2018.0        14F0162  LL0745  4684.0          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+69609    2018.0        14F0162  LL0752  4684.0          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+69610       NaN  Count Distinct: 69325     NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[69611 rows x 122 columns],        tax_year              parcel_id    Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2019.0        07 010000150494   800.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1        2019.0        07 010000150502   800.0       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.2487            NaN    Y
+2        2019.0        07 010000150940  8002.0          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+3        2019.0        07 010000160386  8002.0       4940.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.2487            NaN    Y
+4        2019.0        07 010000160584  8002.0       4950.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.2487            NaN    Y
+...         ...                    ...     ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+70092    2019.0        14F0162  LL0729  4684.0       7415.0          NaN       THOREAU          CIR           NaN  ...    B+      1.35    NaN   NaN     VG     1.0197            NaN    Y
+70093    2019.0        14F0162  LL0737  4684.0       7405.0          NaN       THOREAU          CIR           NaN  ...    B-      1.17    NaN   NaN     VG     1.0197            NaN    Y
+70094    2019.0        14F0162  LL0745  4684.0          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+70095    2019.0        14F0162  LL0752  4684.0          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+70096       NaN  Count Distinct: 69802     NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[70097 rows x 122 columns],        tax_year              parcel_id  Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2020.0        07 010000150494   800          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1        2020.0        07 010000150502   800       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.2712            NaN    Y
+2        2020.0        07 010000150940  8002          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+3        2020.0        07 010000160386  8002       4940.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.2712            NaN    Y
+4        2020.0        07 010000160584  8002       4950.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.2712            NaN    Y
+...         ...                    ...   ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+70750    2020.0        14F0162  LL0729  4684       7415.0          NaN       THOREAU          CIR           NaN  ...    B+      1.35    NaN   NaN     VG     1.0942            NaN    Y
+70751    2020.0        14F0162  LL0737  4684       7405.0          NaN       THOREAU          CIR           NaN  ...    B-      1.17    NaN   NaN     VG     1.0942            NaN    Y
+70752    2020.0        14F0162  LL0745  4684          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+70753    2020.0        14F0162  LL0752  4684          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+70754       NaN  Count Distinct: 70445   NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[70755 rows x 122 columns],        tax_year              parcel_id  Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2021.0        07 010000150494   800          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1        2021.0        07 010000150502   800       5365.0          NaN  COCHRAN MILL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.2865            NaN    Y
+2        2021.0        07 010000150940  8002          0.0          NaN  COCHRAN MILL           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+3        2021.0        07 010000160386  8002       4940.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.2865            NaN    Y
+4        2021.0        07 010000160584  8002       4950.0          NaN         CREEL           RD           NaN  ...     C      1.00    NaN   NaN     AV     1.2865            NaN    Y
+...         ...                    ...   ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+71411    2021.0        14F0162  LL0729  4684       7415.0          NaN       THOREAU          CIR           NaN  ...    B+      1.35    NaN   NaN     VG     1.1073            NaN    Y
+71412    2021.0        14F0162  LL0737  4684       7405.0          NaN       THOREAU          CIR           NaN  ...    B-      1.17    NaN   NaN     VG     1.1073            NaN    Y
+71413    2021.0        14F0162  LL0745  4684          0.0          NaN      PICKFORD           PL           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+71414    2021.0        14F0162  LL0752  4684          0.0          NaN       THOREAU          CIR           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+71415       NaN  Count Distinct: 71078   NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[71416 rows x 122 columns],        tax_year              parcel_id  Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur  Cur.1
+0        2022.0        07 010000150494   800          0.0          NaN  COCHRAN MILL           RD           NaN  ...       NaN    NaN   NaN   NaN        NaN            NaN    Y      Y
+1        2022.0        07 010000150502   800       5365.0          NaN  COCHRAN MILL           RD           NaN  ...      1.00    NaN   NaN    AV     1.3251            NaN    Y      Y
+2        2022.0        07 010000150940  8002          0.0          NaN  COCHRAN MILL           RD           NaN  ...       NaN    NaN   NaN   NaN        NaN            NaN    Y      Y
+3        2022.0        07 010000160386  8002       4940.0          NaN         CREEL           RD           NaN  ...      1.00    NaN   NaN    AV     1.3251            NaN    Y      Y
+4        2022.0        07 010000160584  8002       4950.0          NaN         CREEL           RD           NaN  ...      1.00    NaN   NaN    AV     1.3251            NaN    Y      Y
+...         ...                    ...   ...          ...          ...           ...          ...           ...  ...       ...    ...   ...   ...        ...            ...  ...    ...
+72388    2022.0        14F0162  LL0729  4684       7415.0          NaN       THOREAU          CIR           NaN  ...      1.35    NaN   NaN    VG     1.1405            NaN    Y      Y
+72389    2022.0        14F0162  LL0737  4684       7405.0          NaN       THOREAU          CIR           NaN  ...      1.17    NaN   NaN    VG     1.1405            NaN    Y      Y
+72390    2022.0        14F0162  LL0745  4684          0.0          NaN      PICKFORD           PL           NaN  ...       NaN    NaN   NaN   NaN        NaN            NaN    Y      Y
+72391    2022.0        14F0162  LL0752  4684          0.0          NaN       THOREAU          CIR           NaN  ...       NaN    NaN   NaN   NaN        NaN            NaN    Y      Y
+72392       NaN  Count Distinct: 72073   NaN          NaN          NaN           NaN          NaN           NaN  ...       NaN    NaN   NaN   NaN        NaN            NaN  NaN    NaN
+
+[72393 rows x 124 columns],        tax_year              parcel_id     Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2015.0        14 0001  LL0019  14463.0          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2015.0        14 0001  LL0027  14463.0          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2        2015.0        14 0001  LL0068  14463.0       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.2030            NaN    Y
+3        2015.0        14 0001  LL0100  14463.0          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4        2015.0        14 0001  LL0118  14463.0          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...         ...                    ...      ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+87172    2015.0        14 025400010474  14741.0       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.4692            NaN    Y
+87173    2015.0        14 025400010482  14741.0       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.4692            NaN    Y
+87174    2015.0        14 025400010490  14741.0       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.4692            NaN    Y
+87175    2015.0        14 0255  LL0111   1474.0          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+87176       NaN  Count Distinct: 86440      NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[87177 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2017.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2017.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2        2017.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.2030            NaN    Y
+3        2017.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4        2017.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+87395    2017.0        14 025400010474  14741       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.4692            NaN    Y
+87396    2017.0        14 025400010482  14741       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.4692            NaN    Y
+87397    2017.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.4692            NaN    Y
+87398    2017.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+87399       NaN  Count Distinct: 86629    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[87400 rows x 122 columns],         tax_year              parcel_id  Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2011.0        14 0001  LL0019  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2010.0        14 0001  LL0019  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2010.0        14 0001  LL0027  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+3         2011.0        14 0001  LL0027  1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2011.0        14 0001  LL0068  1446       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN      1.045            NaN    Y
+...          ...                    ...   ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+174301    2010.0        14 0255  LL0236  1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174302    2011.0        14 0255  LL0236  1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174303    2011.0        14 0255  LL0244  1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174304    2010.0        14 0255  LL0244  1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174305       NaN  Count Distinct: 86518   NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[174306 rows x 122 columns],         tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0         2013.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1         2012.0        14 0001  LL0019   1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2         2012.0        14 0001  LL0027   1446          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+3         2013.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4         2013.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.1749            NaN    Y
+...          ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+174251    2013.0        14 0255  LL0236   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174252    2012.0        14 0255  LL0236   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174253    2013.0        14 0255  LL0244   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174254    2012.0        14 0255  LL0244   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+174255       NaN  Count Distinct: 86574    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[174256 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2014.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2014.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2        2014.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.2030            NaN    Y
+3        2014.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4        2014.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+87162    2014.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.3624            NaN    Y
+87163    2014.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+87164    2014.0        14 0255  LL0236   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+87165    2014.0        14 0255  LL0244   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+87166       NaN  Count Distinct: 86410    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[87167 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2018.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2018.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2        2018.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.5807            NaN    Y
+3        2018.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4        2018.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+87674    2018.0        14 025400010474  14741       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.9607            NaN    Y
+87675    2018.0        14 025400010482  14741       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.9607            NaN    Y
+87676    2018.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     0.9607            NaN    Y
+87677    2018.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+87678       NaN  Count Distinct: 86793    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[87679 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2019.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2019.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2        2019.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     0.5946            NaN    Y
+3        2019.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4        2019.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+88091    2019.0        14 025400010474  14741       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1434            NaN    Y
+88092    2019.0        14 025400010482  14741       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1434            NaN    Y
+88093    2019.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1434            NaN    Y
+88094    2019.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+88095       NaN  Count Distinct: 87080    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[88096 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2020.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+1        2020.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+2        2020.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN    UN     1.0336            NaN    Y
+3        2020.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+4        2020.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...   ...        ...            ...  ...
+88413    2020.0        14 025400010474  14741       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1640            NaN    Y
+88414    2020.0        14 025400010482  14741       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1640            NaN    Y
+88415    2020.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN    AV     1.1640            NaN    Y
+88416    2020.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN    Y
+88417       NaN  Count Distinct: 87373    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN   NaN        NaN            NaN  NaN
+
+[88418 rows x 122 columns],        tax_year              parcel_id   Nbhd  site_addrno site_addrdir  site_addrstr site_addrsuf site_addrsuf2  ... grade D Grdfact Cddesc Cdpct  D Cdu  Adjfact 2  D Pctcomplete  Cur
+0        2021.0        14 0001  LL0019  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+1        2021.0        14 0001  LL0027  14463          0.0          NaN  FORREST PARK           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+2        2021.0        14 0001  LL0068  14463       3670.0          NaN  FORREST PARK           RD            SE  ...    D+      0.85    NaN   NaN     UN      1.046            NaN    Y
+3        2021.0        14 0001  LL0100  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+4        2021.0        14 0001  LL0118  14463          0.0          NaN        CONLEY           RD            SE  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+...         ...                    ...    ...          ...          ...           ...          ...           ...  ...   ...       ...    ...   ...    ...        ...            ...  ...
+88529    2021.0        14 025400010474  14741       3567.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN     AV      1.178            NaN    Y
+88530    2021.0        14 025400010482  14741       3579.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN     AV      1.178            NaN    Y
+88531    2021.0        14 025400010490  14741       3597.0          NaN    SHERBROOKE          WAY            SW  ...    C-      0.92    NaN   NaN     AV      1.178            NaN    Y
+88532    2021.0        14 0255  LL0111   1474          0.0          NaN       REDWINE           RD           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN    Y
+88533       NaN  Count Distinct: 87778    NaN          NaN          NaN           NaN          NaN           NaN  ...   NaN       NaN    NaN   NaN    NaN        NaN            NaN  NaN
+
+[88534 rows x 122 columns]]), {}] took: 31.0755 sec
+logger - INFO - Cleaning col: 0          NaN
+1          NaN
+2          NaN
+3          NaN
+4          NaN
+          ... 
+6862419    NaN
+6862420    NaN
+6862421    NaN
+6862422    NaN
+6862423    NaN
+Name: owner_addradd, Length: 6862424, dtype: object; dropped 0 duplicates, filling 6838437 nulls
+logger - INFO - Cleaning col: 0                 ATL
+1                 ATL
+2                 ATL
+3                 ATL
+4                 ATL
+              ...    
+6862419       ATLANTA
+6862420       ATLANTA
+6862421       ATLANTA
+6862422    EAST POINT
+6862423           NaN
+Name: site_city, Length: 6862424, dtype: object; dropped 0 duplicates, filling 25772 nulls
+logger - INFO - Cleaning col: 0          2017.0
+1          2017.0
+2          2017.0
+3          2017.0
+4          2017.0
+            ...  
+6862419    2021.0
+6862420    2021.0
+6862421    2021.0
+6862422    2021.0
+6862423       NaN
+Name: tax_year, Length: 6862424, dtype: object; dropped 0 duplicates, filling 61 nulls

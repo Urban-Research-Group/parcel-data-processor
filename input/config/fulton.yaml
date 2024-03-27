@@ -1,0 +1,16 @@
+name: fulton
+root-path: C:\Users\Nick\Documents\code\ga-tax-assessment\data\fulton
+var-map-path: C:\Users\Nick\Documents\code\ga-tax-assessment\input\var_maps\fulton_map.csv
+operations:
+  a1:
+    type: append
+    files:
+      STANDARDS DIGEST:
+      NF:
+      SF:
+      DIGEST 14th:
+output:
+  path: C:\Users\Nick\Documents\code\ga-tax-assessment\output
+  formats:
+    - csv
+
