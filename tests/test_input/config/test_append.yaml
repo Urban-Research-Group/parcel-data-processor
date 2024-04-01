@@ -1,11 +1,15 @@
 name: test_append
-root-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_data
-var-map-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_input\var_maps\test_map.csv
+root-path: tests/test_data
+var-map-path: tests/test_input/var_maps/test_map.csv
 operations:
-  a1:
+  append1:
     type: append
+    groups:
+      - "2020"
+      - "2021"
+      - "2022"
     files:
-      CMR:
+      ".*CMR.*": default
 output:
   path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_output\
   formats:

@@ -1,7 +1,0 @@
-class,tax_year,addr_str,parcel_id,addr_num,addr
-C,2020,MAIN,1,1,1 MAIN
-C,2020,MAIN,2,2,2 MAIN
-C,2021,MAIN,1,1,1 MAIN
-C,2021,,2,, 
-C,2022,,1,, 
-C,2022,,2,, 

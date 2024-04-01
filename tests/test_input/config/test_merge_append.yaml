@@ -1,21 +1,29 @@
 name: test_merge_append
-root-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_data
-var-map-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_input\var_maps\test_map.csv
+root-path: tests/test_data
+var-map-path: tests/test_input/var_maps/test_map.csv
 operations:
-  m1:
+  merge1:
     type: merge
     files:
-      RES_A:
-      RES_OWNER: _fdf.
+      RES_A: default
+      "^(?!.*_fdf).*RES_O.*": cherokee
     key:
       - parcel_id
       - tax_year
     join-type: outer
-  a1:
+  append1:
+    type: append
+    groups:
+      - "2020"
+      - "2021"
+      - "2022"
+    files:
+      ".*CMR.*": default
+  append2:
     type: append
     files:
-      m1:
-      CMR:
+      merge1: default
+      append1: default
 output:
   path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_output\
   formats:

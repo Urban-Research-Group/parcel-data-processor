@@ -14,28 +14,27 @@ class DataProcessor:
         self.current_op = None
 
     @timing
-    def load_data(self, file_pattern: str, format_file: str) -> list[pd.DataFrame]:
+    def load_data(self, file_key: tuple, parser_name: str) -> list[pd.DataFrame]:
         """Selects required files and calls on file_utils to complete I/O read
 
         Args:
             data_info (data_info): dataclass providing data instruction parameters
-            file_pattern (str): selects files matching this pattern in given dir path
+            file_key (str): tuple of group and file pattern to select files
             format_file (str): pattern to identify format files for each data file, if needed
 
         Returns:
             list[pd.DataFrame]: list of dataframes created by reading in each file specified
         """
         data = None
-
-        if file_pattern not in self.data_info.operations:
-            selected_files = file_utils.select_files(
-                self.data_info.files, file_pattern, format_file
-            )
+        if file_key[1] not in self.data_info.operations:
+            selected_files = file_utils.select_files(self.data_info.files, file_key)
             data = file_utils.create_dfs_from_files(
-                selected_files, format_file, self.data_info.var_map_non_derived
+                selected_files,
+                self.data_info.var_map_non_derived,
+                parser_name,
             )
         else:
-            data = [self.data_per_op[file_pattern]]
+            data = [self.data_per_op[file_key[1]]]
 
         return data
 
@@ -62,7 +61,6 @@ class DataProcessor:
             pd.DataFrame: result of executing the operation on the given data
         """
         operation_type = operation["type"]
-
         match operation_type:
             case "append" | "concat":
                 return ops.concat([*data])
@@ -72,7 +70,6 @@ class DataProcessor:
             case _:
                 print("Operation not supported")
 
-    @timing
     def run(self) -> pd.DataFrame:
         """Executes, in order, every operation specified in the config
 
@@ -82,15 +79,18 @@ class DataProcessor:
         Returns:
             pd.DataFrame: end result of executing the operations
         """
-        operations = self.data_info.operations.items()
+        for name, operation in self.data_info.operations.items():
+            # combine groups and file patterns to get all desired files
+            groups = [group for group in operation.get("groups", [None])]
+            files = operation["files"].keys()
+            file_keys = [(group, file) for group in groups for file in files]
 
-        for name, operation in operations:
-            files = operation["files"]
+            parser_names = operation["files"].values()
 
             data = [
                 df
-                for file_pat, format_file in files.items()
-                for df in self.load_data(file_pat, format_file)
+                for file_keys, parser_name in zip(file_keys, parser_names)
+                for df in self.load_data(file_keys, parser_name)
             ]
 
             self.data_per_op[name] = DataProcessor.process_operation(operation, data)
@@ -107,7 +107,6 @@ class DataProcessor:
 
         result = self.data_per_op[self.current_op]
         result = ops.clean_df(df=result, var_map=self.data_info.var_map_non_derived)
-
         if not self.data_info.var_map_derived.empty:
             ops.create_derived_cols(result, self.data_info.var_map_derived, sep=" ")
 

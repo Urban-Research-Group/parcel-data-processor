@@ -33,4 +33,4 @@ D Effyr,year_eff,int,all
 D Yrremod,year_remodel,int,all
 D Grade,grade,string,all
 Livunit,num_units,int,all
-Sfla,building_area,Float32,all
+Sfla,building_area,float,all

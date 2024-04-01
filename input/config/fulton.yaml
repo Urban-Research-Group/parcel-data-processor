@@ -5,10 +5,10 @@ operations:
   a1:
     type: append
     files:
-      STANDARDS DIGEST:
-      NF:
-      SF:
-      DIGEST 14th:
+      STANDARDS DIGEST: default
+      NF: default
+      SF: default
+      DIGEST 14th: default
 output:
   path: C:\Users\Nick\Documents\code\ga-tax-assessment\output
   formats:

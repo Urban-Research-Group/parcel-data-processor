@@ -41,7 +41,10 @@ def join(data: list[pd.DataFrame], key: str, join_type: str) -> pd.DataFrame:
         pd.DataFrame: resulting joined df
     """
     return reduce(
-        lambda left, right: pd.merge(left, right, on=key, how=join_type), data
+        lambda left, right: pd.merge(
+            left, right, on=key, how=join_type, suffixes=("1", "2")
+        ),
+        data,
     )
 
 
@@ -62,25 +65,28 @@ def clean_and_cast_col(column: pd.Series, data_type: str) -> pd.Series:
 
     num_nulls = column.isnull().sum()
     num_dup = init_len - len(column)
+
+    match data_type.lower():
+        case "str" | "string":
+            column = column.fillna("")
+        case "int" | "integer":
+            data_type = "int"
+            column = column.fillna(0)
+            column = column.apply(pd.to_numeric, errors="coerce")
+            column = column.fillna(-1)
+        case "float":
+            column = column.fillna(0)
+            column = column.apply(pd.to_numeric, errors="coerce")
+            column = column.fillna(-1)
+        case _:
+            raise ValueError(f"Data type {data_type} not supported")
+
     logger.info(
         "Cleaning col: %s; dropped %d duplicates, filling %d nulls",
         column,
         num_dup,
         num_nulls,
     )
-    match data_type:
-        case "str" | "string":
-            column = column.fillna("")
-        case "int" | "integer":
-            data_type = "int"
-            column = column.fillna(0)
-            column = column.replace("", 0)
-        case "float":
-            column = column.fillna(0.0)
-            column = column.replace("", 0.0)
-        case _:
-            raise ValueError(f"Data type {data_type} not supported")
-
     column = column.astype(data_type)
     return column
 
@@ -95,14 +101,25 @@ def clean_df(df: pd.DataFrame, var_map: pd.DataFrame = None) -> pd.DataFrame:
     Returns:
         pd.DataFrame: _description_
     """
-    new_names = set(var_map["new_name"].tolist())
+    new_names = set(
+        var_map["new_name"].tolist()
+        + [
+            "source_file",
+            "source_file_1",
+            "source_file_2",
+        ]
+    )
     new_names = list(new_names.intersection(df.columns))
 
     df = df[new_names]
     for column in df.columns:
+        # skip added source_file column
+        if "source_file" in column:
+            continue
         col_params = var_map[var_map["new_name"].str.lower() == column.lower()]
-        df[column] = clean_and_cast_col(df[column], col_params["data_type"].item())
-
+        df.loc[:, column] = clean_and_cast_col(
+            df[column], col_params["data_type"].item()
+        )
     df = df.drop_duplicates()
     return df
 

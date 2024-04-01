@@ -1,13 +1,13 @@
-appr_val,class,owner_name,tax_year,addr_str,parcel_id,addr_num,addr
-100000.0,,owner1,2020,MAIN,1,1,1 MAIN
-25000.0,,owner02,2020,MAIN,2,2,2 MAIN
-150000.0,,owner3,2021,MAIN,1,1,1 MAIN
-100000.0,C,owner4,2020,,1,, 
-300000.0,C,owner5,2020,,2,, 
-200000.0,C,owner4,2020,,1,, 
-100000.0,C,owner4,2021,,1,, 
-400000.0,C,owner5,2021,,2,, 
-200000.0,C,owner4,2021,,1,, 
-100000.0,C,owner4,2022,,1,, 
-400000.0,C,owner5,2022,,2,, 
-200000.0,C,owner4,2022,,1,, 
+tax_year,addr_num,addr_str,appr_val,parcel_id,owner_name,source_file,addr,class
+2020,1,MAIN,100000,1,owner1,tests/test_data\RES\RES_APPR.csv,1 MAIN,
+2020,2,MAIN,25000,2,owner02,tests/test_data\RES\RES_APPR.csv,2 MAIN,
+2021,1,MAIN,150000,1,owner3,tests/test_data\RES\RES_APPR.csv,1 MAIN,
+2020,nan,nan,100000,1,owner4,tests/test_data\CMR\2020\CMR.csv,nan nan,C
+2020,nan,nan,300000,2,owner5,tests/test_data\CMR\2020\CMR.csv,nan nan,C
+2020,nan,nan,200000,1,owner4,tests/test_data\CMR\2020\CMR.csv,nan nan,C
+2021,nan,nan,100000,1,owner4,tests/test_data\CMR\2021\CMR.csv,nan nan,C
+2021,nan,nan,400000,2,owner5,tests/test_data\CMR\2021\CMR.csv,nan nan,C
+2021,nan,nan,200000,1,owner4,tests/test_data\CMR\2021\CMR.csv,nan nan,C
+2022,nan,nan,100000,1,owner4,tests/test_data\CMR\2022\CMR.csv,nan nan,C
+2022,nan,nan,400000,2,owner5,tests/test_data\CMR\2022\CMR.csv,nan nan,C
+2022,nan,nan,200000,1,owner4,tests/test_data\CMR\2022\CMR.csv,nan nan,C
