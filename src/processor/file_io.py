@@ -1,69 +1,60 @@
 """File I/O utilities"""
 
 import yaml
-import numpy as np
 import pandas as pd
 from logger import configure_logger, timing
+import parser
 
 logger = configure_logger()
 
 
 class File:
-    def __init__(self, file_path: str, format_file=None):
+    def __init__(self, file_path: str, parser_name=None):
         self.file_path = file_path
-        self.format_pattern = format_file
-
-        construct_format_path = None
-        if format_file:
-            construct_format_path = file_path.split(".")
-            construct_format_path.insert(1, format_file)
-            construct_format_path = "".join(construct_format_path)
-        self.format_file = construct_format_path
-
-    @staticmethod
-    def _read_format_file(path):
-        return np.loadtxt(path, dtype=str)
-
-    @staticmethod
-    def _get_widths_from_format(format_file: np.array):
-        return format_file[:, 2].astype(np.int16).tolist()
-
-    @staticmethod
-    def _get_column_headers_from_format(format_file: np.array):
-        header_col = format_file[:, 0]
-        return header_col
-
-    def _get_fwf_paramters(self):
-        format_file = File._read_format_file(self.format_file)
-        widths = File._get_widths_from_format(format_file)
-        column_headers = File._get_column_headers_from_format(format_file)
-        return widths, column_headers
+        self.parser_name = parser_name
 
     @timing
     def read(self):
         """Reads a file based on its extension and returns a dataframe"""
         file_type = self.file_path.split(".")[-1].lower()
-        if self.format_pattern and self.format_pattern in self.file_path:
-            return
 
+        # Use UDF read function, if not default
+        if self.parser_name.lower() != "default":
+            try:
+                parser_func = getattr(parser, self.parser_name)
+                df = parser_func(self.file_path)
+            except AttributeError:
+                logger.error(
+                    "Parser '%s' not found in src.udf.parser", self.parser_name
+                )
+                raise ValueError(f"Parser '{self.parser_name}' not found")
+            except Exception as e:
+                logger.error("Error parsing file: %s", e)
+                raise e
+
+            df["source_file"] = self.file_path
+            return df
+
+        # Otherwise use default
         match file_type:
             case "csv":
                 df = pd.read_csv(self.file_path, encoding="latin-1", low_memory=False)
             case "xlsx" | "xls":
                 df = pd.read_excel(self.file_path)
-            case "txt":
+            case "txt":  # TODO: change
                 widths, column_headers = self._get_fwf_paramters()
                 df = pd.read_fwf(
                     self.file_path, widths=widths, header=None, encoding="latin-1"
                 )
                 df.columns = column_headers
             case "dat":
-                raise NotImplementedError("File type .dat not supported")
+                df = pd.read_csv(self.file_path, delimiter="\t", encoding="latin1")
             case _:
-                error_msg = f"File type {file_type} not supported"
+                error_msg = f"File type {file_type} not supported in default mode"
                 logger.error(error_msg)
                 raise ValueError(error_msg)
 
+        df["source_file"] = self.file_path
         return df
 
 

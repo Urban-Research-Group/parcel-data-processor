@@ -1,19 +1,89 @@
-county-name: cobb
-county-path: ../data/cobb
-var-map-path: ../input/var_maps/cobb_map.csv
+name: cobb
+root-path: C:\Users\Nick\Documents\code\ga-tax-assessment\data\cobb
+var-map-path: C:\Users\Nick\Documents\code\ga-tax-assessment\input\var_maps\cobb_map.csv
 operations:
-  merge1:
+  merge2000:
     type: merge
     files:
-      ASMT:
-      LAND:
-  append1:
+      residential2000\ASMT:
+      residential2000\LAND:
+      residential2000\DWELL:
+      residential2000\OWNDAT:
+    key:
+      - parcel_id
+    join-type: outer
+  merge2011:
+    type: merge
+    files:
+      Residential2011\ASMT:
+      Residential2011\LAND:
+      Residential2011\DWELL:
+      Residential2011\OWNDAT:
+    key:
+      - parcel_id
+    join-type: outer
+  merge2012:
+    type: merge
+    files:
+      Residential2012\ASMT:
+      Residential2012\LAND:
+      Residential2012\DWELL:
+      Residential2012\OWNDAT:
+    key:
+      - parcel_id
+    join-type: outer
+  merge2013:
+    type: merge
+    files:
+      Residential2013\ASMT:
+      Residential2013\LAND:
+      Residential2013\DWELL:
+      Residential2013\OWNDAT:
+    key:
+      - parcel_id
+    join-type: outer
+  merge2014:
+    type: merge
+    files:
+      Residential2014\ASMT:
+      Residential2014\LAND:
+      Residential2014\DWELL:
+      Residential2014\OWNDAT:
+    key:
+      - parcel_id
+    join-type: outer
+  merge2015:
+    type: merge
+    files:
+      Residential2015\ASMT:
+      Residential2015\LAND:
+      Residential2015\DWELL:
+      Residential2015\OWNDAT:
+    key:
+      - parcel_id
+    join-type: outer
+  merge2016:
+    type: merge
+    files:
+      Residential2016\ASMT:
+      Residential2016\LAND:
+      Residential2016\DWELL:
+      Residential2016\OWNDAT:
+    key:
+      - parcel_id
+    join-type: outer
+  append_years:
     type: append
     files:
-      merge1:
+      merge2000:
+      merge2011:
+      merge2012:
+      merge2013:
+      merge2014:
+      merge2015:
+      merge2016:
 output:
-  path: cobb-output
+  path: C:\Users\Nick\Documents\code\ga-tax-assessment\output
   formats:
-    - parquet
     - csv
 

@@ -1,0 +1,17 @@
+old_name,new_name,data_type,source_file
+PARID,parcel_id,string,all
+TAXYR,tax_year,int,all
+OWN1,owner_name_1,string,all
+MAIL-ADDRESS1;MAIL-ADDRESS2;MAIL-ADDRESS3,owner_addr,string,all
+ADRNO;ADRDIR;ADRSTR;ADRSUF,site_address,string,all
+TAXDIST,tax_dist,string,all
+APRLAND,appr_land,float,all
+APRBLDG,appr_build,float,all
+YRREMOD,year_remodel,int,all
+TRANSDT,sale_year,int,all
+SFLA,building_area,float,all
+GRADE,grade,string,all
+UNITS,num_units,int,all
+PRICE,fair_market_value,float,all
+LUC,site_luc_sale,string,all
+SALEVAL,sale_code,string,all

@@ -1,16 +1,16 @@
 name: test_merge
-root-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_data
-var-map-path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_input\var_maps\test_map.csv
+root-path: tests/test_data
+var-map-path: tests/test_input/var_maps/test_map.csv
 operations:
-  m1:
+  merge1:
     type: merge
+    files:
+      RES_A: default
+      "^(?!.*_fdf).*RES_O.*": cherokee
     key:
       - parcel_id
       - tax_year
     join-type: outer
-    files:
-      RES_A:
-      RES_OWNER: _fdf.
 output:
   path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_output\
   formats:

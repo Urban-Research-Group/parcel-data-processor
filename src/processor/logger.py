@@ -16,7 +16,7 @@ def setup_logger(execution_name: str = None):
         filename=os.path.join(logs_dir, f"{execution_name}.log"),
         filemode="w",
         format="%(name)s - %(levelname)s - %(message)s",
-        level=logging.DEBUG,
+        level=logging.INFO,
     )
 
     return logging.getLogger(__name__)
@@ -28,7 +28,7 @@ def timing(f):
         start = time()
         result = f(*args, **kw)
         end = time()
-        logging.debug(
+        logging.info(
             "func:%r args:[%r, %r] took: %2.4f sec"
             % (f.__name__, args, kw, end - start)
         )

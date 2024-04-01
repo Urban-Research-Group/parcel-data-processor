@@ -1,4 +1,5 @@
 import os
+import re
 import pandas as pd
 import file_io
 from logger import configure_logger
@@ -22,7 +23,7 @@ def get_all_files_in_dir(directory: str) -> list[str]:
     ]
 
 
-def select_files(file_paths: list[str], key: str, format_pat: str) -> list[str]:
+def select_files(file_paths: list[str], keys: tuple[str]) -> list[str]:
     """Returns a list of files matching the pattern (currently substring),
     formerly depreciated method used Regex
 
@@ -33,15 +34,20 @@ def select_files(file_paths: list[str], key: str, format_pat: str) -> list[str]:
     Returns:
         list[str]: list of file paths matching the pattern
     """
-    return [
-        file_path
-        for file_path in file_paths
-        if (key in file_path and (format_pat is None or format_pat not in file_path))
-    ]
+    if keys[0]:
+        return [
+            file_path
+            for file_path in file_paths
+            if any(re.search(key, file_path) for key in keys)
+        ]
+    else:
+        return [file_path for file_path in file_paths if re.search(keys[1], file_path)]
 
 
 def create_dfs_from_files(
-    file_paths: list[str], format_file: str = None, var_map: pd.DataFrame = None
+    file_paths: list[str],
+    var_map: pd.DataFrame = None,
+    parser: str = None,
 ) -> list[pd.DataFrame]:
     """Reads in a file as a DataFrame and performs data cleaning operations for
     each file in file_paths
@@ -60,9 +66,8 @@ def create_dfs_from_files(
     dfs = []
 
     for file_path in file_paths:
-        file_name = file_path.split("\\")[-1]
-        df = file_io.File(file_path, format_file).read()
-        logger.info("Shape of %s when read: %s", file_name, df.shape)
+        df = file_io.File(file_path, parser).read()
+        logger.info("Shape of %s when read: %s", file_path, df.shape)
         rename_dict = dict(
             zip(var_map["old_name"].tolist(), var_map["new_name"].tolist())
         )
