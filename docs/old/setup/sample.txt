@@ -1,5 +1,0 @@
-name|color
-nick|green
-john|blue
-iman|orange
-jack|red
