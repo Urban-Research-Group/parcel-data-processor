@@ -1,4 +1,4 @@
-tax_year,appr_val,owner_name,source_file,parcel_id,addr_str,addr_num,addr
-2020,100000,owner1,tests/test_data\RES\RES_OWNER.txt,1,MAIN,1,1 MAIN
-2020,25000,owner02,tests/test_data\RES\RES_OWNER.txt,2,MAIN,2,2 MAIN
-2021,150000,owner3,tests/test_data\RES\RES_OWNER.txt,1,MAIN,1,1 MAIN
+addr_str,tax_year,addr_num,source_file,owner_name,parcel_id,appr_val,addr
+MAIN,2020,1,tests/test_data\RES\RES_OWNER.txt,owner1,1,100000,1 MAIN
+MAIN,2020,2,tests/test_data\RES\RES_OWNER.txt,owner02,2,25000,2 MAIN
+MAIN,2021,1,tests/test_data\RES\RES_OWNER.txt,owner3,1,150000,1 MAIN

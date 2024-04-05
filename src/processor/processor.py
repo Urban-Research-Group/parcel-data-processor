@@ -106,10 +106,8 @@ class DataProcessor:
             self.current_op = name
 
         result = self.data_per_op[self.current_op]
-        result = ops.clean_df(df=result, var_map=self.data_info.var_map_non_derived)
         if not self.data_info.var_map_derived.empty:
             ops.create_derived_cols(result, self.data_info.var_map_derived, sep=" ")
 
         logger.info("Shape of Result: %s", result.shape)
-
         return result

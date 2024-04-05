@@ -10,7 +10,7 @@ TEST_DATA_DIR = "tests/test_data"
 TEST_INPUT_DIR = "tests/test_input"
 TRUTH_DIR = "tests/test_truth"
 VAR_MAP_PATH = f"{TEST_INPUT_DIR}/var_maps/test_map.csv"
-MERGE_KEYS = ["PARID", "TAXYR"]
+MERGE_KEYS = ["parcel_id", "tax_year"]
 
 
 def generate_truth():
@@ -31,12 +31,15 @@ def generate_truth():
     res_files = select_files(test_files, (None, "^(?!.*_fdf).*RES_OWNER.*$"))
     res_files += select_files(test_files, (None, ".*RES_A.*$"))
 
-    cmr_dfs = [read_file(path=f, parser="default") for f in cmr_files]
+    cmr_dfs = [
+        read_file(path=f, parser="default", var_map=var_map_non_derived)
+        for f in cmr_files
+    ]
     res_dfs = [
         (
-            read_file(path=f, parser="cherokee")
+            read_file(path=f, parser="cherokee", var_map=var_map_non_derived)
             if "OWNER" in f
-            else read_file(path=f, parser="default")
+            else read_file(path=f, parser="default", var_map=var_map_non_derived)
         )
         for f in res_files
     ]
@@ -60,7 +63,7 @@ def generate_truth():
     # Generate merge_append
 
     merge_append_output = pd.concat([merge_output, append_output])
-    # merge_append_output = clean_df(merge_append_output, var_map_non_derived)
+    merge_append_output = clean_df(merge_append_output, var_map_non_derived)
     merge_append_output = create_derived_vars(merge_append_output, var_map_derived)
     merge_append_output.to_csv(
         os.path.join(TRUTH_DIR, "truth_merge_append.csv"), index=False
