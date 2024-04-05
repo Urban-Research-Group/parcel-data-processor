@@ -37,9 +37,12 @@ def clean_and_cast_col(column: pd.Series, data_type: str) -> pd.Series:
 def read_file(
     path: str,
     parser: str,
+    var_map: pd.DataFrame,
 ) -> pd.DataFrame:
     """Reads file, returns DF"""
     df = File(path, parser).read()
+    rename_dict = dict(zip(var_map["old_name"].tolist(), var_map["new_name"].tolist()))
+    df = df.rename(columns=rename_dict)
     return df
 
 
@@ -53,23 +56,25 @@ def clean_df(df: pd.DataFrame, var_map: pd.DataFrame = None) -> pd.DataFrame:
     Returns:
         pd.DataFrame: _description_
     """
-    old_names = set(var_map["old_name"].tolist())
-    old_names = list(old_names.intersection(df.columns)) + ["source_file"]
+    new_names = set(
+        var_map["new_name"].tolist()
+        + [
+            "source_file",
+            "source_file_1",
+            "source_file_2",
+        ]
+    )
+    new_names = list(new_names.intersection(df.columns))
 
-    df = df[old_names]
+    df = df[new_names]
     for column in df.columns:
         # skip added source_file column
-        if column == "source_file":
+        if "source_file" in column:
             continue
-
-        col_params = var_map[var_map["old_name"].str.lower() == column.lower()]
+        col_params = var_map[var_map["new_name"].str.lower() == column.lower()]
         df.loc[:, column] = clean_and_cast_col(
             df[column], col_params["data_type"].item()
         )
-        df[column].rename(col_params["new_name"].item(), inplace=True)
-
-    rename_dict = dict(zip(var_map["old_name"].tolist(), var_map["new_name"].tolist()))
-    df = df.rename(columns=rename_dict)
     df = df.drop_duplicates()
     return df
 
