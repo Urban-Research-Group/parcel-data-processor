@@ -1,5 +1,5 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-![Coverage](badges/coverage.svg)
+![Coverage](.github/coverage.svg/)
 
 # Data Processor
 Created to process Parcel, Appeals, and Sales data for the GA Tax Assessment Project, affiliated with the Urban Research Lab (URL) at Georgia Tech.
