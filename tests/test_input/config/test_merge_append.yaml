@@ -25,7 +25,7 @@ operations:
       merge1: default
       append1: default
 output:
-  path: C:\Users\Nick\Documents\code\ga-tax-assessment\tests\test_output\
+  path: tests\test_output\
   formats:
     - csv
 

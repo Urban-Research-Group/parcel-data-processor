@@ -1,13 +1,13 @@
-appr_val,source_file,addr_str,owner_name,tax_year,class,parcel_id,addr_num,addr
-100000,tests/test_data\RES\RES_OWNER.txt,MAIN,owner1,2020,,1,1,1 MAIN
-25000,tests/test_data\RES\RES_OWNER.txt,MAIN,owner02,2020,,2,2,2 MAIN
-150000,tests/test_data\RES\RES_OWNER.txt,MAIN,owner3,2021,,1,1,1 MAIN
-100000,tests/test_data\CMR\2020\CMR.csv,,owner4,2020,C,1,, 
-300000,tests/test_data\CMR\2020\CMR.csv,,owner5,2020,C,2,, 
-200000,tests/test_data\CMR\2020\CMR.csv,,owner4,2020,C,1,, 
-100000,tests/test_data\CMR\2021\CMR.csv,,owner4,2021,C,1,, 
-400000,tests/test_data\CMR\2021\CMR.csv,,owner5,2021,C,2,, 
-200000,tests/test_data\CMR\2021\CMR.csv,,owner4,2021,C,1,, 
-100000,tests/test_data\CMR\2022\CMR.csv,,owner4,2022,C,1,, 
-400000,tests/test_data\CMR\2022\CMR.csv,,owner5,2022,C,2,, 
-200000,tests/test_data\CMR\2022\CMR.csv,,owner4,2022,C,1,, 
+parcel_id,addr_num,owner_name,source_file,addr_str,appr_val,class,tax_year,addr
+1,1,owner1,tests/test_data\RES\RES_OWNER.txt,MAIN,100000,,2020,1 MAIN
+2,2,owner02,tests/test_data\RES\RES_OWNER.txt,MAIN,25000,,2020,2 MAIN
+1,1,owner3,tests/test_data\RES\RES_OWNER.txt,MAIN,150000,,2021,1 MAIN
+1,,owner4,tests/test_data\CMR\2020\CMR.csv,,100000,C,2020, 
+2,,owner5,tests/test_data\CMR\2020\CMR.csv,,300000,C,2020, 
+1,,owner4,tests/test_data\CMR\2020\CMR.csv,,200000,C,2020, 
+1,,owner4,tests/test_data\CMR\2021\CMR.csv,,100000,C,2021, 
+2,,owner5,tests/test_data\CMR\2021\CMR.csv,,400000,C,2021, 
+1,,owner4,tests/test_data\CMR\2021\CMR.csv,,200000,C,2021, 
+1,,owner4,tests/test_data\CMR\2022\CMR.csv,,100000,C,2022, 
+2,,owner5,tests/test_data\CMR\2022\CMR.csv,,400000,C,2022, 
+1,,owner4,tests/test_data\CMR\2022\CMR.csv,,200000,C,2022, 
