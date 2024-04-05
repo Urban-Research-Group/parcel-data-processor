@@ -34,11 +34,3 @@ jobs:
       with:
         add: '.github/coverage.svg'
         message: 'Update coverage badge'
-
-    - name: Upload test data artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-data
-        path: |
-          test_append.csv
-          test_merge_append.csv
