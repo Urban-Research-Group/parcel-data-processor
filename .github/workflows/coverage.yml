@@ -32,5 +32,13 @@ jobs:
     - name: Commit coverage badge
       uses: EndBug/add-and-commit@v7
       with:
-        add: 'badges/coverage.svg'
+        add: '.github/coverage.svg'
         message: 'Update coverage badge'
+
+    - name: Upload test data artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-data
+        path: |
+          test_append.csv
+          test_merge_append.csv
