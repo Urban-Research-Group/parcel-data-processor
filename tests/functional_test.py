@@ -19,6 +19,8 @@ def test_append():
 
     df1 = pd.read_csv(output_file).drop(columns=["source_file"]).reset_index(drop=True)
     df2 = pd.read_csv(truth_file).drop(columns=["source_file"]).reset_index(drop=True)
+    print(df1)
+    print(df2)
     assert_frame_equal(df1, df2, check_like=True)
 
 
@@ -30,6 +32,8 @@ def test_merge():
     truth_file = os.path.join(TRUTH_DIR, "truth_merge.csv")
     df1 = pd.read_csv(output_file).drop(columns=["source_file"]).reset_index(drop=True)
     df2 = pd.read_csv(truth_file).drop(columns=["source_file"]).reset_index(drop=True)
+    print(df1)
+    print(df2)
     assert_frame_equal(df1, df2, check_like=True)
 
 
@@ -41,4 +45,6 @@ def test_merge_append():
     truth_file = os.path.join(TRUTH_DIR, "truth_merge_append.csv")
     df1 = pd.read_csv(output_file).drop(columns=["source_file"]).reset_index(drop=True)
     df2 = pd.read_csv(truth_file).drop(columns=["source_file"]).reset_index(drop=True)
+    print(df1)
+    print(df2)
     assert_frame_equal(df1, df2, check_like=True)
