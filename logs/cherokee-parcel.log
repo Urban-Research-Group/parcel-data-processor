@@ -1,0 +1,12 @@
+root - INFO - func:'read' args:[(<file_io.File object at 0x0000021662EC7D10>,), {}] took: 2.1403 sec
+logger - INFO - Shape of data/cherokee\digest2020-Cherokee\d_real.txt when read: (105570, 73)
+root - INFO - func:'load_data' args:[(<processor.DataProcessor object at 0x0000021661944830>, (None, '.*2020.*d_real[.].*'), 'cherokee'), {}] took: 2.1897 sec
+root - INFO - func:'read' args:[(<file_io.File object at 0x0000021661A103B0>,), {}] took: 0.4969 sec
+logger - INFO - Shape of data/cherokee\digest2020-Cherokee\d_owner.txt when read: (91944, 20)
+root - INFO - func:'load_data' args:[(<processor.DataProcessor object at 0x0000021661944830>, (None, '.*2020.*d_owner[.].*'), 'cherokee'), {}] took: 0.5140 sec
+root - INFO - func:'read' args:[(<file_io.File object at 0x0000021663060320>,), {}] took: 0.9667 sec
+logger - INFO - Shape of data/cherokee\digest2020-Cherokee\d_calcexemptions.txt when read: (264284, 9)
+root - INFO - func:'load_data' args:[(<processor.DataProcessor object at 0x0000021661944830>, (None, '.*2020.*d_calcexemptions[.].*'), 'cherokee'), {}] took: 0.9765 sec
+root - INFO - func:'read' args:[(<file_io.File object at 0x0000021661816F60>,), {}] took: 0.6704 sec
+logger - INFO - Shape of data/cherokee\digest2020-Cherokee\d_accsry.txt when read: (139062, 14)
+root - INFO - func:'load_data' args:[(<processor.DataProcessor object at 0x0000021661944830>, (None, '.*2020.*d_accsry[.].*'), 'cherokee'), {}] took: 0.6804 sec

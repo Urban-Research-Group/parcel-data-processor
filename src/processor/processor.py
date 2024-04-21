@@ -82,16 +82,17 @@ class DataProcessor:
         for name, operation in self.data_info.operations.items():
             # combine groups and file patterns to get all desired files
             groups = [group for group in operation.get("groups", [None])]
-            files = operation["files"].keys()
-            file_keys = [(group, file) for group in groups for file in files]
-
-            parser_names = operation["files"].values()
+            files_and_parser = operation["files"].items()
+            file_keys = [
+                ((group, f[0]), f[1]) for group in groups for f in files_and_parser
+            ]
 
             data = [
                 df
-                for file_keys, parser_name in zip(file_keys, parser_names)
-                for df in self.load_data(file_keys, parser_name)
+                for file_key in file_keys
+                for df in self.load_data(file_key[0], file_key[1])
             ]
+            print(data)
 
             self.data_per_op[name] = DataProcessor.process_operation(operation, data)
             self.data_per_op[name] = ops.clean_df(

@@ -29,7 +29,7 @@ def select_files(file_paths: list[str], keys: tuple[str]) -> list[str]:
 
     Args:
         file_paths (list[str]): list of file paths to search
-        key (str): pattern to match (currently substring)
+        key tuple[str]: pattern to match (currently substring) [group, pattern]
 
     Returns:
         list[str]: list of file paths matching the pattern
@@ -38,7 +38,7 @@ def select_files(file_paths: list[str], keys: tuple[str]) -> list[str]:
         return [
             file_path
             for file_path in file_paths
-            if any(re.search(key, file_path) for key in keys)
+            if all(re.search(key, file_path) for key in keys)
         ]
     else:
         return [file_path for file_path in file_paths if re.search(keys[1], file_path)]

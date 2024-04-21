@@ -1,0 +1,16 @@
+name: fulton
+root-path: data\fulton
+var-map-path: input\var_maps\fulton_map.csv
+operations:
+  a1:
+    type: append
+    files:
+      STANDARDS DIGEST: default
+      NF: default
+      SF: default
+      DIGEST 14th: default
+output:
+  path: output/fulton/
+  formats:
+    - csv
+

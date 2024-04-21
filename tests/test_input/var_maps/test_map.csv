@@ -7,3 +7,5 @@ class,class,string,CMR
 address_num,addr_num,string,RES_ADDR
 address_str,addr_str,string,RES_ADDR
 addr_num;addr_str,addr,string,RES_ADDR
+appl,appeal,string,APPL
+EXC,exemption,string,EXC
