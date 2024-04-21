@@ -41,6 +41,15 @@ def test_merge_append():
     truth_file = os.path.join(TRUTH_DIR, "truth_merge_append.csv")
     df1 = pd.read_csv(output_file).drop(columns=["source_file"]).reset_index(drop=True)
     df2 = pd.read_csv(truth_file).drop(columns=["source_file"]).reset_index(drop=True)
-    print(df1)
-    print(df2)
+    assert assert_frame_equal(df1, df2, check_like=True) is None
+
+
+def test_groups():
+    config = os.path.join(TEST_INPUT_DIR, "config", "test_groups.yaml")
+    run(config, exec_name="test_groups")
+
+    output_file = os.path.join(TEST_OUTPUT_DIR, "test_groups.csv")
+    truth_file = os.path.join(TRUTH_DIR, "truth_groups.csv")
+    df1 = pd.read_csv(output_file).reset_index(drop=True)
+    df2 = pd.read_csv(truth_file).reset_index(drop=True)
     assert assert_frame_equal(df1, df2, check_like=True) is None

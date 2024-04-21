@@ -18,7 +18,7 @@ operations:
       - "2021"
       - "2022"
     files:
-      ".*CMR.*": default
+      ".*CMR.csv": default
   append2:
     type: append
     files:
