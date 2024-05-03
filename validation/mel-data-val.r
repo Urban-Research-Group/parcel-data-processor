@@ -1,6 +1,6 @@
 ######
 # mel-data-val.r
-# purpose: read in output, logic data and validate data in each col
+# purpose: read in parser output, logic data and validate data in each col
 # author: melissa juarez
 #####
 
@@ -32,14 +32,14 @@ rules <- validator(.data = logic)
 out <- confront(sample, rules)
 results <- summary(out)
 plot(out) # 
-violating(sample, out) # due to the validator not allowing NAs, almost every row fails in some way.
+violating(sample, out["reas_code"]) # due to the validator not allowing NAs, almost every row fails in some way.
 
 # Some notes: currently, the validator allows `grepl` for pattern recognition which returns only T/F.
 # NAs in `grepl` are read as False, meaning that the validator marks them as failed tests rather than
 # missing. I have included a data missingness viz to supplement and differentiate the levels of failed
 # test versus just NAs.
 # 
-# I assume the handling of NAs is column specific. For example, NAs in owner_country may be allowable (?),
+# I assume the handling of NAs is column specific. For example, NAs in owner_country may be allowable (?), # nolint
 # but in columns describing grade or address information, it may not be allowable -- and should be read as 
 # fails. Moving forward, we should specify which is which.
 
