@@ -4,84 +4,156 @@ import re
 import os
 
 
-def extract_text_from_pdf(pdf_path: str):
+class bcolors:
+    HEADER = "\033[95m"
+    OKGREEN = "\033[92m"
+    WARNING = "\033[93m"
+    FAIL = "\033[91m"
+    ENDC = "\033[0m"
+
+
+def extract_lines_from_pdf(pdf_path: str) -> List[str]:
     with open(pdf_path, "rb") as file:
         reader = PyPDF2.PdfReader(file)
         text = ""
         for page in reader.pages:
             text += page.extract_text()
-    return text
+    return text.split("\n")
 
 
-def process_text(lines: List[str]):
-    var = {}
+def extract_variables(lines: List[str]) -> dict:
+    var_list = {}
     curr_group = None
     for line in lines:
         file_name_pat = r"[A-Z]\)\s*([A-Z]+)[\s\)\(]+"
+        var_name_pat = r"\d+\)\s*([\w-]+)"
+        column_width_pat = r"[\s\)]+(\d+(-\d+)?)[\s\-a-zA-Z]"
+
         if file_name := re.search(file_name_pat, line):
             file_name = file_name.group(1)
-            var[file_name] = []
+            var_list[file_name] = []
             curr_group = file_name
-            continue
 
         if not curr_group:  # No starting group
             continue
 
-        var_name_pat = r"\d+\)\s*([\w-]+)"
-        number_pat = r"[\s\)]+(\d+(-\d+)?)[\s\-a-zA-Z]"
-
         if var_name := re.search(var_name_pat, line):
             var_name = var_name.group(1)
 
-        if number := re.search(number_pat, line):
+        if number := re.search(column_width_pat, line):
             number = number.group(1)
 
         if var_name and number:
-            var[curr_group].append((var_name, number))
+            var_list[curr_group].append((var_name, number))
 
-    return var
-
-
-pdf_file = "C:\\Users\\Nick\\Documents\\code\\ga-tax-assessment\\data\\cobb\\TAXDATA2011\\Residential 2011\\AA407CCIS_LAYOUT.pdf"
-root_path = r"C:\Users\Nick\Documents\code\ga-tax-assessment\data\cobb\TAXDATA2011\Residential 2011"
-
-text = extract_text_from_pdf(pdf_file)
-comma_idx_full = process_text(text.split("\n"))
-comma_idx = {k: [] for k in comma_idx_full.keys()}
-for k, var_list in comma_idx_full.items():
-    for var in var_list:
-        split = var[1].split("-")
-        if len(split) > 1:
-            val = int(split[1])
-        else:
-            val = int(split[0])
-
-        comma_idx[k].append((var[0], val))
-
-files = []
-for f in os.listdir(root_path):
-    if f.endswith(".DAT"):
-        files.append(f)
-
-for f in files:
-    f_comma_idx = comma_idx[f.replace(".DAT", "")]
-
-    with open(f"{root_path}/{f}", "r") as data:
-        lines = data.readlines()
-        lines = [line.replace(",", "") for line in lines]
-
-    for line_i in range(len(lines)):
-        for var in f_comma_idx:
-            i = int(var[1])
-            lines[line_i] = lines[line_i][:i] + "," + lines[line_i][i:]
-
-    # write lines to new file
-    with open(f"{root_path}/{f.replace('.DAT', '.csv')}", "w") as new_data:
-        new_data.writelines(lines)
+    return var_list
 
 
-# do this for each cobb folder
-# for each folder, use this to create new CSV files from the DAT files
+def clean_variables(var_list: dict) -> dict:
+    res = {k: [] for k in var_list}
+    for k, var_list in var_list.items():
+        for var in var_list:
+            split = var[1].split("-")
 
-# read in the DAT file
-# for each line, place comma at each layout
+            # take only last number for column delim
+            if len(split) > 1:
+                val = int(split[1])
+            else:
+                val = int(split[0])
+
+            res[k].append((var[0], int(val)))
+    return res
+
+
+def convert_lines(raw: List[str], var_columns: dict) -> None:
+    # remove commas from DAT format to convert to CSV
+    res = [line.replace(",", "") for line in raw]
+
+    # sort in decreasing order to avoid the previous insertion
+    # impacting the next insertion by changing the index
+    var_columns = sorted(var_columns, key=lambda x: x[1], reverse=True)
+
+    for line_i in range(len(res)):
+        for var in var_columns:
+            char_i = var[1]
+            res[line_i] = res[line_i][: char_i + 1] + "," + res[line_i][char_i:]
+            # raw[line_i] = re.sub(
+            #    r"(?<!\w) (?!\w)", "", raw[line_i]
+            # )  # removes excess whitespace
+
+    return res
+
+
+def main(path_to_dirs: List[str]) -> int:
+    for path_to_dir in path_to_dirs:
+        print("\n--------------------")
+        print(f"{bcolors.HEADER}MAIN DIR: {path_to_dir}{bcolors.ENDC}")
+        SUBDIR_NAMES = ["residential", "commercial"]
+        path_to_subdirs = [
+            os.path.join(path_to_dir, d)
+            for d in os.listdir(path_to_dir)
+            if any(name in d.lower() for name in SUBDIR_NAMES)
+        ]
+
+        for path_to_subdir in path_to_subdirs:
+            print("\nCurrently processing: ", path_to_subdir)
+            try:
+                format_files = (
+                    f for f in os.listdir(path_to_subdir) if f.endswith(".pdf")
+                )
+                format_file_name = next(format_files, None)
+            except NotADirectoryError:
+                print(
+                    f"{bcolors.FAIL}{path_to_subdir} is not a directory{bcolors.ENDC}"
+                )
+                continue
+
+            if not format_file_name:
+                print(
+                    f"{bcolors.WARNING}No PDF file found in {path_to_subdir}{bcolors.ENDC}"
+                )
+                continue
+
+            format_file_path = os.path.join(path_to_subdir, format_file_name)
+            print(
+                f"{bcolors.OKGREEN}Using format file: {format_file_path}{bcolors.ENDC}"
+            )
+            raw = extract_lines_from_pdf(format_file_path)
+            print("Extracted lines from pdf")
+            var_list = extract_variables(raw)
+            var_list = clean_variables(var_list)
+
+            print(f"{bcolors.HEADER}---WRITING---{bcolors.ENDC}")
+            for f in os.listdir(path_to_subdir):
+                if not f.endswith(".DAT"):
+                    continue
+
+                file_path = os.path.join(path_to_subdir, f)
+                file_name = f.split("/")[-1].replace(".DAT", "")
+                with open(file_path, "r") as file:
+                    raw = file.readlines()
+
+                new_lines = convert_lines(raw, var_list[file_name])
+
+                new_file_path = file_path.replace(".DAT", ".csv")
+                print(f"{bcolors.OKGREEN}{new_file_path}{bcolors.ENDC}")
+                with open(new_file_path, "w") as new_data:
+                    # header line
+                    new_data.write(
+                        ",".join(var[0] for var in var_list[file_name]) + "\n"
+                    )
+                    # data
+                    new_data.writelines(new_lines)
+
+    return 0
+
+
+CURR_PATH = os.path.dirname(os.path.realpath(__file__))
+REL_PATH_TO_DATA = os.path.join("..", "..", "data", "cobb")
+PATH = os.path.join(CURR_PATH, REL_PATH_TO_DATA)
+
+dirs = [os.path.join(PATH, dir) for dir in os.listdir(PATH) if "." not in dir]
+print(main(dirs))
+
+# TODO: verify column width in output
+# TODO: clean files with format file processor
