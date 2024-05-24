@@ -100,6 +100,7 @@ class WriteOutput:
 
     def write_csv(self):
         try:
+            print(self.output_path + f"{self.county_name}.csv")
             self.data.to_csv(self.output_path + f"{self.county_name}.csv", index=False)
         except Exception as e:
             self.log("CSV", e)

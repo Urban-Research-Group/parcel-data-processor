@@ -11,6 +11,7 @@ TEST_INPUT_DIR = "tests/test_input"
 TRUTH_DIR = "tests/test_truth"
 VAR_MAP_PATH = f"{TEST_INPUT_DIR}/var_maps/test_map.csv"
 MERGE_KEYS = ["parcel_id", "tax_year"]
+GROUP_MERGE_KEYS = ["parcel_id"]
 
 
 def generate_truth():
@@ -27,7 +28,7 @@ def generate_truth():
     var_map_non_derived = var_map[~derived_mask]
     var_map_derived = var_map[derived_mask]
 
-    cmr_files = select_files(test_files, (None, "CMR"))
+    cmr_files = select_files(test_files, (None, ".*CMR.csv"))
     res_files = select_files(test_files, (None, "^(?!.*_fdf).*RES_OWNER.*$"))
     res_files += select_files(test_files, (None, ".*RES_A.*$"))
 
@@ -68,3 +69,34 @@ def generate_truth():
     merge_append_output.to_csv(
         os.path.join(TRUTH_DIR, "truth_merge_append.csv"), index=False
     )
+
+    # Generate test groups
+    gf2020 = select_files(test_files, ("2020", ".*APPL.csv")) + select_files(
+        test_files, ("2020", ".*EXC.csv")
+    )
+    gf2021 = select_files(test_files, ("2021", ".*APPL.csv")) + select_files(
+        test_files, ("2021", ".*EXC.csv")
+    )
+
+    dfs2020 = []
+    dfs2021 = []
+    for f in gf2020:
+        dfs2020.append(read_file(path=f, parser="default", var_map=var_map_non_derived))
+
+    for f in gf2021:
+        dfs2021.append(read_file(path=f, parser="default", var_map=var_map_non_derived))
+
+    df2020 = reduce(
+        lambda left, right: pd.merge(left, right, on=GROUP_MERGE_KEYS, how="outer"),
+        dfs2020,
+    )
+
+    df2021 = reduce(
+        lambda left, right: pd.merge(left, right, on=GROUP_MERGE_KEYS, how="outer"),
+        dfs2021,
+    )
+
+    df = pd.concat([df2020, df2021])
+    df = clean_df(df, var_map_non_derived)
+    df = create_derived_vars(df, var_map_derived)
+    df.to_csv(os.path.join(TRUTH_DIR, "truth_groups.csv"), index=False)
