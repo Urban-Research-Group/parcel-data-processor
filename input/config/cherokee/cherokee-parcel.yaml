@@ -1,0 +1,45 @@
+name: cherokee
+root-path: data/cherokee
+var-map-path: input/var_maps/cherokee/cherokee_map.csv
+operations:
+  merge2020:
+    type: merge
+    files:
+      ".*2020.*d_real[.].*": cherokee
+      ".*2020.*d_owner[.].*": cherokee
+      ".*2020.*d_calcexemptions[.].*": cherokee
+      ".*2020.*d_accsry[.].*": cherokee
+    key: 
+      - parcel_id
+    join-type: outer
+  merge2021:
+    type: merge
+    files:
+      ".*2021.*d_real[.].*": cherokee
+      ".*2021.*d_owner[.].*": cherokee
+      ".*2021.*d_calcexemptions[.].*": cherokee
+      ".*2021.*d_accsry[.].*": cherokee
+    key: 
+      - parcel_id
+    join-type: outer
+  merge2022:
+    type: merge
+    files:
+      ".*2022.*d_real[.].*": cherokee
+      ".*2022.*d_owner[.].*": cherokee
+      ".*2022.*d_calcexemptions[.].*": cherokee
+      ".*2022.*d_accsry[.].*": cherokee
+    key: 
+      - parcel_id
+    join-type: outer
+  append-years:
+    type: append
+    files:
+      merge2020: default
+      merge2021: default
+      merge2022: default
+output:
+  path: output/cherokee/
+  formats:
+    - csv
+

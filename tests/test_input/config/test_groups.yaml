@@ -1,15 +1,18 @@
-name: test_append
+name: test_groups
 root-path: tests/test_data
 var-map-path: tests/test_input/var_maps/test_map.csv
 operations:
-  append1:
-    type: append
+  merge1:
+    type: merge
     groups:
       - "2020"
       - "2021"
-      - "2022"
     files:
-      ".*CMR.csv": default
+      ".*APPL.csv": default
+      ".*ECX.csv": default
+    key:
+      - parcel_id
+    join-type: outer
 output:
   path: tests\test_output\
   formats:
