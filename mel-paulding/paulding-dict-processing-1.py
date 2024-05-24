@@ -11,9 +11,10 @@ def read_paulding(pdf_path):
     table = camelot.read_pdf(pdf_path, pages='all')
     df_list = []
     for i in range(len(table)):
-        tbl = table[i-1].df
+        tbl = table[i].df
         tbl = tbl[tbl.iloc[:, 2].str.strip() != ""] # remove where 3rd col is just whitespace
         df_list.append(tbl)
+    print(df_list)
     long_table = pd.concat(df_list)
 
     return(long_table)

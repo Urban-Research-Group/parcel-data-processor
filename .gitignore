@@ -14,7 +14,7 @@ __pycache__/
 .DS_Store
 .RData
 .Rhistory
-.Rproj
+*.Rproj
 .vscode/settings.json
 
 # Distribution / packaging
