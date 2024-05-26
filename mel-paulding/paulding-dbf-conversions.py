@@ -6,6 +6,8 @@ import re
 import pandas as pd
 from dbfread import DBF
 
+###################### custom functions ######################
+
 # get paths to all files inside subdir ending in .dbf
 def get_dbf_files(input_folder):
     dbf_paths = [os.path.join(root, file)
@@ -51,7 +53,7 @@ def dbf_to_csv(dbf_paths, output_folder):
     else:
         return print("No failed files")
 
-
+###################### ################ ######################
 
 # path to main folder
 input_folder = 'data/paulding'
