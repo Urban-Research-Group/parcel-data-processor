@@ -6,6 +6,7 @@ import pandas as pd
 import re
 import csv
 
+
 ###################### custom functions ######################
 
 # looks for data dictionary and txt files inside folders from relevant years
@@ -63,14 +64,14 @@ def process_lines(txt_lines, dictionary):
         if len(line) != expected_line_len:
             raise ValueError(f"Line at index {i} has length {len(line)}, does not match expected length {expected_line_len}")
         else:
-            ## replace instances of commas as " "
+            ## replace instances of commas as " " to not be confused as delimiter
             line = line.replace(",", " ")
 
             ## insert commas
             segments = []
             previous_loc = 0
             for loc in sorted(delim_locs):
-                segments.append(line[previous_loc:loc]) ## segment into pieces by delim locations
+                segments.append(line[previous_loc:loc].rstrip()) ## segment into pieces by delim locations
                 previous_loc = loc
             processed_line = ','.join(segments)
 
