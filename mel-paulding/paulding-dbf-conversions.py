@@ -61,8 +61,5 @@ output_folder = input_folder + '/converted'
 
 dbf_paths = get_dbf_files(input_folder)
 
-## remove paths that contain the pattern '2019' -- these already have .csv's in original data 
-filtered_paths = [path for path in dbf_paths if '2019' not in path] 
-
-dbf_to_csv(filtered_paths, output_folder)
+dbf_to_csv(dbf_paths, output_folder)
 
