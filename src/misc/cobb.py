@@ -27,7 +27,8 @@ def extract_variables(lines: List[str]) -> dict:
     for line in lines:
         file_name_pat = r"[A-Z]\)\s*([A-Z]+)[\s\)\(]+"
         var_name_pat = r"\d+\)\s*([\w-]+)"
-        column_width_pat = r"[\s\)]+(\d+(-\d+)?)[\s\-a-zA-Z]"
+        # column_width_pat = r"[\s\)]+(\d+(-\d+)?)[\s\-a-zA-Z]"
+        column_width_pat = r"\((\d+)\)"
 
         if file_name := re.search(file_name_pat, line):
             file_name = file_name.group(1)
@@ -52,16 +53,11 @@ def extract_variables(lines: List[str]) -> dict:
 def clean_variables(var_list: dict) -> dict:
     res = {k: [] for k in var_list}
     for k, var_list in var_list.items():
+        column_pos = 0
         for var in var_list:
-            split = var[1].split("-")
-
-            # take only last number for column delim
-            if len(split) > 1:
-                val = int(split[1])
-            else:
-                val = int(split[0])
-
-            res[k].append((var[0], int(val)))
+            column_pos += int(var[1])
+            res[k].append((var[0], int(column_pos)))
+    print(res)
     return res
 
 
@@ -76,7 +72,7 @@ def convert_lines(raw: List[str], var_columns: dict) -> None:
     for line_i in range(len(res)):
         for var in var_columns:
             char_i = var[1]
-            res[line_i] = res[line_i][: char_i + 1] + "," + res[line_i][char_i:]
+            res[line_i] = res[line_i][:char_i] + "," + res[line_i][char_i:]
             # raw[line_i] = re.sub(
             #    r"(?<!\w) (?!\w)", "", raw[line_i]
             # )  # removes excess whitespace
