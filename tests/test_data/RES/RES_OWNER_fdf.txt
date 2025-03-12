@@ -1,3 +1,0 @@
-PARID   N   2   0
-TAXYR   N   4   0
-owner   N   8   0
