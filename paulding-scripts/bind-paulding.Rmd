@@ -23,8 +23,9 @@ library(tidyverse)
 
 ```{r get-tyler-data}
 source <- here::here("output/paulding")
-pattern <- paste(tyler_years, collapse = "|")
 tyler_years <- 2011:2013
+pattern <- paste(tyler_years, collapse = "|")
+
 
 tyler_paths <- list.files(source, pattern = pattern, full.names = TRUE, recursive = TRUE)
 
@@ -92,7 +93,7 @@ long_table <- nested_data %>%
   select(tax_year, data) %>%  # Keep only necessary columns
   unnest(data)  # Flatten the nested data into one table
 
-## convert back to appropriate column types
+## convert back to appropriate column types -- make sure parcel ids don't get messed up
 long_table <- type_convert(long_table, col_types = cols())
 
 head(long_table)
@@ -102,7 +103,7 @@ path <- paste0("output/paulding/DIGEST_paulding_tyler_2011_2013_", tolower(forma
 write_csv(long_table, here::here(path))
 
 rm(col_names, column_names_list, column_presence, long_table, nested_data, all_columns, common_columns,
-   different_columns, path, pattern, source, tyler_paths, tyler_years, year_folders)
+   different_columns, path, pattern, source, tyler_paths, tyler_years)
 
 ```
 
@@ -115,6 +116,7 @@ For Wingap data, we need to read in:
 -   PE_APPEALS.csv
 
 realized that the data in appeals & sales files are cumulative so we only need to keep the most recent year
+appeals data not available 2014
 
 ```{r}
 
@@ -203,7 +205,7 @@ owner_data <- owner_data %>%
   rename_with(~ paste0("owner_", .), .cols = -c(1,2))
 
 ## dedupe owner rows
-owner_data <-owner_data %>%
+owner_data <- owner_data %>%
   distinct()
 
 head(owner_data) ## keep this to merge w digest later
@@ -265,7 +267,6 @@ merge owner and digest on ownkey and tax year
 ```{r}
 digest <- long_table %>%
   merge(owner_data, by = c("tax_year", "ownkey"), all.x = T)
-
 
 ```
 
