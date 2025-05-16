@@ -1,0 +1,221 @@
+---
+title: "Processing Cobb County Tax Assessments Datasets"
+author: "Melissa Juarez"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: yes
+    toc_float:
+      collapsed: yes
+---
+
+## Introduction
+
+This analysis processes the tax assessment data for Cobb County. These datasets contain crucial digest and exact assessment data -- like parcel id, address, FMV, owner 1 &2, address, total tax, appeal value, mill values, exemptions, owner & site address in detail -- for residential and commercial properties together. This is super helpful in reducing inconsistencies and duplication when trying to merge residential and commercial data sets that are differently structured.
+
+```{r setup, include = F}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	error = F,
+	message = FALSE,
+	warning = FALSE
+)
+ 
+options(scipen=999)
+
+## load libraries
+library(tidyverse)
+library(dplyr)
+library(here)
+library(janitor)
+library(readxl)
+library(tidyr)
+library(readr)
+library(stringr)
+library(writexl)
+library(data.table)
+```
+
+## Digest Data
+### Read and Join all Tax Data files
+
+We will use the associated dictionaries for each file to set the data types for each column in the tax data.
+
+```{r load-data, eval=FALSE, include=FALSE}
+
+tax_paths <- list.files(here::here("output/cobb"), 
+                           pattern = "TX502", 
+                           recursive = T, full.names = T)
+
+## if .txt then it is the data, if .xlsx then its the dictionary
+tax_files_df <- data.frame(
+  year = str_extract(tax_paths, "\\d{4}"),
+  dict_path = ifelse(str_detect(tax_paths, "Layout"), tax_paths, NA),
+  data_path = ifelse(str_detect(tax_paths, "PROD"), tax_paths, NA)
+) %>%
+  group_by(year) %>%
+  summarise(
+    dict_path = first(na.omit(dict_path)),
+    data_path = first(na.omit(data_path)),
+    .groups = "drop"
+  )
+
+## drop where either dict or data is not available
+tax_files_df <- tax_files_df %>%
+  filter(!is.na(data_path) & !is.na(dict_path))
+
+
+## read in and clean data dictionaries
+tax_files_df <- tax_files_df %>%
+  mutate(
+    data = map2(dict_path, data_path, ~ {
+      dict <- read_csv(.x, show_col_types = FALSE)
+      col_types_str <- paste(dict$type, collapse = "")
+      read_csv(.y, col_types = col_types_str)
+    })
+  )
+```
+
+```{r see-common-cols}
+## get col names from each file
+column_names_list <- tax_files_df %>%
+  mutate(cols = map(data, names)) %>%
+  select(year, cols)
+
+## get diff, similar column names
+common_columns <- Reduce(intersect, column_names_list$cols)
+all_columns <- Reduce(union, column_names_list$cols)
+different_columns <- setdiff(all_columns, common_columns)
+
+## create a table to view in which files certain columns differ 
+column_presence <- map_dfr(different_columns, function(col) {
+  tibble(
+    column = col,
+    year = column_names_list$year,
+    present = map_lgl(column_names_list$cols, ~ col %in% .)
+  )
+}) %>%
+  pivot_wider(names_from = year, values_from = present, values_fill = list(present = FALSE)) %>%
+  arrange(column)
+
+column_presence
+```
+problem w six flag special district SFEXM in 2015. two columns names the same thing. they keep the int class one which is coded as SFEXM...32. delete SFEXM...69
+
+```{r}
+## fix 2015 SFEXM cols
+tax_files_df <- tax_files_df %>%
+  mutate(data = map2(data, year, ~ if (str_detect(.y, "2015")) {
+    .x %>%
+      select(-`SFEXM...69`) %>%
+      rename(
+        SFEXM = `SFEXM...32`
+      )
+  } else {
+    .x
+  }))
+
+tax_files_df <- tax_files_df %>%
+  select(year, data) %>%  # Keep only necessary columns
+  unnest(data) %>%
+  rename(tax_year = year)
+
+tax_files_df <- tax_files_df %>%
+  select(-`(A “*” is used )`, `Blank space`) %>%
+  clean_names()
+
+#need to remove leading zeros from parcels
+
+## save data because it takes super long to read
+write_csv(tax_files_df, file = here::here("output/cobb/RAW_cobb_digest_2011_2020.csv"))
+
+```
+
+### Cleaning: drop complete row duplicates
+
+```{r}
+raw_cobb_digest <- read.csv(here::here("output/cobb/RAW_cobb_digest_2011_2020.csv"))
+
+cat("Total rows:", scales::comma(nrow(raw_cobb_digest)), 
+    "\nUnique parcels:", scales::comma(length(unique(raw_cobb_digest$parid))))
+```
+
+```{r}
+# drop complete dupes
+init_len <- nrow(raw_cobb_digest)
+cobb_digest <- distinct(raw_cobb_digest)
+cat("Init len:", scales::comma(init_len), 
+    "\nDropped dupes:", scales::comma(init_len - nrow(cobb_digest)))
+```
+
+### Eliminate duplicate TAXYR, PARID keys by selecting for greatest SQFT
+
+These are parcels that contain multiple structures which are essentially ADUs; retain only the row with the largest living area square footage (main structure).
+
+```{r}
+init_len <- nrow(cobb_digest)
+
+setDT(cobb_digest)
+cobb_digest <- cobb_digest[
+  order(tax_year, parid, -acres)  # sort by group + descending sfla
+][
+  , .SD[1], by = .(tax_year, parid)  # take top row per group
+]
+
+cat("Init len:", scales::comma(init_len), 
+    "\nDropped parcels due to multiple entries in one year:", scales::comma(init_len - nrow(cobb_digest)))
+```
+
+### Check data consistency over the years
+
+```{r}
+
+count_of_records_parcel <- cobb_digest[, .(count_records = .N), by = parid]
+
+count_missing_a_record <- sum(count_of_records_parcel$count_records < uniqueN(cobb_digest$taxyr))
+
+tot_parcels_begin <- tot_parcels_begin <- merge(
+  cobb_digest[taxyr == 2011],
+  count_of_records_parcel,
+  by = "parid",
+  all.x = TRUE
+)
+begin_and_missing <- sum(tot_parcels_begin$count_records < 10)
+
+pivoted_data <- dcast(
+  cobb_digest[, .(parid, taxyr, record_exists = 1)],
+  parid ~ taxyr,
+  value.var = "record_exists",
+  fill = 0
+)
+
+cat("Total number of unique parcels in DIGEST files:", length(unique(cobb_digest$parid)), 
+    "\nNum parcels without a record for every year in period:", count_missing_a_record,
+    "\nTotal number of parcels around at start of study period:", pivoted_data %>% filter(!is.na(`2011`)) %>% nrow(),
+    "\nNum of parcels around at start that don't have an entry for every year:", begin_and_missing
+    )
+
+```
+### Save cleaned data to excel
+```{r}
+cat("There is only one row per (taxyr, parid) group:", cobb_digest[, .N, by = .(taxyr, parid)][, max(N) == 1])
+path <- paste0("output/cobb/DIGEST_cobb_2011_2020_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+write_csv(cobb_digest, file = here::here(path))
+
+rm(combined_data, count_of_records_parcel, pivoted_data, tot_parcels_begin, begin_and_missing, count_missing_a_record, init_len)
+
+```
+
+
+## Appeal Data
+
+```{r}
+cobb_appeals <- read_excel(here("data/cobb/2012to2022CobbAppealData_All Divisions.XLSX"), skip = 1) %>%
+  clean_names() %>%
+  arrange(parid, tax_year) 
+
+path <- paste0("output/cobb/APPEALS_cobb_2012_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+write_csv(cobb_appeals, here(path))
+```
+
+
