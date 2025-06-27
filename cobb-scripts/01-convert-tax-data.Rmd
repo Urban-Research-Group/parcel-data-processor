@@ -19,7 +19,8 @@ output_folder <- here::here("output/cobb")
 
 keywords <- c("TX502") ## this contains the parcel id, address, FMV, owner 1 &2, address, total tax, appeal value, mill vals, exemptions, owner & situs address in detail (!) 
 
-paths <- get_relevant_files(input_folder, keywords)
+paths <- get_relevant_files(input_folder, keywords) %>% 
+  filter(year != 2021) # this is because the 2021 year is already in a tabular format
 
 ## read in and clean data dictionaries
 cobb_data <- paths %>%

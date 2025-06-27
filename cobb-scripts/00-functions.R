@@ -31,6 +31,7 @@ clean_cobb_dictionaries <- function(table) {
   table <- table %>% 
     clean_names() %>%
     filter(!is.na(start_position) & !is.na(seq)) %>%
+    ## make sure that each column is the correct type
     mutate(type = case_when(
       startsWith(length_3, "C") ~ "c",
       grepl("^N[0-9]+$", length_3) ~ "i",

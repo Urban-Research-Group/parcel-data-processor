@@ -74,6 +74,11 @@ tax_files_df <- tax_files_df %>%
       read_csv(.y, col_types = col_types_str)
     })
   )
+
+### @mel 5/15 -- need to add in 2021 and deal with diff column names....
+tax_2021 <- read_csv(here("data/cobb/TAXDATA2021/TAXBILLS2021/TAXBILL_EXTRACT_2021_updated.csv"))
+tax_2021 <- data.frame(year = 2021, data = tax_2021)
+
 ```
 
 ```{r see-common-cols}
@@ -123,8 +128,6 @@ tax_files_df <- tax_files_df %>%
 tax_files_df <- tax_files_df %>%
   select(-`(A “*” is used )`, `Blank space`) %>%
   clean_names()
-
-#need to remove leading zeros from parcels
 
 ## save data because it takes super long to read
 write_csv(tax_files_df, file = here::here("output/cobb/RAW_cobb_digest_2011_2020.csv"))
