@@ -75,10 +75,15 @@ tax_files_df <- tax_files_df %>%
     })
   )
 
-### @mel 5/15 -- need to add in 2021 and deal with diff column names....
-tax_2021 <- read_csv(here("data/cobb/TAXDATA2021/TAXBILLS2021/TAXBILL_EXTRACT_2021_updated.csv"))
-tax_2021 <- data.frame(year = 2021, data = tax_2021)
-
+tax_2021 <- read_csv(here("data/cobb/TAXDATA2021/TAXBILLS2021/TAXBILL_EXTRACT_2021_updated.csv")) %>%
+  
+tax_files_df <- bind_rows(
+  tax_files_df,
+  tibble(year = "2021", 
+         dict_path = NA_character_, 
+         data_path = NA_character_,
+         data = list(tax_2021))
+)
 ```
 
 ```{r see-common-cols}
@@ -105,7 +110,7 @@ column_presence <- map_dfr(different_columns, function(col) {
 
 column_presence
 ```
-problem w six flag special district SFEXM in 2015. two columns names the same thing. they keep the int class one which is coded as SFEXM...32. delete SFEXM...69
+six flag special district created in 2015 and taxed in 2016 onwards. two columns names the same thing. they keep the int class one which is coded as SFEXM...32. delete SFEXM...69
 
 ```{r}
 ## fix 2015 SFEXM cols
@@ -120,6 +125,21 @@ tax_files_df <- tax_files_df %>%
     .x
   }))
 
+## JUR in 2021 needs to be char instead of double
+tax_files_df <- tax_files_df %>%
+  mutate(data = map2(data, year, ~ if (str_detect(.y, "2021")) {
+    .x %>%
+      mutate(JUR = as.character(JUR),
+             TAXPAYERNUM = as.character(TAXPAYERNUM),
+             LENDINST = as.character(LENDINST),
+             O_ZIP1 = as.character(O_ZIP1),
+             O_ZIP2 = as.character(O_ZIP2),
+             L_ZIP1 = as.character(L_ZIP1),
+             L_ZIP2 = as.character(L_ZIP2))
+  } else {
+    .x
+  }))
+
 tax_files_df <- tax_files_df %>%
   select(year, data) %>%  # Keep only necessary columns
   unnest(data) %>%
@@ -130,14 +150,14 @@ tax_files_df <- tax_files_df %>%
   clean_names()
 
 ## save data because it takes super long to read
-write_csv(tax_files_df, file = here::here("output/cobb/RAW_cobb_digest_2011_2020.csv"))
+write_csv(tax_files_df, file = here::here("output/cobb/RAW_cobb_digest_2011_2021.csv"))
 
 ```
 
 ### Cleaning: drop complete row duplicates
 
 ```{r}
-raw_cobb_digest <- read.csv(here::here("output/cobb/RAW_cobb_digest_2011_2020.csv"))
+raw_cobb_digest <- read.csv(here::here("output/cobb/RAW_cobb_digest_2011_2021.csv"))
 
 cat("Total rows:", scales::comma(nrow(raw_cobb_digest)), 
     "\nUnique parcels:", scales::comma(length(unique(raw_cobb_digest$parid))))
@@ -202,7 +222,7 @@ cat("Total number of unique parcels in DIGEST files:", length(unique(cobb_digest
 ### Save cleaned data to excel
 ```{r}
 cat("There is only one row per (taxyr, parid) group:", cobb_digest[, .N, by = .(taxyr, parid)][, max(N) == 1])
-path <- paste0("output/cobb/DIGEST_cobb_2011_2020_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+path <- paste0("output/cobb/DIGEST_cobb_2011_2021_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
 write_csv(cobb_digest, file = here::here(path))
 
 rm(combined_data, count_of_records_parcel, pivoted_data, tot_parcels_begin, begin_and_missing, count_missing_a_record, init_len)
