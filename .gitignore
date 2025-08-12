@@ -2,6 +2,7 @@ data/*
 /output
 ga-tax-assessment
 *.xlsx
+*.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
