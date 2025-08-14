@@ -1,0 +1,338 @@
+---
+title: "Processing Fulton Commerical Datasets"
+author: "Melissa Juarez"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: yes
+    toc_float:
+      collapsed: yes
+---
+
+## Introduction
+
+The goal of this analysis is to create a master dataset that maps commercial parcels in Fulton County with digest, appeals, and sales data between 2011 and 2022. My previous attempts that this included trying to isolate valid sales based on a previous research question, but I will not be doing this moving forward because the master dataset should be applicable to multiple research questions and I do not want to potentially exclude relevant data.
+
+Thus, I will be focusing this document on data cleaning: merging, dedupping, data imputation, etc.
+
+```{r setup, include = F}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	error = F,
+	message = FALSE,
+	warning = FALSE
+)
+ 
+options(scipen=999)
+
+## load libraries
+library(dplyr)
+library(here)
+library(janitor)
+library(readxl)
+library(tidyr)
+library(readr)
+library(writexl)
+```
+
+## Digest Data
+### Read and Join all CMR files
+
+Digest files are organizes by year, but have consistent column names and data types; so we will just need to bind them together.
+
+```{r}
+cmr_paths <- list.files(here::here("data/fulton_raw"), pattern = "CMR.*\\.xlsx$", recursive = T, full.names = T)
+combined_data <- lapply(cmr_paths, read_excel)
+
+fulton_cmr <- plyr::rbind.fill(combined_data) %>%
+  arrange(Taxyr, Parid) %>%
+  filter(!grepl("Count Distinct", Parid))
+
+colnames(fulton_cmr) <- gsub("\\.{3}\\d+", "", colnames(fulton_cmr))
+
+cat("Total rows:", nrow(fulton_cmr), "\nUnique parcels:", length(unique(fulton_cmr$Parid)))
+```
+
+### Cleaning: drop complete row duplicates
+
+```{r}
+# drop complete dupes
+init_len <- nrow(fulton_cmr)
+fulton_cmr <- distinct(fulton_cmr)
+cat("Init len:", init_len, "\nDropped dupes:", init_len - nrow(fulton_cmr))
+
+# save as raw file
+write_xlsx(fulton_cmr, path = here::here("output/CMR/RAW_fulton_commercial_digest_2011_2022.xlsx"))
+
+# review data types
+str(fulton_cmr)
+```
+
+### Eliminate duplicate TAXYR, PARID keys by selecting for greatest SQFT
+
+These are parcels that contain multiple structures which are essentially ADUs; retain only the row with the largest living area square footage (main structure).
+
+```{r}
+fulton_cmr %>%
+  group_by(Taxyr, Parid) %>%
+  filter(n() > 1) %>%
+  ungroup()
+
+## what does Card column mean?
+init_len <- nrow(fulton_cmr)
+fulton_cmr <- fulton_cmr %>%
+  group_by(Taxyr, Parid) %>%
+  slice_max(Sf, n = 1, na_rm = FALSE) %>%
+  slice(1) %>% # if one or more have same sq footage, just take the top one
+  ungroup()
+
+cat("Init len:", init_len, "\nDropped parcels due to multiple entries in one year:", init_len - nrow(fulton_cmr))
+```
+
+### Check data consistency over the years
+
+```{r}
+count_of_records_parcel <- fulton_cmr %>%
+  group_by(Parid) %>%
+  summarise(count_records = n()) %>%
+  ungroup()
+
+count_missing_a_record <- sum(count_of_records_parcel$count_records < length(unique(fulton_cmr$Taxyr)))
+
+tot_parcels_begin <- fulton_cmr %>%
+  filter(Taxyr == 2011) %>%
+  merge(count_of_records_parcel, by = "Parid", all.x = T)
+begin_and_missing <- sum(tot_parcels_begin$count_records < 12)
+
+pivoted_data <- fulton_cmr %>%
+  select(Taxyr, Parid) %>%
+  mutate(record_exists = 1) %>%
+  pivot_wider(
+    names_from = Taxyr,         
+    values_from = record_exists, # Values in the cells will be 1 if there's a record
+  )
+
+cat("Total number of unique commercial parcels:", length(unique(fulton_cmr$Parid)), 
+    "\nNum parcels without a record for every year in period:", count_missing_a_record,
+    "\nTotal number of parcels around at start of study period:", pivoted_data %>% filter(!is.na(`2011`)) %>% nrow(),
+    "\nNum of parcels around at start that don't have an entry for every year:", begin_and_missing
+    )
+
+```
+
+### Save cleaned data to excel
+```{r}
+path <- paste0("output/DIGEST_fulton_commercial_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".xlsx")
+write_xlsx(fulton_cmr, path = here::here(path))
+
+rm(combined_data, count_of_records_parcel, pivoted_data, tot_parcels_begin, begin_and_missing, count_missing_a_record, init_len)
+
+```
+
+
+## Sales Data
+
+The sales data set contains all sales across Fulton county. We need to isolate to commercial sales based on unique parcel ids in the digest dataset.
+
+```{r}
+cmr_parids <- unique(fulton_cmr$Parid)
+
+raw_sales <- read_csv(here::here("data/1727793735_fulton_sales.csv"))
+
+sales <- raw_sales %>% 
+  distinct() %>%
+  filter(parcel_id %in% cmr_parids) 
+
+cat("Total number of unique commercial parcel in digest:", length(unique(fulton_cmr$Parid)),
+    "\nTotal Number of commercial AND non-commercial transactions:", nrow(raw_sales),
+    "\nNum of commercial transactions:", nrow(sales),
+    "\nNum of unique commerical properties transacted upon:", length(unique(sales$parcel_id)),
+    "\nNum of unique parcels not transacted upon between 2011 and 2022 tax years:", 
+    length(unique(fulton_cmr$Parid)) - length(unique(sales$parcel_id)), "/",
+    round((length(unique(fulton_cmr$Parid)) - length(unique(sales$parcel_id))) / length(unique(fulton_cmr$Parid)) * 100), "%")
+  
+```
+
+I will not merge with the digest yet because there can be multiple sales associated with one property in a given year. I want my digest to be 1:1 with appeals and have sales as separate to reduce dupes.
+
+### Save cleaned data to excel
+```{r}
+path <- paste0("output/SALES_fulton_commercial_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".xlsx")
+write_xlsx(sales, path = here::here(path))
+
+rm(raw_sales)
+
+```
+
+## Appeals Data
+
+```{r}
+appeals <- read_excel(here::here("data/fulton_raw/APPEALS 2011-2022.xlsx")) ## has 7 columns
+head(appeals)
+
+appeals <- appeals %>%
+  semi_join(fulton_cmr, by.x = c("TAXYR", "PARID"), by.y = c("Taxyr", "Parid"))
+  arrange(PARID, TAXYR)
+
+cat("Total number of appeals:", nrow(appeals),
+    "\nTotal number of unique commercial parcels who appealed:", length(unique(appeals$PARID)))
+
+```
+
+For a given tax year-parcel id combo, the current assessment column should be equal to the 40% of the `Aprtot` variable in the digest. However, I have found that it is not the case for about 16% of cases.
+
+Reasons could be that the property's appeal was settled into the next tax year. For cases where the current assessment is zero but the digest has an entry for assessed value, we should replace the current assessment with the digest assessed value entry for that year. This assumes that the digest is more up-to-date with the outcomes of the appeal represented in the `appeals` data. The appeal in a given tax year requests an adjustment to the value of the home in that same tax year, which is stored in the digest. Although the appeal process length may go into the next year, if the noted digest assessment in the appeal tax year is different than the notice assessment in the `appeals` data, we should assume that it has been adjusted to reflect the outcome of the appeal for that tax year.
+
+Missing Digest Record -- parcel id-tax year combo is found in the appeals data but not digest data. missingness in digest or did the building change from commercial to non-commercial? if we can assume latter for all cases, we should not only filter the sales and appeals by parid, but by combinations of parid-tax year in the digest.
+
+```{r}
+
+appeals <- appeals %>%
+  merge(fulton_cmr %>% 
+          select(Taxyr, Parid, Aprtot), by.x = c("TAXYR", "PARID"), by.y = c("Taxyr", "Parid"), all.x = T) %>%
+  mutate(digest_assessed = 0.4 * Aprtot) 
+
+## view low current assessments
+appeals %>%
+  mutate(diff_assessed_current = `CURRENT ASSESSMENT` - digest_assessed) %>%
+  select(TAXYR, PARID, `NOTICE ASSESSMENT`, `CURRENT ASSESSMENT`, digest_assessed, diff_assessed_current) %>%
+  arrange(`CURRENT ASSESSMENT`) %>%
+  mutate(diff_grouped = case_when(
+    diff_assessed_current < 0 ~ "Digest greater than Current assessment",
+    diff_assessed_current > 0 ~ "Current greater than Digest assessment",
+    diff_assessed_current == 0 ~ "Digest and Current assessment match.",
+    TRUE ~ "Missing Digest Record"
+  )) %>%
+  tabyl(diff_grouped)
+  View()
+
+### replace current assessment w digest assessment for cases where c.a. is zero and d.a. is non zero: about 180 cases
+appeals <- appeals %>%
+  mutate(adj_current_assessment = case_when(
+    `CURRENT ASSESSMENT` == 0 & digest_assessed != 0 & !is.na(digest_assessed) ~ digest_assessed ,
+    TRUE ~ `CURRENT ASSESSMENT`
+  ))
+
+appeals %>%
+  mutate(diff_assessed_current = adj_current_assessment - digest_assessed) %>%
+  mutate(diff_grouped = case_when(
+    diff_assessed_current < 0 ~ "Digest greater than Current assessment",
+    diff_assessed_current > 0 ~ "Current greater than Digest assessment",
+    diff_assessed_current == 0 ~ "Digest and Current assessment match.",
+    TRUE ~ "Missing Digest Record"
+  )) %>%
+  tabyl(diff_grouped)
+  View()
+
+```
+
+There are other cases where the notice or current assessed value that should have been XXX,000 is written as XXX without the last three digits. View entries below. We need to write code that if notice assessment or current assessment is less than digest assessed value by 3 orders of magnitude, we add 3 zeros to them to get them on the same scale.
+
+I am also noticing that there is this same issue in the digest files that I have to go back and clean. (logic: look at the values for land, building, and aprtot for all year of a given parid. if at any year the values loose 3 orders of magnitude, we add 3 zeros.)
+
+Also, let's not do anything with current == 40 / aprtot == 100. I think that is code for something and I need to figure out what.
+
+```{r}
+appeals %>%
+  mutate(diff_assessed_current = `CURRENT ASSESSMENT` - digest_assessed) %>%
+  select(TAXYR, PARID, `NOTICE ASSESSMENT`, adj_current_assessment, digest_assessed, diff_assessed_current) %>%
+  filter(adj_current_assessment > 40 & diff_assessed_current != 0) %>%
+  arrange(adj_current_assessment)
+```
+
+```{r}
+# isolate the problematic columns first. look for where in notice, current, and digest, there is at least 
+# one value that is 3 OOM less than the others
+
+dirty_assessments <- appeals %>%
+  filter(!(adj_current_assessment %in% c(0, 40))) %>%
+  rowwise() %>%
+  filter(max(c(`NOTICE ASSESSMENT`, adj_current_assessment, digest_assessed)) / 
+           min(c(`NOTICE ASSESSMENT`, adj_current_assessment, digest_assessed)) >= 1000) %>%
+  mutate(
+    # compute the expected truncation of digest_assessed
+    expected_adj = round(digest_assessed, -5) / 10000,
+    adj_current_assessment = ifelse(round(adj_current_assessment) == round(expected_adj), 
+                                    digest_assessed, adj_current_assessment)
+  ) %>% select(-expected_adj)
+
+## now impute the adj_notice assessments. if the Notice assessment == old current assessment, them impute the adj_current to the notice assessments.
+
+dirty_assessments <- dirty_assessments %>%
+  mutate(adj_notice_assessment = case_when(
+    `NOTICE ASSESSMENT` == `CURRENT ASSESSMENT` ~ adj_current_assessment,
+    ## otherwise if adj current and notice are off by 3 then add 3 zeros.
+    adj_current_assessment / `NOTICE ASSESSMENT` >= 1000 ~ `NOTICE ASSESSMENT` * 10000,
+    TRUE ~ `NOTICE ASSESSMENT`
+  ))
+
+#and now rewrite over appeals dataset
+
+cleaned_appeals <- appeals %>%
+  left_join(dirty_assessments %>% select(TAXYR, PARID, adj_current_assessment, adj_notice_assessment, digest_assessed), 
+            by = c("TAXYR", "PARID")) %>%
+  mutate(
+    adj_notice_assessment = coalesce(adj_notice_assessment, `NOTICE ASSESSMENT`),
+    adj_current_assessment = coalesce(adj_current_assessment.y, adj_current_assessment.x),
+    digest_assessed = coalesce(digest_assessed.y, digest_assessed.x)
+  ) %>% 
+  select(TAXYR, PARID, HEARTYP, SUBKEY, `NOTICE ASSESSMENT`, `CURRENT ASSESSMENT`, CLASS, adj_notice_assessment, adj_current_assessment)
+
+```
+
+### Save cleaned data to excel
+```{r}
+path <- paste0("output/APPEALS_fulton_commercial_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".xlsx")
+write_xlsx(cleaned_appeals, path = here::here(path))
+
+```
+
+## Merge appeals data with digest dataset
+
+There are cases where they may be multiple appeals for the same year on file. The recorded outcomes on assessment are the same, but the hearing type is different. Below are the codes for `HEARTYP`:
+
+-   B: Board of Assessors: The initial appeal is reviewed by the Board of Tax Assessors and if the Board's decision is a "no change," the appeal is forwarded to the Board of Equalization.
+
+-   E: Boards of Equalization
+
+-   H: [Hearing Officer](https://www.fultonclerk.org/468/Hearing-Officer-Appeals): In a dispute involving the value or uniformity of a parcel of non-homestead real property with a fair market value in excess of \$500,000, the taxpayer may choose to appeal to a Hearing Officer. The Hearing Officer has all the powers, duties, and authority of a county or regional board of equalization and determines the fair market value of the real property based upon the testimony and evidence presented during the hearing. Any issues other than fair market value and uniformity are preserved for an appeal to the superior court.
+
+-   R/X: Arbitration/Binding Arbitration
+
+-   O: Settlement Conference (post BOE, Pre-Superior Court): for all people appealing their BOE or hearing officer to the superior court. if no settlement is agreed upon, then it moves to superior court.
+
+-   S: Superior Court -- The Appellant or the County Board of Tax Assessors may appeal decisions of the Board of Equalization. The appeal to the Superior Court must be filed with the Board of Tax Assessors by the owner or his/her attorney.
+
+You can review the process here: <https://www.youtube.com/watch?v=gk5byVrJZ6s>
+
+Below, we will keep the highest rank decision based on the order of the appeals process. This is so we have a 1:1 with tax year-parid combo and appeal, if any.
+
+```{r}
+fulton_digest_appeals <- fulton_cmr %>%
+  merge(cleaned_appeals, by.x = c("Taxyr", "Parid"), by.y = c("TAXYR", "PARID"), all.x = T)
+
+#remove columns with duplicated data
+fulton_digest_appeals <- fulton_digest_appeals[!duplicated(as.list(fulton_digest_appeals))]
+
+## view the multi appeal year-parcels
+fulton_digest_appeals %>%
+  group_by(Taxyr, Parid) %>%
+  filter(n() > 1) %>%
+  ungroup() %>% View()
+
+# rank the hearing types and only keep latest decision
+fulton_digest_appeals <- fulton_digest_appeals %>% 
+  mutate(HEARTYP_rank = case_when(
+    HEARTYP == "B" ~ 1,
+    HEARTYP %in%  c("E", "H") ~ 2,
+    HEARTYP %in% c("R", "X") ~ 3,
+    HEARTYP == "O" ~ 4,
+    HEARTYP == "S" ~ 5,
+  )) %>%
+  group_by(Taxyr, Parid) %>%
+  slice_max(HEARTYP_rank) 
+
+path <- paste0("output/fulton_commercial_digest+appeals_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".xlsx")
+write_xlsx(fulton_digest_appeals, path = here::here(path))
+
+```
