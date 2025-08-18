@@ -9,13 +9,13 @@ library(readxl)
 library(glue)
 library(janitor)
 library(stringi)
-source(here::here('cobb-scripts/00-functions.R'))
+source(here::here('code/cobb/00-functions.R'))
 
 ```
 
 ```{r}
 input_folder <- here::here("data/cobb")
-output_folder <- here::here("output/cobb")
+output_folder <- here::here("output/cobb/1-raw_converted")
 
 keywords <- c("TX502") ## this contains the parcel id, address, FMV, owner 1 &2, address, total tax, appeal value, mill vals, exemptions, owner & situs address in detail (!) 
 
