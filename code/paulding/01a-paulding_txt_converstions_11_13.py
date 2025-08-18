@@ -82,10 +82,9 @@ def process_lines(txt_lines, dictionary):
 
     return processed_lines
 
-def processed_file_to_csv(input_folder):
+def processed_file_to_csv(input_folder, output_folder):
 
     print("Attempting to save file as .csv")
-    output_folder = input_folder + '/converted'
     csv_file_path = os.path.join(output_folder, os.path.splitext(txt.replace(input_folder + "/", ""))[0] + '.csv')
     output_dir = csv_file_path.rsplit('/', 1)[0]
     os.makedirs(output_dir, exist_ok=True)
@@ -107,7 +106,9 @@ def processed_file_to_csv(input_folder):
 
 
 input_folder = 'data/paulding'
+output_folder = 'output/paulding/01-raw_converted'
 years = ['2011', '2012', '2013']
+
 
 paths = get_relevant_files(input_folder, years)
 
@@ -125,5 +126,5 @@ for subdir, files in paths.items():
         lines = f.readlines()
 
     processed_lines = process_lines(lines, paulding_df)
-    processed_file_to_csv(input_folder)
+    processed_file_to_csv(input_folder, output_folder)
 

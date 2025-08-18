@@ -55,11 +55,9 @@ def dbf_to_csv(dbf_paths, output_folder):
 
 ###################### ################ ######################
 
-# path to main folder
-county = 'paulding'
-
-input_folder = 'data/' + county
-output_folder = 'output/' + county
+# path to input and output folders
+input_folder = 'data/paulding'
+output_folder = 'output/paulding/01-raw_converted'
 
 dbf_paths = get_dbf_files(input_folder)
 

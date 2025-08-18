@@ -16,13 +16,14 @@ This document takes the converted paulding data and binds them together so that 
 ```{r}
 library(dplyr)
 library(tidyverse)
+library(readr)
 ```
 
 
 ## Tyler 2011-2013
 
 ```{r get-tyler-data}
-source <- here::here("output/paulding")
+source <- here::here("output/paulding/1-raw_converted")
 tyler_years <- 2011:2013
 pattern <- paste(tyler_years, collapse = "|")
 
@@ -99,7 +100,7 @@ long_table <- type_convert(long_table, col_types = cols())
 head(long_table)
 
 ## write file
-path <- paste0("output/paulding/DIGEST_paulding_tyler_2011_2013_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+path <- paste0("output/paulding/2-processed_clean/DIGEST_paulding_tyler_2011_2013_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
 write_csv(long_table, here::here(path))
 
 rm(col_names, column_names_list, column_presence, long_table, nested_data, all_columns, common_columns,
@@ -120,10 +121,10 @@ appeals data not available 2014
 
 ```{r}
 
-source <- here::here("output/paulding")
+source <- here::here("output/paulding/1-raw_converted")
 
 wingap_paths <- list.files(source, full.names = TRUE, recursive = TRUE)
-filtered_files <- wingap_paths[str_detect(wingap_paths, "20(1[4-9]|2[0-2]).*(PE_REALPROP|PE_SALEINFO|PE_OWNER|PE_APPEALS)")]
+filtered_files <- wingap_paths[str_detect(wingap_paths, "20(1[4-9]|2[0-3]).*(PE_REALPROP|PE_SALEINFO|PE_OWNER|PE_APPEALS)")]
 
 
 nested_data <- tibble(path = filtered_files) %>%
@@ -138,7 +139,7 @@ all_appeals <- nested_data %>%
   unnest()
 
 
-path <- paste0("output/paulding/APPEALS_paulding_1999_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+path <- paste0("output/paulding/2-processed_clean/APPEALS_paulding_1999_2023_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
 write_csv(all_appeals, here::here(path))
 
 rm(all_appeals)
@@ -149,7 +150,7 @@ all_sales <- nested_data %>%
   select(data) %>%
   unnest()
 
-path <- paste0("output/paulding/SALES_paulding_1886_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+path <- paste0("output/paulding/2-processed_clean/SALES_paulding_1886_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
 write_csv(all_sales, here::here(path))
 
 rm(all_sales)
@@ -272,7 +273,7 @@ digest <- long_table %>%
 
 save the data
 ```{r}
-path <- paste0("output/paulding/DIGEST_paulding_wingap_2014_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+path <- paste0("output/paulding/2-processed_clean/DIGEST_paulding_wingap_2014_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
 write_csv(digest, here::here(path))
 
 ```
