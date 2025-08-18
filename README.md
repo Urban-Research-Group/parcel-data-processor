@@ -16,8 +16,8 @@ Then send off to other projects
 
 | Step | Progress |
 |--------------------------|----------------------------------------------|
-| Convert digest, appeals, and sales | Digest completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/clayton/DIGEST_clayton_2012_2022.csv` |
-| Process into single multi-year files | Digest completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/clayton/DIGEST_clayton_2012_2022.csv` |
+| Convert digest, appeals, and sales | Digest completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/clayton/1-raw_converted` |
+| Process into single multi-year files | Digest completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/clayton/``2-processed_clean` |
 | Run ownership key script | Completed YZ/Needs Review MJ |
 | Run geocoding script | Will need to be geocoded thru Google or Mapbox - IP |
 
@@ -53,7 +53,7 @@ Then send off to other projects
 | Step | Progress |
 |---------------------------|---------------------------------------------|
 | Convert digest, appeals, and sales | 3/3 completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/gwinnett` |
-| Process into single multi-year files | 3/3 completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/gwinnett` |
+| Process into single multi-year files | 3/3 completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/gwinnett/2-processed_clean` |
 | Run ownership key script | Completed MJ/Needs Review YZ |
 | Run geocoding script | Completed YZ/Needs Review MJ |
 
@@ -61,7 +61,7 @@ Then send off to other projects
 
 | Step | Progress |
 |---------------------------|---------------------------------------------|
-| Convert digest, appeals, and sales | 3/3 Completed |
+| Convert digest, appeals, and sales | 3/3 Completed. Files can be found in Data Engineering channel or in `output/paulding/2-processed_clean` |
 | Process into single multi-year files | 2/3 Completed: need to merge 2 digest files between wingap and tyler (diff data structure & columns) |
 | Run ownership key script |  |
 | Run geocoding script |  |
