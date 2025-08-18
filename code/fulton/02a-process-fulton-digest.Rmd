@@ -41,7 +41,7 @@ library(data.table)
 Digest files are organizes by year, but have consistent column names and data types; so we will just need to bind them together.
 
 ```{r bind-data, eval=FALSE, include=FALSE}
-digest_paths <- list.files(here::here("data/fulton_raw"), 
+digest_paths <- list.files(here::here("data/fulton"), 
                            pattern = ".*(DIGEST|NF|SF).*\\.xlsx$", 
                            recursive = T, full.names = T)
 
@@ -50,32 +50,23 @@ combined_data <- lapply(digest_paths, read_excel)
 fulton_digest <- plyr::rbind.fill(combined_data) 
 
 ## save data because it takes super long to read
-write_csv(fulton_digest, file = here::here("data/RAW_fulton_NFSFDIGEST_2011_2022.csv"))
+write_csv(fulton_digest, file = here::here("output/fulton/2-processed_clean/RAW_fulton_NFSFDIGEST_2010_2022.csv"))
 rm(combined_data)
 ```
 
 ```{r}
-raw_fulton_digest <- read.csv(here::here("data/RAW_fulton_NFSFDIGEST_2011_2022.csv"))
+raw_fulton_digest <- read.csv(here::here("output/fulton/2-processed_clean/RAW_fulton_NFSFDIGEST_2010_2022.csv"))
 
-## 16 ram: need to select important columns at the beginning otherwise the operations are
-## too memory consuming. if at later steps, we need more info, then we should refer to raw data
-fulton_digest <- raw_fulton_digest %>%
-  select(Taxyr, Parid, Nbhd, Situs.Adrno, Situs.Adrdir, Situs.Adrstr, Situs.Adrsuf, Situs.Adrsuf2, Cityname...9, Zoning, Class, Luc,
-         Livunit, Calcacres, Note1, Note2, Ofcard, Taxdist, Own1, Own2, Owner.Adrno, Owner.Adradd, Owner.Adrdir,
-         Owner.Adrstr, Owner.Adrsuf, Owner.Adrsuf2, Cityname...51, Statecode, Country, Unitno, Zip1,
-         Aprtot, Revcode, Revreas, Revtot, D.Yrblt, Sfla,
-         D.Grade) 
 
-fulton_digest <- fulton_digest %>%
+fulton_digest <- raw_fulton_digest  %>%
   dplyr::rename(situs_cityname = Cityname...9,
-         owner_cityname = Cityname...51)
-
-## remove summary column at the end of each digest & entries w no tax year
-setDT(fulton_digest)
-fulton_digest <- fulton_digest[!is.na(Taxyr)][order(Taxyr, Parid)]
-
-fulton_digest <- fulton_digest %>%
+         owner_cityname = Cityname...51) %>%
   clean_names()
+
+## remove summary column at the end of each digest/entries w no tax year
+setDT(fulton_digest)
+fulton_digest <- fulton_digest[!is.na(taxyr)][order(taxyr, parid)]
+
 
 cat("Total rows:", scales::comma(nrow(fulton_digest)), 
     "\nUnique parcels:", scales::comma(length(unique(fulton_digest$parid))))
@@ -87,7 +78,7 @@ Nick also drops nulls from important columns, but I will keep for now.
 ```{r}
 # drop complete dupes
 init_len <- nrow(fulton_digest)
-fulton_digest <- distinct(fulton_digest)
+fulton_digest <- unique(fulton_digest)
 cat("Init len:", scales::comma(init_len), 
     "\nDropped dupes:", scales::comma(init_len - nrow(fulton_digest)))
 ```
@@ -143,7 +134,7 @@ cat("Total number of unique parcels in NF, SF, and DIGEST files:", length(unique
 ### Save cleaned data to excel
 ```{r}
 cat("There is only one row per (taxyr, parid) group:", fulton_digest[, .N, by = .(taxyr, parid)][, max(N) == 1])
-path <- paste0("output/DIGEST_fulton_NFSFDIGEST_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+path <- paste0("output/fulton/2-processed_clean/DIGEST_fulton_NFSFDIGEST_2010_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
 write_csv(fulton_digest, file = here::here(path))
 
 rm(combined_data, count_of_records_parcel, pivoted_data, tot_parcels_begin, begin_and_missing, count_missing_a_record, init_len)
@@ -154,7 +145,7 @@ rm(combined_data, count_of_records_parcel, pivoted_data, tot_parcels_begin, begi
 ## Appeals Data
 
 ```{r}
-raw_appeals <- read_excel(here::here("data/fulton_raw/APPEALS 2011-2022.xlsx")) %>% ## has 7 columns
+raw_appeals <- read_excel(here::here("data/fulton/APPEALS 2011-2022.xlsx")) %>% ## has 7 columns
   clean_names()
 head(raw_appeals)
 
@@ -267,7 +258,7 @@ cleaned_appeals <- appeals %>%
 
 ### Save cleaned data to excel
 ```{r}
-path <- paste0("output/APPEALS_fulton_NFSFDIGEST_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+path <- paste0("output/fulton/2-processed_clean/APPEALS_fulton_NFSFDIGEST_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
 write_csv(cleaned_appeals, file = here::here(path))
 
 rm(raw_appeals, dirty_assessments, appeals)
@@ -319,12 +310,13 @@ unique_appeals <- unique_appeals %>%
   dplyr::rename(appeal_class = class)
 
 fulton_digest_appeals <- fulton_digest %>%
+  filter(taxyr != 2010) %>% ## appeals only go back to 2011
   merge(unique_appeals, by = c("taxyr", "parid"), all.x = T)
 
 ```
 
 ```{r}
-path <- paste0("output/fulton_NFSFDIGEST_digest+appeals_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+path <- paste0("output/fulton/2-processed_clean/fulton_NFSFDIGEST_digest+appeals_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
 write_csv(fulton_digest_appeals, file = here::here(path))
 
 ```

@@ -32,7 +32,7 @@ library(janitor)
 library(readxl)
 library(tidyr)
 library(readr)
-library(writexl)
+library(data.table)
 ```
 
 ## Digest Data
@@ -41,16 +41,32 @@ library(writexl)
 Digest files are organizes by year, but have consistent column names and data types; so we will just need to bind them together.
 
 ```{r}
-cmr_paths <- list.files(here::here("data/fulton_raw"), pattern = "CMR.*\\.xlsx$", recursive = T, full.names = T)
+cmr_paths <- list.files(here::here("data/fulton"), pattern = "CMR.*\\.xlsx$", recursive = T, full.names = T)
 combined_data <- lapply(cmr_paths, read_excel)
 
-fulton_cmr <- plyr::rbind.fill(combined_data) %>%
-  arrange(Taxyr, Parid) %>%
-  filter(!grepl("Count Distinct", Parid))
+raw_fulton_cmr <- plyr::rbind.fill(combined_data) 
 
-colnames(fulton_cmr) <- gsub("\\.{3}\\d+", "", colnames(fulton_cmr))
+## save data because it takes super long to read
+write_csv(raw_fulton_cmr, file = here::here("output/fulton/2-processed_clean/CMR/RAW_fulton_CMR_DIGEST_2011_2022.csv"))
+rm(combined_data)
+```
 
-cat("Total rows:", nrow(fulton_cmr), "\nUnique parcels:", length(unique(fulton_cmr$Parid)))
+```{r}
+fulton_cmr <- raw_fulton_cmr %>%
+  select(-Card...59, -Areasum...57, -Yrblt...71, -Effyr...72)
+
+fulton_cmr <- fulton_cmr  %>%
+  dplyr::rename(card = Card...3,
+                areasum = Areasum...47,
+                yrblt = Yrblt...49,
+                effyr = Effyr...50) %>%
+  clean_names()
+
+setDT(fulton_cmr)
+## remove summary column at the end of each digest/entries w no tax year
+fulton_cmr <- fulton_cmr[!is.na(taxyr)][order(taxyr, parid)]
+
+cat("Total rows:", nrow(fulton_cmr), "\nUnique parcels:", length(unique(fulton_cmr$parid)))
 ```
 
 ### Cleaning: drop complete row duplicates
@@ -58,61 +74,54 @@ cat("Total rows:", nrow(fulton_cmr), "\nUnique parcels:", length(unique(fulton_c
 ```{r}
 # drop complete dupes
 init_len <- nrow(fulton_cmr)
-fulton_cmr <- distinct(fulton_cmr)
+fulton_cmr <- unique(fulton_cmr)
 cat("Init len:", init_len, "\nDropped dupes:", init_len - nrow(fulton_cmr))
-
-# save as raw file
-write_xlsx(fulton_cmr, path = here::here("output/CMR/RAW_fulton_commercial_digest_2011_2022.xlsx"))
 
 # review data types
 str(fulton_cmr)
 ```
 
-### Eliminate duplicate TAXYR, PARID keys by selecting for greatest SQFT
+### Eliminate duplicate taxyr, parid keys by selecting for greatest SQFT
 
 These are parcels that contain multiple structures which are essentially ADUs; retain only the row with the largest living area square footage (main structure).
 
 ```{r}
-fulton_cmr %>%
-  group_by(Taxyr, Parid) %>%
-  filter(n() > 1) %>%
-  ungroup()
-
-## what does Card column mean?
 init_len <- nrow(fulton_cmr)
-fulton_cmr <- fulton_cmr %>%
-  group_by(Taxyr, Parid) %>%
-  slice_max(Sf, n = 1, na_rm = FALSE) %>%
-  slice(1) %>% # if one or more have same sq footage, just take the top one
-  ungroup()
 
-cat("Init len:", init_len, "\nDropped parcels due to multiple entries in one year:", init_len - nrow(fulton_cmr))
+fulton_cmr <- fulton_cmr[
+  order(taxyr, parid, -sf)  # sort by group + descending sfla
+][
+  , .SD[1], by = .(taxyr, parid)  # take top row per group
+]
+
+cat("Init len:", scales::comma(init_len), 
+    "\nDropped parcels due to multiple entries in one year:", scales::comma(init_len - nrow(fulton_cmr)))
 ```
 
 ### Check data consistency over the years
 
 ```{r}
-count_of_records_parcel <- fulton_cmr %>%
-  group_by(Parid) %>%
-  summarise(count_records = n()) %>%
-  ungroup()
 
-count_missing_a_record <- sum(count_of_records_parcel$count_records < length(unique(fulton_cmr$Taxyr)))
+count_of_records_parcel <- fulton_cmr[, .(count_records = .N), by = parid]
 
-tot_parcels_begin <- fulton_cmr %>%
-  filter(Taxyr == 2011) %>%
-  merge(count_of_records_parcel, by = "Parid", all.x = T)
+count_missing_a_record <- sum(count_of_records_parcel$count_records < length(unique(fulton_cmr$taxyr)))
+
+tot_parcels_begin <- tot_parcels_begin <- merge(
+  fulton_cmr[taxyr == 2011],
+  count_of_records_parcel,
+  by = "parid",
+  all.x = TRUE
+)
 begin_and_missing <- sum(tot_parcels_begin$count_records < 12)
 
-pivoted_data <- fulton_cmr %>%
-  select(Taxyr, Parid) %>%
-  mutate(record_exists = 1) %>%
-  pivot_wider(
-    names_from = Taxyr,         
-    values_from = record_exists, # Values in the cells will be 1 if there's a record
-  )
+pivoted_data <- dcast(
+  fulton_cmr[, .(parid, taxyr, record_exists = 1)],
+  parid ~ taxyr,
+  value.var = "record_exists",
+  fill = 0
+)
 
-cat("Total number of unique commercial parcels:", length(unique(fulton_cmr$Parid)), 
+cat("Total number of unique commercial parcels:", length(unique(fulton_cmr$parid)), 
     "\nNum parcels without a record for every year in period:", count_missing_a_record,
     "\nTotal number of parcels around at start of study period:", pivoted_data %>% filter(!is.na(`2011`)) %>% nrow(),
     "\nNum of parcels around at start that don't have an entry for every year:", begin_and_missing
@@ -122,8 +131,9 @@ cat("Total number of unique commercial parcels:", length(unique(fulton_cmr$Parid
 
 ### Save cleaned data to excel
 ```{r}
-path <- paste0("output/DIGEST_fulton_commercial_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".xlsx")
-write_xlsx(fulton_cmr, path = here::here(path))
+cat("There is only one row per (taxyr, parid) group:", fulton_cmr[, .N, by = .(taxyr, parid)][, max(N) == 1])
+path <- paste0("output/fulton/2-processed_clean/CMR/DIGEST_fulton_commercial_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+write_csv(fulton_cmr, file = here::here(path))
 
 rm(combined_data, count_of_records_parcel, pivoted_data, tot_parcels_begin, begin_and_missing, count_missing_a_record, init_len)
 
@@ -135,21 +145,21 @@ rm(combined_data, count_of_records_parcel, pivoted_data, tot_parcels_begin, begi
 The sales data set contains all sales across Fulton county. We need to isolate to commercial sales based on unique parcel ids in the digest dataset.
 
 ```{r}
-cmr_parids <- unique(fulton_cmr$Parid)
+cmr_parids <- unique(fulton_cmr$parid)
 
-raw_sales <- read_csv(here::here("data/1727793735_fulton_sales.csv"))
+raw_sales <- read_csv(here::here("data/fulton/1727793735_fulton_sales.csv"))
 
 sales <- raw_sales %>% 
   distinct() %>%
   filter(parcel_id %in% cmr_parids) 
 
-cat("Total number of unique commercial parcel in digest:", length(unique(fulton_cmr$Parid)),
+cat("Total number of unique commercial parcel in digest:", length(unique(fulton_cmr$parid)),
     "\nTotal Number of commercial AND non-commercial transactions:", nrow(raw_sales),
     "\nNum of commercial transactions:", nrow(sales),
     "\nNum of unique commerical properties transacted upon:", length(unique(sales$parcel_id)),
     "\nNum of unique parcels not transacted upon between 2011 and 2022 tax years:", 
-    length(unique(fulton_cmr$Parid)) - length(unique(sales$parcel_id)), "/",
-    round((length(unique(fulton_cmr$Parid)) - length(unique(sales$parcel_id))) / length(unique(fulton_cmr$Parid)) * 100), "%")
+    length(unique(fulton_cmr$parid)) - length(unique(sales$parcel_id)), "/",
+    round((length(unique(fulton_cmr$parid)) - length(unique(sales$parcel_id))) / length(unique(fulton_cmr$parid)) * 100), "%")
   
 ```
 
@@ -157,8 +167,8 @@ I will not merge with the digest yet because there can be multiple sales associa
 
 ### Save cleaned data to excel
 ```{r}
-path <- paste0("output/SALES_fulton_commercial_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".xlsx")
-write_xlsx(sales, path = here::here(path))
+path <- paste0("output/fulton/2-processed_clean/CMR/SALES_fulton_commercial_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+write_csv(sales, path = here::here(path))
 
 rm(raw_sales)
 
@@ -167,19 +177,20 @@ rm(raw_sales)
 ## Appeals Data
 
 ```{r}
-appeals <- read_excel(here::here("data/fulton_raw/APPEALS 2011-2022.xlsx")) ## has 7 columns
-head(appeals)
+raw_appeals <- read_excel(here::here("data/fulton/APPEALS 2011-2022.xlsx")) %>% ## has 7 columns
+  clean_names()
+head(raw_appeals)
 
-appeals <- appeals %>%
-  semi_join(fulton_cmr, by.x = c("TAXYR", "PARID"), by.y = c("Taxyr", "Parid"))
-  arrange(PARID, TAXYR)
+appeals <- raw_appeals %>% 
+  semi_join(fulton_cmr, by = c('taxyr', 'parid')) %>%
+  arrange(parid, taxyr)
 
 cat("Total number of appeals:", nrow(appeals),
-    "\nTotal number of unique commercial parcels who appealed:", length(unique(appeals$PARID)))
+    "\nTotal number of unique commercial parcels who appealed:", length(unique(appeals$parid)))
 
 ```
 
-For a given tax year-parcel id combo, the current assessment column should be equal to the 40% of the `Aprtot` variable in the digest. However, I have found that it is not the case for about 16% of cases.
+For a given tax year-parcel id combo, the current assessment column should be equal to the 40% of the `aprtot` variable in the digest. However, I have found that it is not the case for about 16% of cases.
 
 Reasons could be that the property's appeal was settled into the next tax year. For cases where the current assessment is zero but the digest has an entry for assessed value, we should replace the current assessment with the digest assessed value entry for that year. This assumes that the digest is more up-to-date with the outcomes of the appeal represented in the `appeals` data. The appeal in a given tax year requests an adjustment to the value of the home in that same tax year, which is stored in the digest. Although the appeal process length may go into the next year, if the noted digest assessment in the appeal tax year is different than the notice assessment in the `appeals` data, we should assume that it has been adjusted to reflect the outcome of the appeal for that tax year.
 
@@ -189,14 +200,14 @@ Missing Digest Record -- parcel id-tax year combo is found in the appeals data b
 
 appeals <- appeals %>%
   merge(fulton_cmr %>% 
-          select(Taxyr, Parid, Aprtot), by.x = c("TAXYR", "PARID"), by.y = c("Taxyr", "Parid"), all.x = T) %>%
-  mutate(digest_assessed = 0.4 * Aprtot) 
+          select(taxyr, parid, aprtot), by.x = c("taxyr", "parid"), by.y = c("taxyr", "parid"), all.x = T) %>%
+  mutate(digest_assessed = 0.4 * aprtot) 
 
 ## view low current assessments
 appeals %>%
-  mutate(diff_assessed_current = `CURRENT ASSESSMENT` - digest_assessed) %>%
-  select(TAXYR, PARID, `NOTICE ASSESSMENT`, `CURRENT ASSESSMENT`, digest_assessed, diff_assessed_current) %>%
-  arrange(`CURRENT ASSESSMENT`) %>%
+  mutate(diff_assessed_current = current_assessment - digest_assessed) %>%
+  select(taxyr, parid, notice_assessment, current_assessment, digest_assessed, diff_assessed_current) %>%
+  arrange(current_assessment) %>%
   mutate(diff_grouped = case_when(
     diff_assessed_current < 0 ~ "Digest greater than Current assessment",
     diff_assessed_current > 0 ~ "Current greater than Digest assessment",
@@ -204,13 +215,12 @@ appeals %>%
     TRUE ~ "Missing Digest Record"
   )) %>%
   tabyl(diff_grouped)
-  View()
 
 ### replace current assessment w digest assessment for cases where c.a. is zero and d.a. is non zero: about 180 cases
 appeals <- appeals %>%
   mutate(adj_current_assessment = case_when(
-    `CURRENT ASSESSMENT` == 0 & digest_assessed != 0 & !is.na(digest_assessed) ~ digest_assessed ,
-    TRUE ~ `CURRENT ASSESSMENT`
+    current_assessment == 0 & digest_assessed != 0 & !is.na(digest_assessed) ~ digest_assessed ,
+    TRUE ~ current_assessment
   ))
 
 appeals %>%
@@ -222,7 +232,7 @@ appeals %>%
     TRUE ~ "Missing Digest Record"
   )) %>%
   tabyl(diff_grouped)
-  View()
+
 
 ```
 
@@ -234,8 +244,8 @@ Also, let's not do anything with current == 40 / aprtot == 100. I think that is 
 
 ```{r}
 appeals %>%
-  mutate(diff_assessed_current = `CURRENT ASSESSMENT` - digest_assessed) %>%
-  select(TAXYR, PARID, `NOTICE ASSESSMENT`, adj_current_assessment, digest_assessed, diff_assessed_current) %>%
+  mutate(diff_assessed_current = current_assessment - digest_assessed) %>%
+  select(taxyr, parid, notice_assessment, adj_current_assessment, digest_assessed, diff_assessed_current) %>%
   filter(adj_current_assessment > 40 & diff_assessed_current != 0) %>%
   arrange(adj_current_assessment)
 ```
@@ -247,8 +257,8 @@ appeals %>%
 dirty_assessments <- appeals %>%
   filter(!(adj_current_assessment %in% c(0, 40))) %>%
   rowwise() %>%
-  filter(max(c(`NOTICE ASSESSMENT`, adj_current_assessment, digest_assessed)) / 
-           min(c(`NOTICE ASSESSMENT`, adj_current_assessment, digest_assessed)) >= 1000) %>%
+  filter(max(c(notice_assessment, adj_current_assessment, digest_assessed)) / 
+           min(c(notice_assessment, adj_current_assessment, digest_assessed)) >= 1000) %>%
   mutate(
     # compute the expected truncation of digest_assessed
     expected_adj = round(digest_assessed, -5) / 10000,
@@ -260,30 +270,30 @@ dirty_assessments <- appeals %>%
 
 dirty_assessments <- dirty_assessments %>%
   mutate(adj_notice_assessment = case_when(
-    `NOTICE ASSESSMENT` == `CURRENT ASSESSMENT` ~ adj_current_assessment,
+    notice_assessment == current_assessment ~ adj_current_assessment,
     ## otherwise if adj current and notice are off by 3 then add 3 zeros.
-    adj_current_assessment / `NOTICE ASSESSMENT` >= 1000 ~ `NOTICE ASSESSMENT` * 10000,
-    TRUE ~ `NOTICE ASSESSMENT`
+    adj_current_assessment / notice_assessment >= 1000 ~ notice_assessment * 10000,
+    TRUE ~ notice_assessment
   ))
 
 #and now rewrite over appeals dataset
 
 cleaned_appeals <- appeals %>%
-  left_join(dirty_assessments %>% select(TAXYR, PARID, adj_current_assessment, adj_notice_assessment, digest_assessed), 
-            by = c("TAXYR", "PARID")) %>%
+  left_join(dirty_assessments %>% select(taxyr, parid, adj_current_assessment, adj_notice_assessment, digest_assessed), 
+            by = c("taxyr", "parid")) %>%
   mutate(
-    adj_notice_assessment = coalesce(adj_notice_assessment, `NOTICE ASSESSMENT`),
+    adj_notice_assessment = coalesce(adj_notice_assessment, notice_assessment),
     adj_current_assessment = coalesce(adj_current_assessment.y, adj_current_assessment.x),
     digest_assessed = coalesce(digest_assessed.y, digest_assessed.x)
   ) %>% 
-  select(TAXYR, PARID, HEARTYP, SUBKEY, `NOTICE ASSESSMENT`, `CURRENT ASSESSMENT`, CLASS, adj_notice_assessment, adj_current_assessment)
+  select(taxyr, parid, heartyp, subkey, notice_assessment, current_assessment, class, adj_notice_assessment, adj_current_assessment)
 
 ```
 
 ### Save cleaned data to excel
 ```{r}
-path <- paste0("output/APPEALS_fulton_commercial_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".xlsx")
-write_xlsx(cleaned_appeals, path = here::here(path))
+path <- paste0("output/fulton/2-processed_clean/CMR/APPEALS_fulton_commercial_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+write_csv(cleaned_appeals, path = here::here(path))
 
 ```
 
@@ -308,31 +318,34 @@ You can review the process here: <https://www.youtube.com/watch?v=gk5byVrJZ6s>
 Below, we will keep the highest rank decision based on the order of the appeals process. This is so we have a 1:1 with tax year-parid combo and appeal, if any.
 
 ```{r}
-fulton_digest_appeals <- fulton_cmr %>%
-  merge(cleaned_appeals, by.x = c("Taxyr", "Parid"), by.y = c("TAXYR", "PARID"), all.x = T)
-
-#remove columns with duplicated data
-fulton_digest_appeals <- fulton_digest_appeals[!duplicated(as.list(fulton_digest_appeals))]
-
 ## view the multi appeal year-parcels
-fulton_digest_appeals %>%
-  group_by(Taxyr, Parid) %>%
+cleaned_appeals %>%
+  group_by(taxyr, parid) %>%
   filter(n() > 1) %>%
-  ungroup() %>% View()
+  ungroup() %>% 
+  View()
 
 # rank the hearing types and only keep latest decision
-fulton_digest_appeals <- fulton_digest_appeals %>% 
-  mutate(HEARTYP_rank = case_when(
-    HEARTYP == "B" ~ 1,
-    HEARTYP %in%  c("E", "H") ~ 2,
-    HEARTYP %in% c("R", "X") ~ 3,
-    HEARTYP == "O" ~ 4,
-    HEARTYP == "S" ~ 5,
+unique_appeals <- cleaned_appeals %>% 
+  mutate(heartyp_rank = case_when(
+    heartyp == "B" ~ 1,
+    heartyp == "E" ~ 2,
+    heartyp == "H" ~ 3,
+    heartyp %in% c("R", "X") ~ 4,
+    heartyp == "O" ~ 5,
+    heartyp == "S" ~ 6,
   )) %>%
-  group_by(Taxyr, Parid) %>%
-  slice_max(HEARTYP_rank) 
+  group_by(taxyr, parid) %>%
+  slice_max(heartyp_rank) %>%
+  ungroup() 
 
-path <- paste0("output/fulton_commercial_digest+appeals_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".xlsx")
-write_xlsx(fulton_digest_appeals, path = here::here(path))
+unique_appeals <- unique_appeals %>%
+  dplyr::rename(appeal_class = class)
+
+fulton_digest_appeals <- fulton_cmr %>%
+  merge(unique_appeals, by = c("taxyr", "parid"), all.x = T)
+
+path <- paste0("output/fulton/2-processed_clean/CMR/fulton_commercial_digest+appeals_2011_2022_", tolower(format(Sys.time(), "%b%d%Y")), ".csv")
+write_csv(fulton_digest_appeals, path = here::here(path))
 
 ```
