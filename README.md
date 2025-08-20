@@ -46,7 +46,7 @@ Then send off to other projects
 | Convert digest, appeals, and sales   | 3/3 Completed                |
 | Process into single multi-year files | 3/3 Completed                |
 | Run ownership key script             | Completed MJ/Needs Review YZ |
-| Run geocoding script                 | Completed YZ/Needs Review MJ |
+| Run geocoding script                 | Completed YZ/Reviewed MJ     |
 
 ## Gwinnett
 
