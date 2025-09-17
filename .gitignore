@@ -3,6 +3,7 @@ data/*
 ga-tax-assessment
 *.xlsx
 *.csv
+raw-geo-files/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -172,6 +173,3 @@ cython_debug/
 #.idea/
 .Rproj.user
 *.csv
-raw_data_geo/*.geojson
-raw-geo-files/*.geojson
-Paulding/Untitled-1.ipynb
