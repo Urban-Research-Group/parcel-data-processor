@@ -172,3 +172,4 @@ cython_debug/
 #.idea/
 .Rproj.user
 *.csv
+raw_data_geo/*.geojson
