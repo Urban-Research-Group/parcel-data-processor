@@ -173,3 +173,5 @@ cython_debug/
 .Rproj.user
 *.csv
 raw_data_geo/*.geojson
+raw-geo-files/*.geojson
+Paulding/Untitled-1.ipynb
