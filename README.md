@@ -54,7 +54,7 @@ Then send off to other projects
 |---------------------------|---------------------------------------------|
 | Convert digest, appeals, and sales | 3/3 completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/gwinnett` |
 | Process into single multi-year files | 3/3 completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/gwinnett/2-processed_clean` |
-| Run ownership key script | Completed MJ/Reviewed by YZ |
+| Run ownership key script | Completed MJ/Verified by YZ |
 | Run geocoding script | Completed YZ/Needs Review MJ |
 
 ## Paulding
