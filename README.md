@@ -18,7 +18,7 @@ Then send off to other projects
 |--------------------------|----------------------------------------------|
 | Convert digest, appeals, and sales | Digest completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/clayton/1-raw_converted` |
 | Process into single multi-year files | Digest completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/clayton/``2-processed_clean` |
-| Run ownership key script | Completed YZ/Needs Review MJ |
+| Run ownership key script | Needs rerun ownership YZ |
 | Run geocoding script | Will need to be geocoded thru Google or Mapbox - IP |
 
 ## Cobb
@@ -27,7 +27,7 @@ Then send off to other projects
 |--------------------------|----------------------------------------------|
 | Convert digest, appeals, and sales | Digest and Appeals completed; Sales to come |
 | Process into single multi-year files | Digest and Appeals completed; Sales to come |
-| Run ownership key script | Completed MJ/Needs Review YZ |
+| Run ownership key script | Completed MJ/Verified by YZ |
 | Run geocoding script | Will need to be geocoded thru Google or Mapbox - IP |
 
 ## DeKalb
@@ -45,7 +45,7 @@ Then send off to other projects
 |--------------------------------------|------------------------------|
 | Convert digest, appeals, and sales   | 3/3 Completed                |
 | Process into single multi-year files | 3/3 Completed                |
-| Run ownership key script             | Completed MJ/Needs Review YZ |
+| Run ownership key script             | Completed MJ/Verified by YZ |
 | Run geocoding script                 | Completed YZ/Reviewed MJ     |
 
 ## Gwinnett
@@ -54,7 +54,7 @@ Then send off to other projects
 |---------------------------|---------------------------------------------|
 | Convert digest, appeals, and sales | 3/3 completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/gwinnett` |
 | Process into single multi-year files | 3/3 completed locally by HUP member Daniel Fang; appeals and sales to come. Files can be found in Data Engineering channel or in `output/gwinnett/2-processed_clean` |
-| Run ownership key script | Completed MJ/Needs Review YZ |
+| Run ownership key script | Completed MJ/Reviewed by YZ |
 | Run geocoding script | Completed YZ/Needs Review MJ |
 
 ## Paulding
