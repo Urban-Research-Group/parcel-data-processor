@@ -45,143 +45,144 @@ sales_delete = pd.read_csv(SALES_DELETE_PATH)
 actual_dig_cols_map = {}
 actual_sales_cols_map = {}
 
-# missing = False
-# for county in COUNTIES:
-#     tax_digest_path = TAX_DIGEST_PATH + f"/{county.capitalize()}/{county}_final_cleaned.csv"
-#     sales_digest_path = SALES_DIGEST_PATH + f"/{county.upper()}_SALES_FINAL.csv"
-#     exp_dig_cols = pd.concat([digest_map[county.capitalize()].dropna(), 
-#                                 digest_keep[county.capitalize()].dropna(),
-#                                 digest_delete[county.capitalize()].dropna()], axis=0).tolist()
+missing = False
+for county in COUNTIES:
+    tax_digest_path = TAX_DIGEST_PATH + f"/{county.capitalize()}/{county}_final_cleaned.csv"
+    sales_digest_path = SALES_DIGEST_PATH + f"/{county.upper()}_SALES_FINAL.csv"
+    exp_dig_cols = pd.concat([digest_map[county.capitalize()].dropna(), 
+                                digest_keep[county.capitalize()].dropna(),
+                                digest_delete[county.capitalize()].dropna()], axis=0).tolist()
     
-#     exp_sales_cols = pd.concat([sales_map[county.capitalize()].dropna(), 
-#                                 sales_keep[county.capitalize()].dropna(),
-#                                 sales_delete[county.capitalize()].dropna()], axis=0).tolist()
+    exp_sales_cols = pd.concat([sales_map[county.capitalize()].dropna(), 
+                                sales_keep[county.capitalize()].dropna(),
+                                sales_delete[county.capitalize()].dropna()], axis=0).tolist()
     
-#     actual_dig_cols = pd.read_csv(tax_digest_path, nrows=0).columns.tolist()
-#     actual_dig_cols_map[county] = actual_dig_cols
+    actual_dig_cols = pd.read_csv(tax_digest_path, nrows=0).columns.tolist()
+    actual_dig_cols_map[county] = actual_dig_cols
 
-#     actual_sales_cols = pd.read_csv(sales_digest_path, nrows=0).columns.tolist()
-#     actual_sales_cols_map[county] = actual_sales_cols
+    actual_sales_cols = pd.read_csv(sales_digest_path, nrows=0).columns.tolist()
+    actual_sales_cols_map[county] = actual_sales_cols
 
-#     for expected in exp_dig_cols:
-#         if expected not in actual_dig_cols:
-#             print(f"{county.upper()}: {expected} column not present in tax digest.")
-#             missing = True
+    for expected in exp_dig_cols:
+        if expected not in actual_dig_cols:
+            print(f"{county.upper()}: {expected} column not present in tax digest.")
+            missing = True
 
-#     for act in actual_dig_cols:
-#         if act not in exp_dig_cols:
-#             print(f"{county.upper()}: Extra {act} column not expected in tax digest.")
-#             missing = True
+    for act in actual_dig_cols:
+        if act not in exp_dig_cols:
+            print(f"{county.upper()}: Extra {act} column not expected in tax digest.")
+            missing = True
 
-#     for expected in exp_sales_cols:
-#         if expected not in actual_sales_cols:
-#             print(f"{county.upper()}: {expected} column not present in sales digest.")
-#             missing = True
+    for expected in exp_sales_cols:
+        if expected not in actual_sales_cols:
+            print(f"{county.upper()}: {expected} column not present in sales digest.")
+            missing = True
 
-#     for act in actual_sales_cols:
-#         if act not in exp_sales_cols:
-#             print(f"{county.upper()}: Extra {act} column not expected in sales digest.")
-#             missing = True
-# if missing:
-#     exit(1)
+    for act in actual_sales_cols:
+        if act not in exp_sales_cols:
+            print(f"{county.upper()}: Extra {act} column not expected in sales digest.")
+            missing = True
+if missing:
+    exit(1)
 
-# man_keep_tax_cols_map = {
-#     "fulton": [],
-#     "gwinnett": [],
-#     "cobb": [],
-#     "dekalb": [],
-#     "clayton": []
-# }
+man_keep_tax_cols_map = {
+    "fulton": [],
+    "gwinnett": [],
+    "cobb": [],
+    "dekalb": [],
+    "clayton": []
+}
 
-# man_keep_sales_cols_map = {
-#     "fulton": [],
-#     "gwinnett": ['LEGAL1'],
-#     "cobb": ['TRANSDT'],
-#     "dekalb": [],
-#     "clayton": []
-# }
+man_keep_sales_cols_map = {
+    "fulton": [],
+    "gwinnett": ['LEGAL1'],
+    "cobb": ['TRANSDT'],
+    "dekalb": [],
+    "clayton": []
+}
 
-# tax_dfs = []
-# sales_dfs = []
-# merged_dfs = []
-# threshold = 0.95
-# for county in COUNTIES:
-#     print(f"---- {county.capitalize()} Tax Digest ----")
-#     tax_digest_path = TAX_DIGEST_PATH + f"/{county.capitalize()}/{county}_final_cleaned.csv"
-#     tax_df = pd.read_csv(tax_digest_path, low_memory=False)
+tax_dfs = []
+sales_dfs = []
+merged_dfs = []
+threshold = 0.95
+for county in COUNTIES:
+    print(f"---- {county.capitalize()} Tax Digest ----")
+    tax_digest_path = TAX_DIGEST_PATH + f"/{county.capitalize()}/{county}_final_cleaned.csv"
+    tax_df = pd.read_csv(tax_digest_path, low_memory=False)
 
-#     keep_tax_cols = digest_map[county.capitalize()].dropna().to_list()
-#     man_keep_tax_cols = man_keep_tax_cols_map[county]
+    keep_tax_cols = digest_map[county.capitalize()].dropna().to_list()
+    man_keep_tax_cols = man_keep_tax_cols_map[county]
 
-#     sparse_tax_cols = tax_df.columns[(tax_df.isnull().mean() >= threshold) & 
-#                                      ~tax_df.columns.isin(keep_tax_cols) & ~tax_df.columns.isin(man_keep_tax_cols)].to_list()
+    sparse_tax_cols = tax_df.columns[(tax_df.isnull().mean() >= threshold) & 
+                                     ~tax_df.columns.isin(keep_tax_cols) & ~tax_df.columns.isin(man_keep_tax_cols)].to_list()
 
-#     print(f"The following columns are sparse for {county} and will be dropped from tax digest:")
-#     print(sparse_tax_cols)
+    print(f"The following columns are sparse for {county} and will be dropped from tax digest:")
+    print(sparse_tax_cols)
 
-#     keep_tax_cols = [x for x in actual_dig_cols_map[county] if 
-#                      ((x not in digest_delete[county.capitalize()].dropna().to_list() and (x not in sparse_tax_cols)))]
+    keep_tax_cols = [x for x in actual_dig_cols_map[county] if 
+                     ((x not in digest_delete[county.capitalize()].dropna().to_list() and (x not in sparse_tax_cols)))]
     
-#     digest_rename_map = digest_map[["Standardized Name", county.capitalize()]][~digest_map[county.capitalize()] \
-#                                     .isnull()].set_index(county.capitalize()).to_dict()["Standardized Name"]
+    digest_rename_map = digest_map[["Standardized Name", county.capitalize()]][~digest_map[county.capitalize()] \
+                                    .isnull()].set_index(county.capitalize()).to_dict()["Standardized Name"]
     
-#     # Get the names of the parcel_id and tax_year in their respective files, so as to preserve any sort of leading zeros etc.
-#     # that might be clipped by data_type inference
-#     pid_orig_name = digest_map[digest_map["Human Readable Name"] == "Parcel ID"][county.capitalize()].item()
-#     taxyr_orig_name = digest_map[digest_map["Human Readable Name"] == "Tax Year"][county.capitalize()].item()
-#     tax_df = pd.read_csv(tax_digest_path, usecols=keep_tax_cols, low_memory=False, 
-#                          dtype={pid_orig_name: str, taxyr_orig_name: str}).rename(columns=digest_rename_map) # preserve the datatypes of the fields that will be merged on
-#     tax_df['ORIG_COUNTY'] = county.capitalize()
+    # Get the names of the parcel_id and tax_year in their respective files, so as to preserve any sort of leading zeros etc.
+    # that might be clipped by data_type inference
+    pid_orig_name = digest_map[digest_map["Human Readable Name"] == "Parcel ID"][county.capitalize()].item()
+    taxyr_orig_name = digest_map[digest_map["Human Readable Name"] == "Tax Year"][county.capitalize()].item()
+    tax_df = pd.read_csv(tax_digest_path, usecols=keep_tax_cols, low_memory=False, 
+                         dtype={pid_orig_name: str, taxyr_orig_name: str}).rename(columns=digest_rename_map) # preserve the datatypes of the fields that will be merged on
+    tax_df['ORIG_COUNTY'] = county.capitalize()
 
-#     tax_dfs.append(tax_df)
+    tax_dfs.append(tax_df)
 
-# final_tax_df = pd.concat(tax_dfs, axis=0, ignore_index=True)
-# digest_shared_cols = digest_map["Standardized Name"].to_list()
-# digest_columns = digest_shared_cols + [col for col in final_tax_df.columns if col not in digest_shared_cols]
-# final_tax_df = final_tax_df[digest_columns]
-# final_tax_df.to_csv("data/five_counties_tax_digest.csv", index=False)
+final_tax_df = pd.concat(tax_dfs, axis=0, ignore_index=True)
+digest_shared_cols = digest_map["Standardized Name"].to_list()
+digest_columns = digest_shared_cols + [col for col in final_tax_df.columns if col not in digest_shared_cols]
+final_tax_df = final_tax_df[digest_columns]
+final_tax_df.to_csv("data/five_counties_tax_digest.csv", index=False)
 
-# del tax_dfs
+del tax_dfs
 
-# for county in COUNTIES:
-#     print(f"---- {county.capitalize()} Sales Digest ----")
-#     sales_digest_path = SALES_DIGEST_PATH + f"/{county.upper()}_SALES_FINAL.csv"
-#     sales_df = pd.read_csv(sales_digest_path, low_memory=False)
+for county in COUNTIES:
+    print(f"---- {county.capitalize()} Sales Digest ----")
+    sales_digest_path = SALES_DIGEST_PATH + f"/{county.upper()}_SALES_FINAL.csv"
+    sales_df = pd.read_csv(sales_digest_path, low_memory=False)
 
-#     keep_sales_cols = sales_map[county.capitalize()].dropna().to_list()
-#     man_keep_sales_cols = man_keep_sales_cols_map[county]
+    keep_sales_cols = sales_map[county.capitalize()].dropna().to_list()
+    man_keep_sales_cols = man_keep_sales_cols_map[county]
 
-#     sparse_sales_cols = sales_df.columns[(sales_df.isnull().mean() >= threshold) & 
-#                                          ~sales_df.columns.isin(keep_sales_cols) & ~sales_df.columns.isin(man_keep_sales_cols)].to_list()
+    sparse_sales_cols = sales_df.columns[(sales_df.isnull().mean() >= threshold) & 
+                                         ~sales_df.columns.isin(keep_sales_cols) & ~sales_df.columns.isin(man_keep_sales_cols)].to_list()
     
-#     print(f"The following columns are sparse for {county} and will be dropped from sales digest:")
-#     print(sparse_sales_cols)
+    print(f"The following columns are sparse for {county} and will be dropped from sales digest:")
+    print(sparse_sales_cols)
 
-#     keep_sales_cols = [x for x in actual_sales_cols_map[county] if 
-#                      ((x not in sales_delete[county.capitalize()].dropna().to_list() and (x not in sparse_sales_cols)))]
+    keep_sales_cols = [x for x in actual_sales_cols_map[county] if 
+                     ((x not in sales_delete[county.capitalize()].dropna().to_list() and (x not in sparse_sales_cols)))]
     
-#     sales_rename_map = sales_map[["Standardized Name", county.capitalize()]][~sales_map[county.capitalize()].isnull()] \
-#                                 .set_index(county.capitalize()).to_dict()["Standardized Name"]
+    sales_rename_map = sales_map[["Standardized Name", county.capitalize()]][~sales_map[county.capitalize()].isnull()] \
+                                .set_index(county.capitalize()).to_dict()["Standardized Name"]
     
-#     # Get the names of the parcel_id and sale_year in their respective files, so as to preserve any sort of leading zeros etc.
-#     # that might be clipped by data_type inference
-#     pid_orig_name = sales_map[sales_map["Human Readable Name"] == "Parcel ID"][county.capitalize()].item()
-#     saleyr_orig_name = sales_map[sales_map["Human Readable Name"] == "Sale Year"][county.capitalize()].item()
-#     sales_df = pd.read_csv(sales_digest_path, usecols=keep_sales_cols, 
-#                            dtype={pid_orig_name: str, saleyr_orig_name: str}, low_memory=False).rename(columns=sales_rename_map)
-#     sales_df['sale_dt'] = pd.to_datetime(sales_df['sale_dt'])
-#     sales_df['ORIG_COUNTY'] = county.capitalize()
+    # Get the names of the parcel_id and sale_year in their respective files, so as to preserve any sort of leading zeros etc.
+    # that might be clipped by data_type inference
+    pid_orig_name = sales_map[sales_map["Human Readable Name"] == "Parcel ID"][county.capitalize()].item()
+    saleyr_orig_name = sales_map[sales_map["Human Readable Name"] == "Sale Year"][county.capitalize()].item()
+    sales_df = pd.read_csv(sales_digest_path, usecols=keep_sales_cols, 
+                           dtype={pid_orig_name: str, saleyr_orig_name: str}, low_memory=False).rename(columns=sales_rename_map)
+    sales_df['sale_dt'] = pd.to_datetime(sales_df['sale_dt'])
+    sales_df['ORIG_COUNTY'] = county.capitalize()
 
-#     sales_dfs.append(sales_df)
+    sales_dfs.append(sales_df)
 
-# final_sales_df = pd.concat(sales_dfs, axis=0, ignore_index=True)
-# sales_shared_cols = sales_map["Standardized Name"].to_list()
-# sales_columns = sales_shared_cols + [col for col in final_sales_df.columns if col not in sales_shared_cols]
-# final_sales_df = final_sales_df[sales_columns]
-# final_sales_df.to_csv("data/five_counties_sales_digest.csv", index=False)
+final_sales_df = pd.concat(sales_dfs, axis=0, ignore_index=True)
+sales_shared_cols = sales_map["Standardized Name"].to_list()
+sales_columns = sales_shared_cols + [col for col in final_sales_df.columns if col not in sales_shared_cols]
+final_sales_df = final_sales_df[sales_columns]
+final_sales_df.to_csv("data/five_counties_sales_digest.csv", index=False)
 
-# del sales_dfs
+del sales_dfs
 
+# Merging of the final files
 final_sales_df = pd.read_csv("data/five_counties_sales_digest.csv", low_memory=False, dtype={"parcel_id": str, "sale_yr": str})
 sales_shared_cols = sales_map["Standardized Name"].to_list()
 sales_columns = sales_shared_cols + [col for col in final_sales_df.columns if col not in sales_shared_cols]
@@ -195,6 +196,7 @@ chunks = []
 with pd.read_csv("data/five_counties_tax_digest.csv", low_memory=False, 
                  dtype={"parcel_id": str, "tax_year": str}, chunksize=10000) as reader:
     for chunk in tqdm(reader):
+        chunk = chunk[digest_columns]
         merged_chunk = pd.merge(final_sales_df, chunk, how="inner", left_on=["parcel_id", "sale_yr", "ORIG_COUNTY"],
             right_on=["parcel_id", "tax_year", "ORIG_COUNTY"])
         chunks.append(merged_chunk)
